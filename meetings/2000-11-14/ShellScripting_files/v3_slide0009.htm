@@ -1,0 +1,537 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Conditionals (case)">
+
+
+<link rel=next href="v3_slide0010.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0009.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_master03_background.gif" bgcolor="#000066" alink="#2663a0"
+
+
+link="#f98d43" vlink="#cc3300" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=40 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=29 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=214 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=124 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=21 colspan=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=69 height=42 colspan=2></td>
+
+
+  <td width=338 height=42 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=338 height=42 align=center><font face="Arial Black"
+
+
+    color="#ffcc00" size=5>Conditionals (case)</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=68 height=42></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=284></td>
+
+
+  <td width=243 height=284 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=22 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=8 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=12 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=14 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=25 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=86 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=8 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=33 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=64 height=19 colspan=6><font face=Arial size=2>#!/bin/sh</font><br>
+
+
+    </td>
+
+
+    <td width=179 height=19 colspan=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=89 height=19 colspan=7><font face=Arial size=2>case
+
+
+    &quot;$1&quot; in</font><br>
+
+
+    </td>
+
+
+    <td width=154 height=19 colspan=4></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=38 height=19 colspan=4><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">  </span>Bill)</font><br>
+
+
+    </td>
+
+
+    <td width=205 height=19 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=216 height=19 colspan=10><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>echo “How’s it going, Bill?&quot;</font><br>
+
+
+    </td>
+
+
+    <td width=27 height=19></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=28 height=19 colspan=2><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>;;</font><br>
+
+
+    </td>
+
+
+    <td width=215 height=19 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=38 height=18 colspan=4><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">  </span>joe)</font><br>
+
+
+    </td>
+
+
+    <td width=205 height=18 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=243 height=19 colspan=11><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>echo ”Finish your homework?&quot;</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=28 height=19 colspan=2><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>;;</font><br>
+
+
+    </td>
+
+
+    <td width=215 height=19 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=50 height=19 colspan=5><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">  </span>Pam)</font><br>
+
+
+    </td>
+
+
+    <td width=193 height=19 colspan=6></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=183 height=19 colspan=9><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>echo ”What a hottie!!!&quot;</font><br>
+
+
+    </td>
+
+
+    <td width=60 height=19 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=28 height=19 colspan=2><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>;;</font><br>
+
+
+    </td>
+
+
+    <td width=215 height=19 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=22 height=19><font face=Arial size=2><span style="mso-spacerun:
+
+
+    yes">  </span>*)</font><br>
+
+
+    </td>
+
+
+    <td width=221 height=19 colspan=10></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=175 height=19 colspan=8><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>echo &quot;Who are you?&quot;</font><br>
+
+
+    </td>
+
+
+    <td width=68 height=19 colspan=3></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=28 height=19 colspan=2><font face=Arial size=2><span
+
+
+    style="mso-spacerun: yes">    </span>;;</font><br>
+
+
+    </td>
+
+
+    <td width=215 height=19 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=36 height=19 colspan=3><font face=Arial size=2>esac</font><br>
+
+
+    </td>
+
+
+    <td width=207 height=19 colspan=8></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=192 height=284 colspan=2></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=9 colspan=5></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

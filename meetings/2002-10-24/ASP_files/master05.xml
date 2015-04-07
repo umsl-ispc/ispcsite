@@ -1,0 +1,76 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint">
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="5"/>
+ </o:shapelayout><p:colorscheme
+  colors="#000099,#FFFFFF,#010199,#FFFFFF,#33CCCC,#00C600,#FFCC00,#6699FF"/>
+ <v:background id="_x0000_s5121" o:bwmode="white" o:targetscreensize="800,600">
+  <v:fill src="master04_image001.jpg" o:title="ocean_pale" type="frame"/>
+ </v:background><p:shaperange id="_x0000_m5122">
+  <v:shapetype id="_x0000_m5122" style='position:absolute;left:54pt;top:157.25pt;
+   width:612pt;height:112.75pt;v-text-anchor:bottom-center' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#3cc [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#009 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#010199 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="centerTitle" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_m5123">
+  <v:shapetype id="_x0000_m5123" style='position:absolute;left:108pt;top:306pt;
+   width:7in;height:138pt' coordsize="21600,21600" o:master="" o:spt="1"
+   path="m0,0l0,21600,21600,21600,21600,0xe" filled="f" fillcolor="#3cc [4]"
+   stroked="f" strokecolor="white [1]">
+   <v:fill color2="#009 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#010199 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="subTitle" position="1" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s5124">
+  <v:shape id="_x0000_s5124" style='position:absolute;left:22.5pt;top:220.75pt;
+   width:.125pt;height:239pt' coordsize="0,1912" path="m0,0l0,6,,6,,60,,1912,,1912,,,,0xe"
+   fillcolor="#6bba27" stroked="f">
+   <v:path arrowok="t"/>
+  </v:shape></p:shaperange>
+ <p:shaperange id="_x0000_s5125">
+  <v:shapetype id="_x0000_s5125" style='position:absolute;left:246pt;top:491.75pt;
+   width:228pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#3cc [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#009 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#010199 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="footer" position="3" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s5126">
+  <v:shapetype id="_x0000_s5126" style='position:absolute;left:516pt;top:491.75pt;
+   width:168pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#3cc [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#009 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#010199 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="slideNumber" position="4" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s5127">
+  <v:shapetype id="_x0000_s5127" style='position:absolute;left:36pt;top:491.75pt;
+   width:168pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m0,0l0,21600,21600,21600,21600,0xe" filled="f"
+   fillcolor="#3cc [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#009 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#010199 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="dateTime" position="2" size="quarter"/>
+  </v:shapetype></p:shaperange>
+</xml>

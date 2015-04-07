@@ -1,0 +1,4233 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../dotnet.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<meta name=Robots content=NoIndex>
+
+
+<script src=script.js></script><script><!--
+
+
+
+
+
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+
+
+{
+
+
+	obj = document.all.item("Main-File")
+
+
+	parent.location.href=obj.href
+
+
+}
+
+
+
+
+
+var gOtlHiliteClr="#FFFFFF",gOtlNormalClr="#000000",gOtlActiveClr="#FFFF00",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+
+
+
+
+
+function Load()
+
+
+{
+
+
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+
+
+	if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+
+
+	if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+
+
+}
+
+
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+
+
+function LoadNav( oId,UpdFunc )
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	document.body.style.margin=2
+
+
+	UpdFunc()
+
+
+	obj=document.all.item(oId)
+
+
+	obj.style.display="block"
+
+
+	obj.style.visibility="visible"
+
+
+	document.bgColor="threedface"
+
+
+}
+
+
+function LoadOtl()
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	OtlObj.style.display="block"
+
+
+	OtlObj.style.visibility="visible"
+
+
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+
+
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+
+
+	if( gOtlNormalClr == "" )
+
+
+		gOtlNormalClr=document.bgColor
+
+
+	else
+
+
+		document.bgColor=gOtlNormalClr  
+
+
+
+
+
+	InitArray()
+
+
+
+
+
+	if( ObjExists( parent.gCurSld ) ) {
+
+
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+
+
+		gSelected=parent.gCurSld
+
+
+	}
+
+
+	else gSelected = -1
+
+
+
+
+
+	UpdOtl()
+
+
+}
+
+
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+
+
+function UpdIdx( idx )
+
+
+{
+
+
+	if( gSelected != idx ) {
+
+
+		if( gSelected > 0 )
+
+
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+
+
+
+
+
+		if( ObjExists( idx ) ) {
+
+
+			gSelected = idx
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+		}
+
+
+		else gSelected = -1
+
+
+	}
+
+
+
+
+
+	if( gTxtState != parent.gOtlTxtExp ) {
+
+
+		state = "block"
+
+
+		if( !parent.gOtlTxtExp )
+
+
+			state="none"
+
+
+
+
+
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+
+
+			obj=gChildEntryTable[ii];
+
+
+			if( obj.id == null ) continue;
+
+
+
+
+
+			if( obj.id.indexOf("PPTC") >= 0 )
+
+
+				obj.style.display=state;
+
+
+		} 
+
+
+		gTxtState=parent.gOtlTxtExp
+
+
+		if( ObjExists( gSelected ) )
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+	}
+
+
+}
+
+
+function InitArray()
+
+
+{
+
+
+	count=0
+
+
+	for(ii=0; ii<document.all.tags("DIV").length; ii++) {
+
+
+		obj=document.all.tags("DIV").item(ii)
+
+
+		if( obj.id == null ) continue
+
+
+
+
+
+		if( obj.id.indexOf("PPTC") >= 0 ) {   
+
+
+			gChildEntryTable[count++]=obj
+
+
+			obj.children.tags("TABLE").item(0).style.borderColor=gOtlNormalClr
+
+
+		}
+
+
+	}
+
+
+}
+
+
+function ChangeState( idx,fgColor,bgColor )
+
+
+{
+
+
+	obj=document.all.item("PPTL"+idx)
+
+
+	obj.style.color=fgColor
+
+
+
+
+
+	obj=document.all.item("PPTP"+idx)
+
+
+	obj.style.backgroundColor=bgColor
+
+
+
+
+
+	obj=document.all.item("PPTB"+idx)
+
+
+	if( obj )
+
+
+		obj.style.borderLeftColor=obj.style.borderBottomColor=bgColor
+
+
+}
+
+
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+
+
+function Over( obj ){ ChgClr(obj,gOtlActiveClr) }
+
+
+function Out( obj ){ ChgClr(obj,gOtlHiliteClr) }
+
+
+function ObjExists( ii ) { obj=document.all("PPTP"+ii ); return( obj ) }
+
+
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+
+
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+
+
+
+
+
+function UpdNav()
+
+
+{
+
+
+	txt = "<center>";
+
+
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+
+
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+
+
+	else
+
+
+		txt += "Hidden Slide"
+
+
+	txt += "</center>";
+
+
+	nav_text.innerHTML = txt;
+
+
+
+
+
+	if( !parent.HasPrevSld() )
+
+
+		gBtnArr["nb_prev"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_prev"].Enabled(1)
+
+
+
+
+
+	if( !parent.HasNextSld() )
+
+
+		gBtnArr["nb_next"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_next"].Enabled(1)
+
+
+	gBtnArr["nb_nts"].SetEnabled()
+
+
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+
+
+
+
+
+	gBtnArr["nb_sldshw"].Enabled(1)
+
+
+	gBtnArr["nb_voice"].Enabled(1)
+
+
+}
+
+
+
+
+
+function UpdOtlNav()
+
+
+{
+
+
+	gBtnArr["nb_otl"].SetEnabled();
+
+
+
+
+
+	if( parent.gOtlOpen )
+
+
+		gBtnArr["nb_otlTxt"].Enabled( true );
+
+
+	else
+
+
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//-->
+
+
+</script>
+
+
+<style>
+
+
+<!--.PTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	margin-top:5px;
+
+
+	padding-left:5px;
+
+
+	font-weight:bold;}
+
+
+.CTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	padding-left:10px;}
+
+
+.CBorder
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:black;
+
+
+	padding-bottom:5px;}
+
+
+a
+
+
+	{color:white;
+
+
+	text-decoration:none;}
+
+
+.button
+
+
+	{position:absolute;
+
+
+	width:32px;
+
+
+	height:20px;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:threedface;}
+
+
+-->
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+<body onload="Load()">
+
+
+
+
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:absolute;width:70px;visibility:hidden' align=left
+
+
+ cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+
+
+ border=0 id="notes_flag" style='display:none'><span style="mso-spacerun:
+
+
+ yes">  </span>Notes</div>
+
+
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+
+
+ left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=right cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div id="nb_sldshwBorder" style='position:absolute;left:-20px;width:20px;
+
+
+ height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_sldshw" title="Full Screen Slide Show"
+
+
+ style='position:relative;left:-254px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+ <td>
+
+
+ <div id="nb_voiceBorder" style='display:none;position:absolute;left:-40px;
+
+
+ width:20px;height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_voice" title="Pause/Play Narration" style='position:
+
+
+ relative;left:-290px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_prev" title="Previous Slide" style='position:relative;
+
+
+ left:0px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+
+
+ Arial;color:buttontext;font-size:9pt'></span>
+
+
+ <div id="nb_nextBorder" class=button>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_next" title="Next Slide" style='position:relative;
+
+
+ left:-90px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:relative;width:70px' align=left cellpadding=0
+
+
+ cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'>Outline</div>
+
+
+ <div title="Show/Hide Outline" id="nb_otl" style='position:absolute;
+
+
+ top:0%;left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+
+
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+
+
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+
+
+ style='position:relative;left:-157px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlObj style='display:none;visibility:hidden'>
+
+
+
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP1 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0001.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL1 onmouseout="Out(this)">What is .NET?</a></font></div>
+
+
+  <div id=PPTC1 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB1 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Kevin Grossnicklaus</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>kvgros@sseinc.com</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>www.SSEinc.com</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP2 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0004.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL2 onmouseout="Out(this)">Audience?</a></font></div>
+
+
+  <div id=PPTC2 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB2 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Languages?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>C++</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Java</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Visual Basic</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Platforms?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>I486 (80x86 = ~142 Instructions)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Win32 (MFC Layer)</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP3 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0005.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL3 onmouseout="Out(this)">Gratuitous Java Slide</a></font></div>
+
+
+  <div id=PPTC3 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB3 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Java = 1 Language (Java)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Java = Many Platforms</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Virtual Machine</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Java code compiles to byte-code</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Byte-code=Platform Neutral Assembly</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Virtual Machine implemented on many platforms</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Byte-code runs through VM and is converted to
+
+
+    assembly at run-time (each time)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP4 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0003.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL4 onmouseout="Out(this)">Balancing Microsoft Slide</a></font></div>
+
+
+  <div id=PPTC4 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB4 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>History</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>MS-DOS</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>16 Bit Windows</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Win32 (Win95,98,ME,NT,2000,XP)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>MFC</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Languages</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>C++</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>VB</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>MS = Many Languages</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>MS = 1 Platform</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP5 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0006.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL5 onmouseout="Out(this)">Why Change?</a></font></div>
+
+
+  <div id=PPTC5 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB5 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Intel 64-Bit Itanium</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Varying Development Paradigms</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>C++ vs VB vs ASP/Web</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Language Limitations</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>OO vs VB</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Interoperability vs COM</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Visual J++ vs. Sun lawsuit</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Services</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>COM, Memory, UI, Graphics, Etc…</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Standards</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>XML, SOAP, Etc…</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP6 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0008.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL6 onmouseout="Out(this)">Where did they begin?</a></font></div>
+
+
+  <div id=PPTC6 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB6 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Who?<span style="mso-spacerun: yes"> 
+
+
+    </span>Visual J++ Team</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Experience with VM’s</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Anders Hejlsberg</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>What? NGWS -&gt; .NET</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Common Language Runtime (CLR)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>NGWS</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Equivalent of a Virtual Machine</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>JIT Compilation and Compile Once</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>A New Language: C#</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP7 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0009.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL7 onmouseout="Out(this)">CLR Features</a></font></div>
+
+
+  <div id=PPTC7 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB7 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Understands Microsoft Intermediate Language
+
+
+    (MSIL)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>JIT</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Enhanced Typing Support</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Garbage Collection</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Language Neutral</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Single Inheritance</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>100% Object Oriented</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Structured Exception Handling</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Simplified Deployment and Maintenance</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Full and Compact versions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Secure Execution Environment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Targeted Compilation per Platform</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Reflection</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP8 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0010.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL8 onmouseout="Out(this)">C#</a></font></div>
+
+
+  <div id=PPTC8 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB8 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Written in conjunction with the CLR</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Java/VB Hybrid:<span style="mso-spacerun: yes"> 
+
+
+    </span>Very simple and powerful development language incorporating years of
+
+
+    MS language development lessons learned</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>All .NET base classes were developed in C#</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP9 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0012.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL9 onmouseout="Out(this)">Base Classes = .NET Framework</a></font></div>
+
+
+  <div id=PPTC9 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB9 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Written in C# on top of CLR</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Entire development platform presented in a well
+
+
+    organized set of namespaces.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>All functionality of Win32 API exposed</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Available to all CLR based languages as an
+
+
+    organized library of classes and interfaces that provides very powerful
+
+
+    tools to do about anything</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP10 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0013.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL10 onmouseout="Out(this)">Base Class Sample</a></font></div>
+
+
+  <div id=PPTC10 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB10 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Data</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Data.SQLClient</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Data.OleDB</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.XML</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Web</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Web.UI</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Threading</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Security</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Net</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.Diagnostics</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.CodeDOM</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>System.ComponentModel</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP11 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0011.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL11 onmouseout="Out(this)">Language Neutrality</a></font></div>
+
+
+  <div id=PPTC11 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB11 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Current languages that offer compilers that
+
+
+    compile to MSIL and support the full .NET Framework:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP12 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0024.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL12 onmouseout="Out(this)">Best Language for .NET</a></font></div>
+
+
+  <div id=PPTC12 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB12 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Whatever language you know best and are most
+
+
+    productive with.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>All languages that compile to MSIL are bound by
+
+
+    the same constraints</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Some languages may produce a little more
+
+
+    optimized MSIL but basically they are all identical</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Learn the Framework and the language becomes a
+
+
+    syntax</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP13 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0014.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL13 onmouseout="Out(this)">Assemblies</a></font></div>
+
+
+  <div id=PPTC13 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB13 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Assembly = Entire Application written in .NET</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>A collection of files</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Side by Side deployment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Everything needed by the assembly is included in
+
+
+    the assembly</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>No More “DLL Hell”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Nothing is Registered, No More COM</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Self Describing Assemblies</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>XML Manifests describe all files and versions
+
+
+    required for app to run</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>All files included in a single directory with a
+
+
+    manifest describing what should be there</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Code level security</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Public/Private Key Descriptions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Uninstall = Delete Directory</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP14 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0007.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL14 onmouseout="Out(this)">Implications</a></font></div>
+
+
+  <div id=PPTC14 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB14 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Any language that compiles to MSIL has access to
+
+
+    ALL CLR features and base classes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Any class written in one language can
+
+
+    use/inherit from/extend any class written in another language</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Simplified Deployment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Tons of other major development paradigm
+
+
+    implications</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP15 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0015.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL15 onmouseout="Out(this)">Major Components of the Base Classes</a></font></div>
+
+
+  <div id=PPTC15 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB15 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>WinForms</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>WebForms</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Data</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>ADO.NET</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>XML Web Services</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP16 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0018.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL16 onmouseout="Out(this)">WinForms</a></font></div>
+
+
+  <div id=PPTC16 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB16 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Visual Basic type RAD for “Thick” Apps</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Replaces Win32 and MFC</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>New Features</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Forms Inheritance</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Same Forms Designer for Any Language</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Easier to include and extend 3<sup>rd</sup>
+
+
+    party controls or “widgets”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Better OO Design</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP17 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0019.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL17 onmouseout="Out(this)">WebForms (ASP.NET)</a></font></div>
+
+
+  <div id=PPTC17 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB17 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Web Development Paradigm Similar to VB Type
+
+
+    Development</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Replaces Classic ASP</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>New Features</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Output Caching</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Server Side Controls</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>WebControls = ActiveX Controls for the Web</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Code Behind Seperation</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Databind to Anything</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>DataGrid Controls</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Powerful Security Infrastructure</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>EVENTS in the web</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP18 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0020.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL18 onmouseout="Out(this)">ADO.NET</a></font></div>
+
+
+  <div id=PPTC18 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB18 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Database Neutral Data Classes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Data = XML = Data = XML</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Designed for the disconnected development
+
+
+    paradigm surrounding the web</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP19 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0021.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL19 onmouseout="Out(this)">WebServices</a></font></div>
+
+
+  <div id=PPTC19 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB19 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Remote procedure calls to web servers hosting
+
+
+    “services”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>RPC over the web through XML</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Base classes provide complete support</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Simple Object Access Protocol (SOAP)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Web Service Description Language (WSDL)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>VS.NET Generates Simple Object Proxies</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP20 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0016.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL20 onmouseout="Out(this)">Visual Studio.NET</a></font></div>
+
+
+  <div id=PPTC20 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB20 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Unified IDE for all languages compatible with
+
+
+    CLR</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Built-in, “Dynamic” Help</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Everything compiles into MSIL and is easily
+
+
+    packaged into assemblies</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Fully customizable and extensible development
+
+
+    environment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>EXTREMELY POWERFUL DEBUGGING FOR ALL MANAGED
+
+
+    CODE</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Step seamlessly between components written in
+
+
+    any language</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP21 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0017.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL21 onmouseout="Out(this)">VS.NET Cont…</a></font></div>
+
+
+  <div id=PPTC21 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB21 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Immediate feedback of errors</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Similar to MS Word Spellcheck</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Powerful WinForms and WebForms Development
+
+
+    Environment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>All languages extensible through custom
+
+
+    developed Attributes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Integrated Visio 2002 modeler/designer</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>All database design tools built in</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Custom XML designer</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Easily Develop Against Web Services</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Powerful Server Explorer</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Many, Many, MANY other features</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP22 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0022.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL22 onmouseout="Out(this)">Summary</a></font></div>
+
+
+  <div id=PPTC22 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB22 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>All Microsoft Products will eventually be ported
+
+
+    to the .NET Framework</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Support for older technologies will slowly fade</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>MS has made a HUGE investment in this change in
+
+
+    direction</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Port the CLR to other platforms?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>CLR will be standard in any new OS</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP23 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0023.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL23 onmouseout="Out(this)">Want to know more?</a></font></div>
+
+
+  <div id=PPTC23 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB23 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>www.msdn.microsoft.com</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Search the web…find plenty of info </font><font
+
+
+    face=Wingdings size=2>J</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font face=Arial size=2>Books</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>VB.NET Bible </font><font face=Wingdings size=2>J</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font face=Arial size=2>User Groups</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>St. Louis .NET Users Group (www.stlnet.org)</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP24 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0025.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL24 onmouseout="Out(this)">Questions?</a></font></div>
+
+
+  <div id=PPTC24 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB24 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>kvgros@SSEinc.com</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Ad Hoc Demo </font><font face=Wingdings size=2>J</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

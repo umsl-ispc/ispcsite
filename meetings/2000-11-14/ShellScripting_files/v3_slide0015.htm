@@ -1,0 +1,426 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Bourne Shell Summary">
+
+
+<link rel=next href="v3_slide0016.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0015.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_master03_background.gif" bgcolor="#000066" alink="#2663a0"
+
+
+link="#f98d43" vlink="#cc3300" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=40 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=396 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=26 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=21 colspan=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=42></td>
+
+
+  <td width=396 height=42>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=396 height=42 align=center><font face="Arial Black"
+
+
+    color="#ffcc00" size=5>Bourne Shell Summary</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=39 height=42 colspan=2></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=189></td>
+
+
+  <td width=422 height=189 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=86 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=5 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=15 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=261 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=28 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=16 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=92 height=19 colspan=3><font face=Arial size=2>Expressions</font><br>
+
+
+    </td>
+
+
+    <td width=330 height=19 colspan=6></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=422 height=19 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=412 height=19 colspan=7><font face=Arial size=2>The expr command
+
+
+    will do calculations. It usually needs</font><br>
+
+
+    </td>
+
+
+    <td width=10 height=19 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=368 height=19 colspan=5><font face=Arial size=2>to be enclosed in
+
+
+    back-quotes, as the result of the</font><br>
+
+
+    </td>
+
+
+    <td width=54 height=19 colspan=4></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=107 height=19 colspan=4><font face=Arial size=2>calculation will</font><br>
+
+
+    </td>
+
+
+    <td width=315 height=19 colspan=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=422 height=18 colspan=9><font face=Arial size=2>be assigned to
+
+
+    some variable. The arguments to the expr</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=396 height=19 colspan=6><font face=Arial size=2>command must be
+
+
+    separated by spaces. The value of</font><br>
+
+
+    </td>
+
+
+    <td width=26 height=19 colspan=3></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=86 height=19><font face=Arial size=2>`expr 3 + 1`</font><br>
+
+
+    </td>
+
+
+    <td width=336 height=19 colspan=8></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=418 height=19 colspan=8><font face=Arial size=2>is &quot;4&quot;,
+
+
+    whereas the value of `expr 3+1` (no spaces) is the</font><br>
+
+
+    </td>
+
+
+    <td width=4 height=19></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=91 height=19 colspan=2><font face=Arial size=2>string
+
+
+    &quot;3+1&quot;.</font><br>
+
+
+    </td>
+
+
+    <td width=331 height=19 colspan=7></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=13 height=189></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=104 colspan=4></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

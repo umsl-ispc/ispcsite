@@ -1,0 +1,3126 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../WebDesign.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<meta name=Robots content=NoIndex>
+
+
+<script src=script.js></script><script><!--
+
+
+
+
+
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+
+
+{
+
+
+	obj = document.all.item("Main-File")
+
+
+	parent.location.href=obj.href
+
+
+}
+
+
+
+
+
+var gOtlHiliteClr="#FFFFFF",gOtlNormalClr="#000000",gOtlActiveClr="#FFFF00",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+
+
+
+
+
+function Load()
+
+
+{
+
+
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+
+
+	if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+
+
+	if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+
+
+}
+
+
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+
+
+function LoadNav( oId,UpdFunc )
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	document.body.style.margin=2
+
+
+	UpdFunc()
+
+
+	obj=document.all.item(oId)
+
+
+	obj.style.display="block"
+
+
+	obj.style.visibility="visible"
+
+
+	document.bgColor="threedface"
+
+
+}
+
+
+function LoadOtl()
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	OtlObj.style.display="block"
+
+
+	OtlObj.style.visibility="visible"
+
+
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+
+
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+
+
+	if( gOtlNormalClr == "" )
+
+
+		gOtlNormalClr=document.bgColor
+
+
+	else
+
+
+		document.bgColor=gOtlNormalClr  
+
+
+
+
+
+	InitArray()
+
+
+
+
+
+	if( ObjExists( parent.gCurSld ) ) {
+
+
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+
+
+		gSelected=parent.gCurSld
+
+
+	}
+
+
+	else gSelected = -1
+
+
+
+
+
+	UpdOtl()
+
+
+}
+
+
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+
+
+function UpdIdx( idx )
+
+
+{
+
+
+	if( gSelected != idx ) {
+
+
+		if( gSelected > 0 )
+
+
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+
+
+
+
+
+		if( ObjExists( idx ) ) {
+
+
+			gSelected = idx
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+		}
+
+
+		else gSelected = -1
+
+
+	}
+
+
+
+
+
+	if( gTxtState != parent.gOtlTxtExp ) {
+
+
+		state = "block"
+
+
+		if( !parent.gOtlTxtExp )
+
+
+			state="none"
+
+
+
+
+
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+
+
+			obj=gChildEntryTable[ii];
+
+
+			if( obj.id == null ) continue;
+
+
+
+
+
+			if( obj.id.indexOf("PPTC") >= 0 )
+
+
+				obj.style.display=state;
+
+
+		} 
+
+
+		gTxtState=parent.gOtlTxtExp
+
+
+		if( ObjExists( gSelected ) )
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+	}
+
+
+}
+
+
+function InitArray()
+
+
+{
+
+
+	count=0
+
+
+	for(ii=0; ii<document.all.tags("DIV").length; ii++) {
+
+
+		obj=document.all.tags("DIV").item(ii)
+
+
+		if( obj.id == null ) continue
+
+
+
+
+
+		if( obj.id.indexOf("PPTC") >= 0 ) {   
+
+
+			gChildEntryTable[count++]=obj
+
+
+			obj.children.tags("TABLE").item(0).style.borderColor=gOtlNormalClr
+
+
+		}
+
+
+	}
+
+
+}
+
+
+function ChangeState( idx,fgColor,bgColor )
+
+
+{
+
+
+	obj=document.all.item("PPTL"+idx)
+
+
+	obj.style.color=fgColor
+
+
+
+
+
+	obj=document.all.item("PPTP"+idx)
+
+
+	obj.style.backgroundColor=bgColor
+
+
+
+
+
+	obj=document.all.item("PPTB"+idx)
+
+
+	if( obj )
+
+
+		obj.style.borderLeftColor=obj.style.borderBottomColor=bgColor
+
+
+}
+
+
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+
+
+function Over( obj ){ ChgClr(obj,gOtlActiveClr) }
+
+
+function Out( obj ){ ChgClr(obj,gOtlHiliteClr) }
+
+
+function ObjExists( ii ) { obj=document.all("PPTP"+ii ); return( obj ) }
+
+
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+
+
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+
+
+
+
+
+function UpdNav()
+
+
+{
+
+
+	txt = "<center>";
+
+
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+
+
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+
+
+	else
+
+
+		txt += "Hidden Slide"
+
+
+	txt += "</center>";
+
+
+	nav_text.innerHTML = txt;
+
+
+
+
+
+	if( !parent.HasPrevSld() )
+
+
+		gBtnArr["nb_prev"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_prev"].Enabled(1)
+
+
+
+
+
+	if( !parent.HasNextSld() )
+
+
+		gBtnArr["nb_next"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_next"].Enabled(1)
+
+
+	gBtnArr["nb_nts"].SetEnabled()
+
+
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+
+
+
+
+
+	gBtnArr["nb_sldshw"].Enabled(1)
+
+
+	gBtnArr["nb_voice"].Enabled(1)
+
+
+}
+
+
+
+
+
+function UpdOtlNav()
+
+
+{
+
+
+	gBtnArr["nb_otl"].SetEnabled();
+
+
+
+
+
+	if( parent.gOtlOpen )
+
+
+		gBtnArr["nb_otlTxt"].Enabled( true );
+
+
+	else
+
+
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//-->
+
+
+</script>
+
+
+<style>
+
+
+<!--.PTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	margin-top:5px;
+
+
+	padding-left:5px;
+
+
+	font-weight:bold;}
+
+
+.CTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	padding-left:10px;}
+
+
+.CBorder
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:black;
+
+
+	padding-bottom:5px;}
+
+
+a
+
+
+	{color:white;
+
+
+	text-decoration:none;}
+
+
+.button
+
+
+	{position:absolute;
+
+
+	width:32px;
+
+
+	height:20px;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:threedface;}
+
+
+-->
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+<body onload="Load()">
+
+
+
+
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:absolute;width:70px;visibility:hidden' align=left
+
+
+ cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+
+
+ border=0 id="notes_flag" style='display:none'><span style="mso-spacerun:
+
+
+ yes">  </span>Notes</div>
+
+
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+
+
+ left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=right cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div id="nb_sldshwBorder" style='position:absolute;left:-20px;width:20px;
+
+
+ height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_sldshw" title="Full Screen Slide Show"
+
+
+ style='position:relative;left:-254px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+ <td>
+
+
+ <div id="nb_voiceBorder" style='display:none;position:absolute;left:-40px;
+
+
+ width:20px;height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_voice" title="Pause/Play Narration" style='position:
+
+
+ relative;left:-290px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_prev" title="Previous Slide" style='position:relative;
+
+
+ left:0px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+
+
+ Arial;color:buttontext;font-size:9pt'></span>
+
+
+ <div id="nb_nextBorder" class=button>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_next" title="Next Slide" style='position:relative;
+
+
+ left:-90px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:relative;width:70px' align=left cellpadding=0
+
+
+ cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'>Outline</div>
+
+
+ <div title="Show/Hide Outline" id="nb_otl" style='position:absolute;
+
+
+ top:0%;left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+
+
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+
+
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+
+
+ style='position:relative;left:-157px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlObj style='display:none;visibility:hidden'>
+
+
+
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP1 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0001.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL1 onmouseout="Out(this)">Designing Web Sites</a></font></div>
+
+
+  <div id=PPTC1 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB1 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Starting Down the Right Path</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP2 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0002.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL2 onmouseout="Out(this)">What Makes a Design “Good”?</a></font></div>
+
+
+  <div id=PPTC2 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB2 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>A good web design is one that is:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Usable</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Accessible</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>And most importantly achieves the business
+
+
+    objective for creating the Web site.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP3 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0003.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL3 onmouseout="Out(this)">Why Some Web Designs Fail</a></font></div>
+
+
+  <div id=PPTC3 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB3 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>The most common failure in web design is that
+
+
+    there is not enough of a “discovery” phase before any work is done.<span
+
+
+    style="mso-spacerun: yes">  </span>A lot of clients don’t know what is
+
+
+    possible on the Web and rely on you to tell them how they can use the Web
+
+
+    to enhance their day-to-day business.<span style="mso-spacerun: yes"> 
+
+
+    </span>Asking the right questions of your client and getting real answers
+
+
+    is sometimes a tooth-pulling experience, but if you expect to provide a
+
+
+    site that is a worthwhile business tool to your client it’s an imperative
+
+
+    first step.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP4 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0004.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL4 onmouseout="Out(this)">Fact-Finding Questions</a></font></div>
+
+
+  <div id=PPTC4 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB4 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>What is the business objective of the website?
+
+
+    <br>
+
+
+    <br>
+
+
+    In other words – what do you want to use this website for?<span
+
+
+    style="mso-spacerun: yes">  </span>Designing a site just because an
+
+
+    executive told you to do it without telling you what the site should
+
+
+    achieve is not a good reason.<span style="mso-spacerun: yes">  </span>And
+
+
+    no, it is not an acceptable reason that “everyone else is doing it”.<span
+
+
+    style="mso-spacerun: yes">  </span>Of course these days you need a website
+
+
+    just to justify your company’s legitimacy, so it is ok to make a
+
+
+    brochure-style website with a small amount of branding, directions to your
+
+
+    facilities, contact information, investor information, etc. but it is
+
+
+    probably not the best use of the Web and it’s capabilities.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP5 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0005.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL5 onmouseout="Out(this)">Fact-Finding Questions</a></font></div>
+
+
+  <div id=PPTC5 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB5 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Who is the target audience? <br>
+
+
+    <br>
+
+
+    A Web design that works for a company selling makeup to 16-24 yr old
+
+
+    consumers will probably not work for a company offering franchise
+
+
+    investment opportunities.<span style="mso-spacerun: yes">  </span>Do you
+
+
+    need to design for disabled users?<span style="mso-spacerun: yes"> 
+
+
+    </span>For web-enabled devices such as phones?<span style="mso-spacerun:
+
+
+    yes">  </span>Knowing who will use the site and how they will use it will
+
+
+    help you dictate what designs appeal to your target audience, what to steer
+
+
+    clear of, and how far you can push the envelope.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP6 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0006.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL6 onmouseout="Out(this)">Fact-Finding Questions</a></font></div>
+
+
+  <div id=PPTC6 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB6 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>What is the overall message you want to convey
+
+
+    to the users?<span style="mso-spacerun: yes">  </span><br>
+
+
+    <br>
+
+
+    Are you the “most reliable”, offer the lowest prices, the most
+
+
+    technologically advanced?<span style="mso-spacerun: yes">  </span>How do
+
+
+    you differentiate between your company and your competitors?</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP7 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0007.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL7 onmouseout="Out(this)">Fact-Finding Questions</a></font></div>
+
+
+  <div id=PPTC7 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB7 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>The previous list is not in any way a complete
+
+
+    list of questions you need answered, but by getting some well defined
+
+
+    answers to these few questions, you should have enough to start your
+
+
+    creative brainstorming.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Make sure your Project Manager (PM) gets you
+
+
+    involved in initial client meetings.<span style="mso-spacerun: yes"> 
+
+
+    </span>Don’t rely on the PM to relay the information from the client to
+
+
+    you, insist on being involved in client meetings when design issues will be
+
+
+    discussed.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP8 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0018.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL8 onmouseout="Out(this)">Fact-Finding Questions</a></font></div>
+
+
+  <div id=PPTC8 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB8 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Additional Resources:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Web Style Guide by Yale University Press (a must
+
+
+    read)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Web Redesign by Kelly Goto. (to help manage the
+
+
+    process)</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP9 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0008.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL9 onmouseout="Out(this)">How Do You Design a Web site That is Usable?</a></font></div>
+
+
+  <div id=PPTC9 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB9 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>While there are numerous books and websites to
+
+
+    aid you in your search for a creating usable designs, the following list of
+
+
+    techniques you should use in each Web design is a good starting point.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP10 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0009.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL10 onmouseout="Out(this)">Good Design Techniques</a></font></div>
+
+
+  <div id=PPTC10 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB10 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Place your name and logo on every page and make
+
+
+    the logo a link to the home page (except on the home page itself, where the
+
+
+    logo should not be a link: never have a link that points right back to the
+
+
+    current page).</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Provide a search mechanism if the site has more
+
+
+    than 100 pages.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Don’t use Mystery Meat Navigation (an object on
+
+
+    a page that has no indication that it’s supposed to be a navigation element
+
+
+    and only after rolling over the MMN are you presented with any indication
+
+
+    of it’s function)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Write straightforward and simple headlines and
+
+
+    page titles that clearly explain what the page is about and that will make
+
+
+    sense when read out-of-context in a search engine results listing.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP11 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0010.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL11 onmouseout="Out(this)">Good Design Techniques</a></font></div>
+
+
+  <div id=PPTC11 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB11 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Instead of cramming everything about a product
+
+
+    or topic into a single, infinite page, use hypertext to structure the
+
+
+    content space into a starting page that provides an overview and several
+
+
+    secondary pages that each focus on a specific topic. The goal is to allow
+
+
+    users to avoid wasting time on those subtopics that don't concern them.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Use link titles to provide users with a preview
+
+
+    of where each link will take them, before they have clicked on it.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Ensure that all important pages are accessible
+
+
+    for users with disabilities, especially blind users.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP12 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0011.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL12 onmouseout="Out(this)">Good Design Techniques</a></font></div>
+
+
+  <div id=PPTC12 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB12 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Do the same as everybody else: if most big
+
+
+    websites do something in a certain way, then follow along since users will
+
+
+    expect things to work the same on your site. Remember Jakob Neilson’s Law
+
+
+    of the Web User Experience: users spend most of their time on other sites,
+
+
+    so that's where they form their expectations for how the Web works.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Content is KING!<span style="mso-spacerun:
+
+
+    yes">  </span>No matter how nice your designs are if the site doesn’t
+
+
+    provide any valuable content to the customer, they won’t stay long and most
+
+
+    likely won’t come back.<span style="mso-spacerun: yes">  </span>Give the
+
+
+    customer a reason to come back to the site.<span style="mso-spacerun:
+
+
+    yes">  </span>News, promotions, games, whatever fits for a particular
+
+
+    client.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Finally, always test your design with real users
+
+
+    as a reality check. People do things in odd and unexpected ways, so even
+
+
+    the most carefully planned project will learn from usability testing.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP13 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0019.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL13 onmouseout="Out(this)">Good Design Techniques</a></font></div>
+
+
+  <div id=PPTC13 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB13 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Additional Design Resources</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Simple: Web Sites, a book by Stefan Mumaw (deconstructs
+
+
+    several sites with different design/content goals)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>www.webpagesthatsuck.com (examples of what NOT
+
+
+    to do)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Web Design in a Nutshell – O’Reilly Press</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP14 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0012.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL14 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC14 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB14 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>What is an accessible Web site?<span
+
+
+    style="mso-spacerun: yes">  </span><br>
+
+
+    <br>
+
+
+    An accessible Web site is a site that can be viewed on multiple types of
+
+
+    browsers, multiple platforms, and by disabled persons without creating
+
+
+    multiple versions of the same site.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP15 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0013.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL15 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC15 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB15 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Separate your content from your presentation by
+
+
+    using Cascading Style Sheets (CSS).<span style="mso-spacerun: yes"> 
+
+
+    </span><br>
+
+
+    <br>
+
+
+    This allows you to centralize the management of the look and feel of the
+
+
+    entire website while keeping the HTML/XHTML semantic and meaningful.<span
+
+
+    style="mso-spacerun: yes">  </span>CSS allows you to change the entire look
+
+
+    of a website containing thousands of pages through just one page.<span
+
+
+    style="mso-spacerun: yes">  </span>By really learning CSS you can
+
+
+    significantly reduce the weight (kb) of your Web pages (customers don’t
+
+
+    like to wait) and the number of requests the to the server.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP16 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0014.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL16 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC16 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB16 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Read and follow the rules of the US Government’s
+
+
+    Section 508 requirements. <br>
+
+
+    <br>
+
+
+    Section 508 sets forth requirements to make site accessible to disabled
+
+
+    users.<span style="mso-spacerun: yes">  </span>Most of the rules are good
+
+
+    ideas for site in the first place, such as mandatory ALT tags for images,
+
+
+    and captions for table data.<span style="mso-spacerun: yes">  </span>The
+
+
+    requirements are not difficult to implement and can only help your site’s
+
+
+    visibility.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP17 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0015.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL17 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC17 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB17 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Don’t override user’s preferences.<span
+
+
+    style="mso-spacerun: yes">  </span><br>
+
+
+    <br>
+
+
+    In particular, don’t use pixel settings for font sizes, use a relative
+
+
+    setting.<span style="mso-spacerun: yes">  </span>If users with bad eyesight
+
+
+    want to zoom into your page, don’t force them to stay with the 10px.<span
+
+
+    style="mso-spacerun: yes">  </span>Using a relative unit like em or % will
+
+
+    scale your entire site’s text accordingly.<span style="mso-spacerun: yes"> 
+
+
+    </span>A user’s computer should work like they want it to work.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP18 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0016.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL18 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC18 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB18 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Stop using HTML and move to XHTML.<span
+
+
+    style="mso-spacerun: yes">  </span><br>
+
+
+    <br>
+
+
+    The W3C did.<span style="mso-spacerun: yes">  </span>Actually, the W3C has
+
+
+    halted any further development on HTML and has recommended XHTML as it’s
+
+
+    replacement as we eventually move to XML as the universal language of the
+
+
+    web.<span style="mso-spacerun: yes">  </span>And it’s not hard either.<span
+
+
+    style="mso-spacerun: yes">  </span>XHTML is essentially an HTML document
+
+
+    with minor modifications such as mandatory closing tags, that checks
+
+
+    against an XML DTD.<span style="mso-spacerun: yes">  </span>Starting to use
+
+
+    XHTML now will help you transition into XML and will help you will write
+
+
+    clean code.<span style="mso-spacerun: yes">  </span>XTHML works in all of
+
+
+    the current browsers so it can be used now.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP19 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0017.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL19 onmouseout="Out(this)">Creating Accessible Web Sites</a></font></div>
+
+
+  <div id=PPTC19 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB19 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Accessibility Resources:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Any of Jacob Neilson’s publications (usability
+
+
+    guru)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Don’t Make Me Think: A Common Sense Approach to
+
+
+    Web usability</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Any of Eric Meyer or Haikon Lee’s books on CSS
+
+
+    (both on the W3C CSS Team)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Cascading Style Sheets: Separating Content from
+
+
+    Presentation</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Maximum Accessibility: Making Your Web Site More
+
+
+    Usable for Everyone</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Usability for the Web: Designing Web Sites that
+
+
+    Work</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>www.section508.gov</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP20 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0022.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL20 onmouseout="Out(this)">Misc. Web Design Tips</a></font></div>
+
+
+  <div id=PPTC20 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB20 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>After a design is approved, create a template
+
+
+    for all new pages.<span style="mso-spacerun: yes">  </span>Take that
+
+
+    template and simplify it even more.<span style="mso-spacerun: yes"> 
+
+
+    </span>Externalize the JavaScript, take common sections (such as navigation,
+
+
+    page headers, etc) and create external include files.<span
+
+
+    style="mso-spacerun: yes">  </span>Include files get cached, making pages
+
+
+    load faster.<span style="mso-spacerun: yes">  </span>When you create an
+
+
+    include file that all of the pages use (much like using CSS), you need only
+
+
+    update that one file rather than touch every page to replace a graphic,
+
+
+    color, etc.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Be picky about your code and learn to code by
+
+
+    hand first before moving to a WYSIWYG.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Minimize graphic file size as much as possible.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP21 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0020.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL21 onmouseout="Out(this)">Web Design Tools</a></font></div>
+
+
+  <div id=PPTC21 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB21 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Web Graphics Design:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Adobe Photoshop/Image Ready</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Macromedia Fireworks</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>JASC Paint Shop Pro</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Corel Draw</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Color Schemer (for choosing colors that fit
+
+
+    together)</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP22 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0021.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL22 onmouseout="Out(this)">Web Design Tools</a></font></div>
+
+
+  <div id=PPTC22 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB22 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Code Editors/WYSIWYG</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Macromedia Dreamweaver</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Adobe GoLive</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Microsoft Visual Studio</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Microsoft Front Page</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP23 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0023.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL23 onmouseout="Out(this)">Web Design Tools</a></font></div>
+
+
+  <div id=PPTC23 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB23 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Web sites</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>www.macromedia.com – especially the
+
+
+    Designer/Developer sections with great tutorials, tips, and extensions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>www.coolhomepages.com – peruse lots of great
+
+
+    site designs</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>www.w3c.org – the people who create the
+
+
+    standards for XHTML, XML, CSS, etc.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Web Page Design for Designers - http://www.wpdfd.com</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<!--TODO: add shiv for compat w/ older IE-->
+
+<html lang ="en-us">
+<head>
+
+<meta charset="utf-8">
+<meta name="keywords" content="ISPC,UMSL,main,Information,Systems,IS,Information Systems" />
+<meta name="author" content="UMSL ISPC" />
+
+<title>UMSL Information Systems Programming Club</title>
+
+    <!-- TODO:Important: "About" dropdown menu color inheritance -->
+    <!-- TODO:Medium priority: rapid click spinning text animation bug -->
+    <!-- TODO:Medium priority: make more mobile friendly -->
+    <!-- TODO:Medium priority: async pageloading and script optimizations-->
+    <!-- TODO:Low priority: contact list open email script-->
+    <!-- TODO:Low priority: pageload animations-->
+    <!-- TODO:Almost as low priority as possibly, almost: conform HTML headers on pages i.e.;titles,meta -->
+    <!-- TODO:Lowest of low priorities: improve display on IE-->
+
+    <link rel="stylesheet" href="Content/bootstrap.css"/>
+    
+    <script src="Scripts/jquery-1.11.2.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/greensock/TweenMax.min.js"></script>
+    <script src="Scripts/greensock/jquery.gsap.min.js"></script>
+    <script src="Scripts/main.js" async></script>
+
+    <!--
+
+
+    -->
+
+<style>
+    .panel-body {
+    padding: 0px;
+    border: 0px;
+        }
+</style> 
+   
+</head>
+
+
+<body>
+    <div id="wrapper">
+        <nav id="mainNav" class="navbar-fixed-top navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button id="burgerButton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main_collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span id="navbarIcon" class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a id="brand" class="navbar-brand">ISPC</a>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navbar_main_collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="divider"></li>
+                        <li><a class="navitem" id="news">News</a></li>                        
+                        <li><a class="navitem" id="join">Join</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="divider"></li>
+                                <li><a class="navitem" id="links">Links</a></li>
+                                <li class="divider"></li>
+                                <li><a class="navitem" id="purpose">Purpose</a></li>
+                                <li class="divider"></li>
+                                <li><a class="navitem" id="meetings">Meetings</a></li>
+                                <li class="divider"></li>
+                                
+                            </ul>
+                            </li>
+                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="divider"></li>
+                        <li><a id="umslHome">UMSL Home</a></li>
+                        <li class="divider"></li>
+                        <li><a id="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="landImage" class="container-bg-image">
+            <img src="images/msc-ponds.jpg" class="img-bg" />
+        </div>
+
+        <!--end navbar-->
+        <!--main content-->
+
+        <div id="panelContainer" class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-heading">
+                        <h2 id="pageHeader">UMSL - Information Systems Programming Club</h2>
+                    </div><!--end panel-heading-->
+                    <div class="panel panel-body">
+                        <form id="contentBody">
+                            <object id="content">Place Holder</object>
+                        </form>
+                    </div><!--end panel-body-->
+                </div><!--end div col-xs-12-->
+            </div><!--end div row-->
+        </div><!--end div container-->
+
+
+        <!--
+        <script src="Scripts/jquery-1.11.2.min.js"></script>
+        <script src="Scripts/bootstrap.js"></script>
+        <script src="Scripts/main.js"></script>
+        <script src="Scripts/greensock/TweenMax.min.js"></script>
+        <script src="Scripts/greensock/jquery.gsap.min.js"></script>
+
+        -->
+
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+	<book>
+		<title>XML in a Nutshell</title>
+		<author>Elliotte Rusty Harold</author>
+		<author>W. Scott Means</author>
+		<isbn>0-596-00058-8</isbn>
+		<subject>XML</subject>
+		<publisher>O'Reilly</publisher>
+	</book>
+	<book>
+		<title>XSLT</title>
+		<author>Doug Tidwell</author>
+		<isbn>0-596-00053-7</isbn>
+		<subject>XSLT</subject>
+		<publisher>O'Reilly</publisher>
+	</book>
+	<book>
+		<title>Java &amp; XML</title>
+		<author>Brett McLaughlin</author>
+		<isbn>0-596-00197-5</isbn>
+		<subject>Java</subject>
+		<subject>XML</subject>
+		<publisher>O'Reilly</publisher>
+	</book>
+	<book>
+		<title>SAX2</title>
+		<author>David Brownell</author>
+		<isbn>0-596-00237-8</isbn>
+		<subject>SAX</subject>
+		<subject>XML</subject>
+		<subject>Java</subject>
+		<publisher>O'Reilly</publisher>
+	</book>
+</library>

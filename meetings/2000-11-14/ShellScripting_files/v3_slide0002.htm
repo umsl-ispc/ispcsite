@@ -1,0 +1,531 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Purpose of this Tutorial">
+
+
+<link rel=next href="v3_slide0003.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0002.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_master03_background.gif" bgcolor="#000066" alink="#2663a0"
+
+
+link="#f98d43" vlink="#cc3300" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=33 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=7 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=387 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=17 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=39 colspan=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=33 height=42></td>
+
+
+  <td width=411 height=42 colspan=3>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=411 height=42 align=center><font face="Arial Black"
+
+
+    color="#ffcc00" size=5>Purpose of this Tutorial</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=31 height=42></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=25 colspan=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=146 colspan=2></td>
+
+
+  <td width=387 height=146>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=12 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=134 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=81 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=13 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=137 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+    <td width=365 height=22 colspan=4 rowspan=3><font face=Arial size=3>Know
+
+
+    the basic shells and their similarities</font><br>
+
+
+    </td>
+
+
+    <td width=4 height=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=12 height=12><img src=image002.gif border=0 width=11 height=11></td>
+
+
+    <td width=6 height=12></td>
+
+
+    <td width=4 height=12></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+    <td width=4 height=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=387 height=1 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=22 colspan=2></td>
+
+
+    <td width=134 height=22><font face=Arial size=3>and differences</font><br>
+
+
+    </td>
+
+
+    <td width=235 height=22 colspan=4></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=387 height=4 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+    <td width=365 height=22 colspan=4 rowspan=3><font face=Arial size=3>Understand
+
+
+    shell arguments and how they</font><br>
+
+
+    </td>
+
+
+    <td width=4 height=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=12 height=12><img src=image002.gif border=0 width=11 height=11></td>
+
+
+    <td width=6 height=12></td>
+
+
+    <td width=4 height=12></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+    <td width=4 height=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=22 colspan=2></td>
+
+
+    <td width=228 height=22 colspan=3><font face=Arial size=3>are processed by
+
+
+    the shell</font><br>
+
+
+    </td>
+
+
+    <td width=141 height=22 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=387 height=5 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+    <td width=369 height=22 colspan=5 rowspan=3><font face=Arial size=3>Manipulate
+
+
+    the shell environment variables</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=12 height=12><img src=image002.gif border=0 width=11 height=11></td>
+
+
+    <td width=6 height=12></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=5 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=387 height=5 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=4 colspan=2></td>
+
+
+    <td width=215 height=22 colspan=2 rowspan=3><font face=Arial size=3>Write
+
+
+    simple shell scripts</font><br>
+
+
+    </td>
+
+
+    <td width=154 height=4 colspan=3></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=12 height=12><img src=image002.gif border=0 width=11 height=11></td>
+
+
+    <td width=6 height=12></td>
+
+
+    <td width=154 height=12 colspan=3></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=18 height=6 colspan=2></td>
+
+
+    <td width=154 height=6 colspan=3></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=48 height=146 colspan=2></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=104 colspan=5></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

@@ -1,0 +1,3951 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../What%20is%20COM.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<meta name=Robots content=NoIndex>
+
+
+<script src=script.js></script><script><!--
+
+
+
+
+
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+
+
+{
+
+
+	obj = document.all.item("Main-File")
+
+
+	parent.location.href=obj.href
+
+
+}
+
+
+
+
+
+var gOtlHiliteClr="",gOtlNormalClr="",gOtlActiveClr="",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+
+
+
+
+
+function Load()
+
+
+{
+
+
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+
+
+	if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+
+
+	if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+
+
+}
+
+
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+
+
+function LoadNav( oId,UpdFunc )
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	document.body.style.margin=2
+
+
+	UpdFunc()
+
+
+	obj=document.all.item(oId)
+
+
+	obj.style.display="block"
+
+
+	obj.style.visibility="visible"
+
+
+	document.bgColor="threedface"
+
+
+}
+
+
+function LoadOtl()
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	OtlObj.style.display="block"
+
+
+	OtlObj.style.visibility="visible"
+
+
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+
+
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+
+
+	if( gOtlNormalClr == "" )
+
+
+		gOtlNormalClr=document.bgColor
+
+
+	else
+
+
+		document.bgColor=gOtlNormalClr  
+
+
+
+
+
+	InitArray()
+
+
+
+
+
+	if( ObjExists( parent.gCurSld ) ) {
+
+
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+
+
+		gSelected=parent.gCurSld
+
+
+	}
+
+
+	else gSelected = -1
+
+
+
+
+
+	UpdOtl()
+
+
+}
+
+
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+
+
+function UpdIdx( idx )
+
+
+{
+
+
+	if( gSelected != idx ) {
+
+
+		if( gSelected > 0 )
+
+
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+
+
+
+
+
+		if( ObjExists( idx ) ) {
+
+
+			gSelected = idx
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+		}
+
+
+		else gSelected = -1
+
+
+	}
+
+
+
+
+
+	if( gTxtState != parent.gOtlTxtExp ) {
+
+
+		state = "block"
+
+
+		if( !parent.gOtlTxtExp )
+
+
+			state="none"
+
+
+
+
+
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+
+
+			obj=gChildEntryTable[ii];
+
+
+			if( obj.id == null ) continue;
+
+
+
+
+
+			if( obj.id.indexOf("PPTC") >= 0 )
+
+
+				obj.style.display=state;
+
+
+		} 
+
+
+		gTxtState=parent.gOtlTxtExp
+
+
+		if( ObjExists( gSelected ) )
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+	}
+
+
+}
+
+
+function InitArray()
+
+
+{
+
+
+	count=0
+
+
+	for(ii=0; ii<document.all.tags("DIV").length; ii++) {
+
+
+		obj=document.all.tags("DIV").item(ii)
+
+
+		if( obj.id == null ) continue
+
+
+
+
+
+		if( obj.id.indexOf("PPTC") >= 0 ) {   
+
+
+			gChildEntryTable[count++]=obj
+
+
+			obj.children.tags("TABLE").item(0).style.borderColor=gOtlNormalClr
+
+
+		}
+
+
+	}
+
+
+}
+
+
+function ChangeState( idx,fgColor,bgColor )
+
+
+{
+
+
+	obj=document.all.item("PPTL"+idx)
+
+
+	obj.style.color=fgColor
+
+
+
+
+
+	obj=document.all.item("PPTP"+idx)
+
+
+	obj.style.backgroundColor=bgColor
+
+
+
+
+
+	obj=document.all.item("PPTB"+idx)
+
+
+	if( obj )
+
+
+		obj.style.borderLeftColor=obj.style.borderBottomColor=bgColor
+
+
+}
+
+
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+
+
+function Over( obj ){ ChgClr(obj,gOtlActiveClr) }
+
+
+function Out( obj ){ ChgClr(obj,gOtlHiliteClr) }
+
+
+function ObjExists( ii ) { obj=document.all("PPTP"+ii ); return( obj ) }
+
+
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+
+
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+
+
+
+
+
+function UpdNav()
+
+
+{
+
+
+	txt = "<center>";
+
+
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+
+
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+
+
+	else
+
+
+		txt += "Hidden Slide"
+
+
+	txt += "</center>";
+
+
+	nav_text.innerHTML = txt;
+
+
+
+
+
+	if( !parent.HasPrevSld() )
+
+
+		gBtnArr["nb_prev"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_prev"].Enabled(1)
+
+
+
+
+
+	if( !parent.HasNextSld() )
+
+
+		gBtnArr["nb_next"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_next"].Enabled(1)
+
+
+	gBtnArr["nb_nts"].SetEnabled()
+
+
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+
+
+
+
+
+	gBtnArr["nb_sldshw"].Enabled(1)
+
+
+	gBtnArr["nb_voice"].Enabled(1)
+
+
+}
+
+
+
+
+
+function UpdOtlNav()
+
+
+{
+
+
+	gBtnArr["nb_otl"].SetEnabled();
+
+
+
+
+
+	if( parent.gOtlOpen )
+
+
+		gBtnArr["nb_otlTxt"].Enabled( true );
+
+
+	else
+
+
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//-->
+
+
+</script>
+
+
+<style>
+
+
+<!--.PTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	margin-top:5px;
+
+
+	padding-left:5px;
+
+
+	font-weight:bold;}
+
+
+.CTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	padding-left:10px;}
+
+
+.CBorder
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:black;
+
+
+	padding-bottom:5px;}
+
+
+a
+
+
+	{color:black;
+
+
+	text-decoration:none;}
+
+
+.button
+
+
+	{position:absolute;
+
+
+	width:32px;
+
+
+	height:20px;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:threedface;}
+
+
+-->
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+<body onload="Load()">
+
+
+
+
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:absolute;width:70px;visibility:hidden' align=left
+
+
+ cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+
+
+ border=0 id="notes_flag" style='display:none'><span style="mso-spacerun:
+
+
+ yes">  </span>Notes</div>
+
+
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+
+
+ left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=right cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div id="nb_sldshwBorder" style='position:absolute;left:-20px;width:20px;
+
+
+ height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_sldshw" title="Full Screen Slide Show"
+
+
+ style='position:relative;left:-254px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+ <td>
+
+
+ <div id="nb_voiceBorder" style='display:none;position:absolute;left:-40px;
+
+
+ width:20px;height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_voice" title="Pause/Play Narration" style='position:
+
+
+ relative;left:-290px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_prev" title="Previous Slide" style='position:relative;
+
+
+ left:0px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+
+
+ Arial;color:buttontext;font-size:9pt'></span>
+
+
+ <div id="nb_nextBorder" class=button>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_next" title="Next Slide" style='position:relative;
+
+
+ left:-90px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:relative;width:70px' align=left cellpadding=0
+
+
+ cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'>Outline</div>
+
+
+ <div title="Show/Hide Outline" id="nb_otl" style='position:absolute;
+
+
+ top:0%;left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+
+
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+
+
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+
+
+ style='position:relative;left:-157px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlObj style='display:none;visibility:hidden'>
+
+
+
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP1 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0001.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL1 onmouseout="Out(this)">COM/COM+ and Visual Basic</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP2 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0002.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL2 onmouseout="Out(this)">Goals</a></font></div>
+
+
+  <div id=PPTC2 class=CTxt style='display:none'>
+
+
+  <table id=PPTB2 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>I want to easily piece complex applications
+
+
+    together from pre-existing parts.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>I want the write the parts of the program
+
+
+    assigned to me in a language I’m comfortable with and still have my code be
+
+
+    compatible with the rest of the application.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>I want to provide my pieces to the program in
+
+
+    packaged parts which hide the implementation details from the rest of the
+
+
+    developers.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>I want the system to handle all the storing and
+
+
+    loading of my program pieces and I want to be able to use them anytime and
+
+
+    anywhere on the network.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>I want to be able to purchase pre-built pieces
+
+
+    for my application if I find suitable alternatives to writing them
+
+
+    myself.<span style="mso-spacerun: yes">  </span>If I go this route, I want
+
+
+    to easily be able to integrate some strangers code with mine no matter what
+
+
+    language he wrote his piece in.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>If I come up with an ingenious piece of code, I
+
+
+    want to make it available to use in future projects no matter the
+
+
+    development environment.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Scratch that last line, I want to be able to use
+
+
+    it in other projects NOW, but I only want it stored once on my system so I
+
+
+    don’t have to update it twice whenever I change it.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP3 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0017.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL3 onmouseout="Out(this)">Traditional Client/Server Development</a></font></div>
+
+
+  <div id=PPTC3 class=CTxt style='display:none'>
+
+
+  <table id=PPTB3 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Each client application bound directly to the
+
+
+    database</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>When the database structure changes (field
+
+
+    names, relationships, etc…) EVERY client application needs to be
+
+
+    re-installed to update changes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Every client machine maintains it’s own
+
+
+    connections to the database.<span style="mso-spacerun: yes">  </span>This
+
+
+    requires a large amount of resources on the client machines themselves</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Drawbacks: Not very scalable, not very
+
+
+    maintainable</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP4 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0003.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL4 onmouseout="Out(this)">Traditional Web Development</a></font></div>
+
+
+  <div id=PPTC4 class=CTxt style='display:none'>
+
+
+  <table id=PPTB4 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Much less maintenance on the client
+
+
+    computers.<span style="mso-spacerun: yes">  </span>All that is required is
+
+
+    a browser</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Easier to maintain the entire application from a
+
+
+    network perspective.<span style="mso-spacerun: yes">  </span>The entire
+
+
+    application runs on a small number of servers.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Changes made to these servers affect EVERY user.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Drawbacks:<span style="mso-spacerun: yes"> 
+
+
+    </span>These few servers must support a large number of users.<span
+
+
+    style="mso-spacerun: yes">  </span>If the web server is down, the entire
+
+
+    application is down.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP5 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0011.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL5 onmouseout="Out(this)">Windows DNA n-Tier Application</a></font></div>
+
+
+  <div id=PPTC5 class=CTxt style='display:none'>
+
+
+  <table id=PPTB5 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Many types of clients can easily be supported by
+
+
+    the same infrastructure</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>All clients share the business logic stored in
+
+
+    objects on the object server and data stored in the database.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>No client makes requests of the database
+
+
+    directly.<span style="mso-spacerun: yes">  </span>All database interaction
+
+
+    takes place through the object server.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>The object server (usually Microsoft Transaction
+
+
+    Server or COM+ services) provides a number of performance benefits in this
+
+
+    situation:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Database Connection Pooling</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Multi-Threaded (Apartment) execution</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Object Pooling</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Distributed Transaction Support</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP6 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0004.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL6 onmouseout="Out(this)">COM</a></font></div>
+
+
+  <div id=PPTC6 class=CTxt style='display:none'>
+
+
+  <table id=PPTB6 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3><font size=2>COM (Component Object Model)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>‘Binary’ object standard making it language
+
+
+    independent</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Interface based</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>All objects are registered in the Windows
+
+
+    registry</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Easy to develop in a large number of languages</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Visual C++</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Visual Basic</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Borland Delphi</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Visual J++</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>VBScript/Jscript functions can be exposed<span
+
+
+    style="mso-spacerun: yes">  </span>and used as COM Objects (although they
+
+
+    are not technically binary COM objects)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Location independent</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Objects can execute on any machine on the
+
+
+    network transparently to the calling application</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>All objects stored as DLL’s or EXE’s in the
+
+
+    Windows file system.<span style="mso-spacerun: yes">  </span>Loaded and
+
+
+    executed on demand based on information based in the registry.<span
+
+
+    style="mso-spacerun: yes">  </span>All this is handled transparently by the
+
+
+    operating system making it extremely easy to use any COM objects registered
+
+
+    on your system.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP7 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0010.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL7 onmouseout="Out(this)">COM+</a></font></div>
+
+
+  <div id=PPTC7 class=CTxt style='display:none'>
+
+
+  <table id=PPTB7 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3><font size=2>COM+</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Microsoft’s Marketing guru’s added a ‘+’</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Tightly integrated with the Windows 2000
+
+
+    operating system providing for increased performance</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>COM+ is identical to COM at a binary object
+
+
+    level.<span style="mso-spacerun: yes">  </span>The same COM principles
+
+
+    still apply.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>The ‘+’ denotes a number of additional features
+
+
+    and services added by the Windows 2000 operating system.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Queued Components (transparent integration with
+
+
+    MSMQ)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Component Load Balancing (AppCenter Server)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Robust Eventing System</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>Component Services (Next version of MTS built
+
+
+    into operating system)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP8 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0005.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL8 onmouseout="Out(this)">Simple Objects in VB</a></font></div>
+
+
+  <div id=PPTC8 class=CTxt style='display:none'>
+
+
+  <table id=PPTB8 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Created as ActiveX EXE’s or ActiveX DLL’s</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Each ‘Class’ within the VB project will be
+
+
+    exposed as a COM object.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Each ‘Class’ has an ‘Instancing’ property which
+
+
+    determines how it can be created by external programs.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘Private’ – This class does not appear to other
+
+
+    programs and objects of this type cannot be created outside of the host VB
+
+
+    Class itself</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘PublicNotCreatable’ – This class can be viewed
+
+
+    and manipulated by an external program but the external program cannot
+
+
+    create a new instance of it.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘Multiuse/GlobalMultiuse’ – This class can be
+
+
+    created and used by external programs</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Heavy use of Public/Private/Friend keywords.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘Public’ properties and methods are exposed to
+
+
+    all programs using this object</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘Friend’ properties and methods are exposed only
+
+
+    to other classes or modules within the same VB project</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>‘Private’ properties and methods can only be
+
+
+    used from within the same VB class as the property or method</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Make heavy use of Encapsulation</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>It is possible to to simple, ‘Interface’ based
+
+
+    inheritance using the ‘Implements’ keyword</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Can use ‘Event’s to inform client application of
+
+
+    changes in state or other events.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP9 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0009.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL9 onmouseout="Out(this)">Object Hierarchies</a></font></div>
+
+
+  <div id=PPTC9 class=CTxt style='display:none'>
+
+
+  <table id=PPTB9 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>COM objects can be ‘wrappers’ around collections
+
+
+    of other objects</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>An individual property can return another object</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Examples:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>mobjPerson.Locations(2).City = “Ballwin”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>mobjPerson.Relatives.Item(1).Locations.Item(3).State=“Nebraska”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>For each mobjLocation in mobjPerson.Locations</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;Debug.Print mobjLocation.State</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Next</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP10 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0006.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL10 onmouseout="Out(this)">Object Persistence in VB</a></font></div>
+
+
+  <div id=PPTC10 class=CTxt style='display:none'>
+
+
+  <table id=PPTB10 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3><font size=2>What is Persistence?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>The ability for an object to save, or ‘Persist’,
+
+
+    it’s state to some form of storage medium (i.e., File, Database, etc)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>The ability for an object to restore a
+
+
+    previously saved state from the same medium.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3><font size=2>Persisting objects to a database</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Database tables with columns that map to object
+
+
+    properties</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Proper conversion of VB property types to
+
+
+    database column data types</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=3></td>
+
+
+    <td colspan=1><font size=2>VB String Properties convert to SQL Server
+
+
+    nvarchar() types, etc…</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Unique identifier for each object</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3><font size=2>Object Hierarchies can be easily representing in
+
+
+    a Relational Database</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>Since all data access is hidden from the user of
+
+
+    a COM object, it is possible to load an object and all it’s child objects
+
+
+    in one step.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>For example:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=2><font size=2>mobjPerson.Load 23<span style="mso-spacerun:
+
+
+    yes">  </span>‘This command would load the data into the mobjPerson object
+
+
+    as well as all it’s child collections without having the COM client worry
+
+
+    about loading the children separately</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=3></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP11 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0007.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL11 onmouseout="Out(this)">Object Persistence (Option 1)</a></font></div>
+
+
+  <div id=PPTC11 class=CTxt style='display:none'>
+
+
+  <table id=PPTB11 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Connect to the database directly from the client
+
+
+    side application</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Public Sub Set_Name(ByVal ID as Long, ByVal Name
+
+
+    as String)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Dim mobjRS as ADODB.Recordset</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Set mobjRS = New ADODB.Recordset ‘Create a new
+
+
+    ADO recordset</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>mobjRS.Open “Select * From PersonTable Where
+
+
+    ID=” &amp; ID, cnConnection, _</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>&#9;adOpenKeyset, adLockOptimistic</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>mobjRS.Fields(“Name”) = Name ‘Set our property</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>mobjRS.Update</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>mobjRS.Close</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Set mobjRS = Nothing</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>End Sub</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP12 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0008.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL12 onmouseout="Out(this)">Object Persistence (Option 2)</a></font></div>
+
+
+  <div id=PPTC12 class=CTxt style='display:none'>
+
+
+  <table id=PPTB12 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Use a simple COM object which wraps up our data:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Public Sub Set_Name(ByVal ID as Long, ByVal Name
+
+
+    as String)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;Dim mobjPerson as Person</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;Set mobjPerson = New Person ‘Create a new
+
+
+    instance of Person class</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;With mobjPerson</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;&#9;.Load ID</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;&#9;.Name = Name</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;&#9;.Save</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;End With</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>&#9;Set mobjPerson = Nothing</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>End Sub</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP13 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0015.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL13 onmouseout="Out(this)">VB and COM</a></font></div>
+
+
+  <div id=PPTC13 class=CTxt style='display:none'>
+
+
+  <table id=PPTB13 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>When you request a COM object in VB the system
+
+
+    looks through the current VB project references to find which COM libraries
+
+
+    are referenced and then looks through the registry to find the location of
+
+
+    the file containing that COM library.<span style="mso-spacerun: yes"> 
+
+
+    </span>Once the file is loaded the COM system dynamically allocates memory
+
+
+    and loads the correct object from the library into the memory of the
+
+
+    computer which is being used to run the object.<span style="mso-spacerun:
+
+
+    yes">  </span>It then returns to VB a pointer to that instance of that
+
+
+    object in memory.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>All the above happens transparently to the user
+
+
+    EVERY time a COM object is requested by a client application.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>All the programmer has to do is request the
+
+
+    object through COM.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>VB exposes three ways to create a COM object:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>New – The standard ‘New’ keyword (I.e. Set
+
+
+    mobjObject = New Person)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>CreateObject(“Library.Object”,”Computer”) – This
+
+
+    method requires you to specify both the entire name of the object requested
+
+
+    as well as the computer on which it should run.<span style="mso-spacerun:
+
+
+    yes">  </span>Note that the object must already be installed on the
+
+
+    computer it is to run on.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>CreateInstance – This is used to maintain
+
+
+    transactional integrity in MTS and I won’t go into it much here. But it is
+
+
+    a way to create COM objects in VB nonetheless.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP14 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0016.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL14 onmouseout="Out(this)">VB and COM</a></font></div>
+
+
+  <div id=PPTC14 class=CTxt style='display:none'>
+
+
+  <table id=PPTB14 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Almost everything in VB 5 and 6 is based on COM.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>VB is also a very simple tool to rapidly create
+
+
+    your own COM objects without much knowledge of the underlying COM
+
+
+    infrastructure.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>When you compile an ActiveX Dll project in VB
+
+
+    containing any number of objects, VB handles all the registering of the
+
+
+    object and it’s interfaces behind the scenes.<span style="mso-spacerun:
+
+
+    yes">  </span>All you have to do is click on ‘File-&gt;Make MyDLL.dll…’ and
+
+
+    specify a location to save your newly created DLL.<span
+
+
+    style="mso-spacerun: yes">  </span>VB automatically creates a language
+
+
+    neutral COM object and handles all the registration process behind the
+
+
+    scenes.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>As far as the COM system is concerned “ocx”
+
+
+    files and COM “dll” files are all binary COM objects.<span
+
+
+    style="mso-spacerun: yes">  </span>The “ocx” extension indicates that this
+
+
+    COM object exposes a graphical interface and exposes a certain set of
+
+
+    properties required by the ActiveX specification (I.e. Top, Left,
+
+
+    Forecolor, Backcolor, etc, etc…)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Since ActiveX components make up most of the
+
+
+    user interface of a large number of programs (I.e. Buttons, Toolbars, etc),
+
+
+    you can see how heavily the operating system depends on the underlying COM
+
+
+    infrastructure.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP15 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0013.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL15 onmouseout="Out(this)">Distributed COM (DCOM)</a></font></div>
+
+
+  <div id=PPTC15 class=CTxt style='display:none'>
+
+
+  <table id=PPTB15 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>In the previous code examples, where did the
+
+
+    ‘Person’ object run?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>How could we have ran it on another computer?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Public Sub Set_Name(ByVal ID as Long, ByVal Name
+
+
+    as String)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;Dim mobjPerson as Person</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;Set mobjPerson = CreateObject(“PersonDLL.Person”,”KevinsComputer”)
+
+
+    ‘Create a new instance of Person class</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;With mobjPerson</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;&#9;.Load ID</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;&#9;.Name = Name</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;&#9;.Save</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;End With</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>&#9;Set mobjPerson = Nothing</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>End Sub</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Notice the rest of the code functions no
+
+
+    differently no matter where the object runs.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP16 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0014.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL16 onmouseout="Out(this)">Additional Information</a></font></div>
+
+
+  <div id=PPTC16 class=CTxt style='display:none'>
+
+
+  <table id=PPTB16 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Msdn.Microsoft.com – The complete source of
+
+
+    everything Microsoft and the complete online MSDN library</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>www.devx.com – The people who write VBPJ – an
+
+
+    excellent source for the latest news and information on the programming
+
+
+    world</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>VBPJ – Visual Basic Programmers Journal – Get it
+
+
+    if you can</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>www.vbchat.com - Great discussion boards and an
+
+
+    IRQ chat for VB developers</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>ANY WROX books which interests you</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Learn to Program Objects With Visual Basic 6<span
+
+
+    style="mso-spacerun: yes">  </span>by John Smiley (WROX Press)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Visual Basic 6.0 Business Objects by Rockford
+
+
+    Lhotka (WROX Press)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Enterprise Application Architecture with VB, ASP
+
+
+    and MTS<span style="mso-spacerun: yes">  </span>by Joseph Moniz (WROX
+
+
+    Press)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Understanding and Programming COM+: A Practical
+
+
+    Guide to Windows 2000 DNA<span style="mso-spacerun: yes">  </span>by Robert
+
+
+    Oberg (Prentice Hall)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Me</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>kvgros@sseinc.com (Work)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>kvgross@swbell.net (Home)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Feel free to ask any questions you might have</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

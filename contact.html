@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ISPC,UMSL,contact,officers" />
+    <meta name="author" content="UMSL ISPC" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <script src="Scripts/jquery-1.11.2.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <title>ISPC Contact</title>
+
+</head>
+
+<body>
+    <script>
+    $(document).ready(function () {
+        var array = [];
+        var i;
+        $('#contactTable tr').each(function (i) {
+            array[i] = $(this);
+        });
+        TweenMax.staggerFromTo(array, 0.75, { scale: 0.002, opacity: 0.002},
+		{ scale: 1.0, opacity: 1.0, ease: Power2.easeIn, y: 0,delay:0.75 }, 0.125);
+    })
+    </script>
+
+    <h1 class="text-center">ISPC officers</h1>
+    <table id="contactTable" class="table table-hover table-contact table-responsive">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="container-image col-xs-3 col-sm-3"><img class="img-contact img-responsive" src="images/DineshMirchandani.jpg" /></div>
+                </td>
+                <td>
+                    <div class="col-xs-9 col-sm-9">
+                        <p class="title">Faculty Advisor</p>
+                        <p>Name: Dr. Dinesh Mirchandani</p>
+                        <p>Email: mirchandanid@umsl.edu</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="container-image col-xs-3 col-sm-3"><img class="img-contact img-responsive" src="images/NoImageAvailable.jpg" /></div>
+                </td>
+                <td>
+                    <div class="col-xs-9 col-sm-9">
+                        <p class="title">ISPC President</p>
+                        <p>Name: Jestika Gajjar</p>
+                        <p>Email: </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="container-image col-xs-3 col-sm-3"><img class="img-contact img-responsive" src="images/AaronHinton.jpg" /></div>
+                </td>
+                <td>
+                    <div class="col-xs-9 col-sm-9">
+                        <p class="title">ISPC Vice President</p>
+                        <p>Name: Aaron Hinton</p>
+                        <p>Email: </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="container-image col-xs-3 col-sm-3"><img class="img-contact img-responsive" src="images/NoImageAvailable.jpg" /></div>
+                </td>
+                <td>
+                    <div class="col-xs-9 col-sm-9">
+                        <p class="title">ISPC Interwebguy</p>
+                        <p>Name: Phil Zahniel</p>
+                        <p>Email: paz5x4@mail.umsl.edu</p>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="Scripts/greensock/TweenMax.min.js"></script>
+    <script src="Scripts/jquery-1.11.2.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <!-- TODO: open email from clicking on portraits-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+
+
+xmlns:o="urn:schemas-microsoft-com:office:office"
+
+
+xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+
+
+xmlns="http://www.w3.org/TR/REC-html40">
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ASP.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>ASP</title>
+
+
+<meta name=Description content="31-Oct-02: The Basics of Server Side Scripting">
+
+
+<link rel=Stylesheet href="master04_stylesheet.css">
+
+
+<![if !ppt]>
+
+
+<style media=print>
+
+
+<!--.sld
+
+
+	{left:0px !important;
+
+
+	width:6.0in !important;
+
+
+	height:4.5in !important;
+
+
+	font-size:107% !important;}
+
+
+-->
+
+
+</style>
+
+
+<script src=script.js></script><script><!--
+
+
+gId="slide0003.htm"
+
+
+if( !IsNts() ) Redirect( "PPTSld", gId );
+
+
+//-->
+
+
+</script><!--[if vml]><script>g_vml = 1;
+
+
+</script><![endif]--><script for=window event=onload><!--
+
+
+if( !IsSldOrNts() ) return;
+
+
+if( MakeNotesVis() ) return;
+
+
+LoadSld( gId );
+
+
+MakeSldVis(0);
+
+
+//-->
+
+
+</script><![endif]><o:shapelayout v:ext="edit">
+
+
+ <o:idmap v:ext="edit" data="7"/>
+
+
+</o:shapelayout>
+
+
+</head>
+
+
+
+
+
+<body lang=EN-US style='margin:0px;background-color:black'
+
+
+onclick="DocumentOnClick()" onresize="_RSW()" onkeypress="_KPH()">
+
+
+
+
+
+<div id=SlideObj class=sld style='position:absolute;top:0px;left:0px;
+
+
+width:534px;height:400px;font-size:16px;background-color:white;clip:rect(0%, 101%, 101%, 0%);
+
+
+visibility:hidden'><p:slide coordsize="720,540"
+
+
+ colors="#000099,#FFFFFF,#010199,#FFFFFF,#33CCCC,#00C600,#FFCC00,#6699FF"
+
+
+ masterhref="master04.xml">
+
+
+ <p:shaperange href="master04.xml#_x0000_s4097"/><![if !vml]><img
+
+
+ src="master04_background.gif" v:shapes="_x0000_s4097" style='position:absolute;
+
+
+ top:0%;left:0%;width:100.0%;height:100.0%'><![endif]><![if !ppt]><p:shaperange
+
+
+  href="master04.xml#_x0000_s4100"/><p:shaperange
+
+
+  href="master04.xml#_x0000_s4101"/><![endif]><p:shaperange
+
+
+  href="master04.xml#_x0000_m4098"/><v:shape id="_x0000_s7170" type="#_x0000_m4098"
+
+
+  style='position:absolute;left:36pt;top:23pt;width:9in;height:109pt'
+
+
+  o:userdrawn="f">
+
+
+  <v:fill o:detectmouseclick="f"/>
+
+
+  <v:stroke o:forcedash="f"/>
+
+
+  <o:lock v:ext="edit" text="f"/>
+
+
+  <p:placeholder type="title"/></v:shape><p:shaperange
+
+
+  href="master04.xml#_x0000_m4099"/><v:shape id="_x0000_s7171" type="#_x0000_m4099"
+
+
+  style='position:absolute;left:36pt;top:150pt;width:9in;height:324pt'
+
+
+  o:userdrawn="f">
+
+
+  <v:fill o:detectmouseclick="f"/>
+
+
+  <v:stroke o:forcedash="f"/>
+
+
+  <o:lock v:ext="edit" text="f"/>
+
+
+  <p:placeholder type="body" position="1"/></v:shape>
+
+
+ <div v:shape="_x0000_s7170" class=T style='position:absolute;top:9.75%;
+
+
+ left:5.99%;width:102.24%;height:9.25%'><span style='font-size:91%'>The Basics
+
+
+ of Server Side Scripting</span></div>
+
+
+ <div v:shape="_x0000_s7171">
+
+
+ <div class=B style='mso-line-spacing:"90 20 0"'><span style='position:absolute;
+
+
+ top:28.0%;left:9.73%;width:100.93%'><span style='font-size:75%'><span
+
+
+ style='mso-special-format:bullet;color:#FFCC00;mso-color-index:6;position:
+
+
+ absolute;left:-3.71%;top:-.15em;font-size:120%'>•</span></span><span
+
+
+ style='font-size:75%'>For a script to work with a Web Server there needs to be
+
+
+ </span></span><span style='position:absolute;top:32.75%;left:9.73%;width:90.82%'><span
+
+
+ style='font-size:75%'>some kind of intermediate application, or add-in, to </span></span><span
+
+
+ style='position:absolute;top:37.5%;left:9.73%;width:92.88%'><span
+
+
+ style='font-size:75%'>connect the two. It has to accept a request from the </span></span><span
+
+
+ style='position:absolute;top:42.25%;left:9.73%;width:94.56%'><span
+
+
+ style='font-size:75%'>user, read and interpret the appropriate server-based </span></span><span
+
+
+ style='position:absolute;top:47.25%;left:9.73%;width:84.45%'><span
+
+
+ style='font-size:75%'>script file, and then create the output page and </span></span><span
+
+
+ style='position:absolute;top:52.0%;left:9.73%;width:100.56%'><span
+
+
+ style='font-size:75%'>communicate it to the Web server where it is sent as the
+
+
+ </span></span><span style='position:absolute;top:56.75%;left:9.73%;width:84.45%'><span
+
+
+ style='font-size:75%'>response to the client.&#13;</span></span></div>
+
+
+ <div class=B style='mso-line-spacing:"90 20 0";position:absolute;top:62.5%;
+
+
+ left:5.99%;width:88.2%;height:5.5%'><span style='position:absolute;top:0%;
+
+
+ left:4.24%;width:95.75%'><span style='font-size:75%'><span style='mso-special-format:
+
+
+ bullet;color:#FFCC00;mso-color-index:6;position:absolute;left:-4.43%;
+
+
+ top:-.15em;font-size:120%'>•</span></span><span style='font-size:75%'>Typically
+
+
+ the task is divided into two sections.&#13;</span></span></div>
+
+
+ <div class=B1 style='mso-line-spacing:"90 20 0"'><span style='position:absolute;
+
+
+ top:68.25%;left:14.04%;width:89.32%'><span style='font-size:71%'><span
+
+
+ style='mso-special-format:bullet;position:absolute;left:-3.35%'>–</span></span><span
+
+
+ style='font-size:71%'>One application or add-in handles the communication to
+
+
+ and </span></span><span style='position:absolute;top:72.25%;left:14.04%;
+
+
+ width:79.96%'><span style='font-size:71%'>from the Web server. (CGI)&#13;</span></span></div>
+
+
+ <div class=B1 style='mso-line-spacing:"90 20 0";position:absolute;top:77.25%;
+
+
+ left:11.04%;width:83.14%;height:4.75%'><span style='position:absolute;
+
+
+ top:0%;left:3.6%;width:96.17%'><span style='font-size:71%'><span
+
+
+ style='mso-special-format:bullet;position:absolute;left:-3.74%'>–</span></span><span
+
+
+ style='font-size:71%'>Another handles interpreting and executing the
+
+
+ script.&#13;</span></span></div>
+
+
+ <div class=B style='mso-line-spacing:"90 20 0"'><span style='position:absolute;
+
+
+ top:82.25%;left:9.73%;width:90.44%'><span style='font-size:75%'><span
+
+
+ style='mso-special-format:bullet;color:#FFCC00;mso-color-index:6;position:
+
+
+ absolute;left:-4.14%;top:-.15em;font-size:120%'>•</span></span><span
+
+
+ style='font-size:75%'>Perl was the first such popular server-side scripting </span></span><span
+
+
+ style='position:absolute;top:87.0%;left:9.73%;width:84.45%'><span
+
+
+ style='font-size:75%'>language.</span></span></div>
+
+
+ </div>
+
+
+</p:slide></div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

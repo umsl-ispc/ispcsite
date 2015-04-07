@@ -1,0 +1,102 @@
+<!--#INCLUDE FILE="..\adovbs.inc"-->
+
+
+
+
+
+<%
+
+
+Dim myDB
+
+
+Dim myPath
+
+
+Dim myRS
+
+
+Dim mySQL
+
+
+Dim gField
+
+
+Dim mCounter
+
+
+
+
+
+mySort = request.querystring("SORTBY")
+
+
+myDir = request.querystring("DIR")
+
+
+
+
+
+if mySort = "" and myDir = "" then
+
+
+mySQL = "SELECT Index, OrderNum, Status, CabDate, NetReq, NetTech, NetExt FROM CabReq WHERE STATUS <>'Complete' ORDER BY OrderNum ASC"
+
+
+myDir = "ASC"
+
+
+mySort = "OrderNum"
+
+
+else
+
+
+mySQL = "SELECT Index, OrderNum, Status, CabDate, NetReq, NetTech, NetExt FROM CabReq WHERE STATUS <>'Complete' ORDER BY " & mySort & " " & myDir
+
+
+end if
+
+
+
+
+
+myPath =Server.MapPath("..\Databases\CabReq.mdb")
+
+
+
+
+
+Set myDB=Server.CreateObject("ADODB.Connection")
+
+
+myDB.open "PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=" & myPath
+
+
+
+
+
+set myRS = CreateObject("ADODB.Recordset")
+
+
+
+
+
+myRS.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+gFields = myRS.fields.count - 1
+
+
+
+
+
+%>
+
+
+
+
+

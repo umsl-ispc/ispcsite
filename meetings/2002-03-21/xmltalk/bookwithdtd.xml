@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "book.dtd">
+<book>
+	<title>XSLT</title>
+	<author>Doug Tidwell</author>
+	<isbn>0-596-00053-7</isbn>
+	<subject>XSLT</subject>
+	<subject>XML</subject>
+	<publisher>O'Reilly</publisher>
+	<date>02/09/2002</date>
+</book>

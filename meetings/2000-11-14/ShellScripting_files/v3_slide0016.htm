@@ -1,0 +1,363 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Bourne Shell Summary">
+
+
+<link rel=next href="v3_slide0018.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0016.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_master03_background.gif" bgcolor="#000066" alink="#2663a0"
+
+
+link="#f98d43" vlink="#cc3300" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=40 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=396 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=15 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=21 colspan=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=42></td>
+
+
+  <td width=396 height=42>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=396 height=42 align=center><font face="Arial Black"
+
+
+    color="#ffcc00" size=5>Bourne Shell Summary</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=39 height=42 colspan=2></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=40 height=132></td>
+
+
+  <td width=411 height=132 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=38 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=41 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=5 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=254 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=51 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=38 height=19><font face=Arial size=2>Input</font><br>
+
+
+    </td>
+
+
+    <td width=373 height=19 colspan=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=411 height=19 colspan=6></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=389 height=19 colspan=5><font face=Arial size=2>User-input can be
+
+
+    solicited using the read command,</font><br>
+
+
+    </td>
+
+
+    <td width=22 height=19></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=411 height=19 colspan=6><font face=Arial size=2>which places what
+
+
+    the user types into variables. If users</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=79 height=19 colspan=2><font face=Arial size=2>are to type</font><br>
+
+
+    </td>
+
+
+    <td width=332 height=19 colspan=4></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=338 height=18 colspan=4><font face=Arial size=2>several words,
+
+
+    read can be given a number of</font><br>
+
+
+    </td>
+
+
+    <td width=73 height=18 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=84 height=19 colspan=3><font face=Arial size=2>arguments.</font><br>
+
+
+    </td>
+
+
+    <td width=327 height=19 colspan=3></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=24 height=132></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=161 colspan=4></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

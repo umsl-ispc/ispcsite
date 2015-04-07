@@ -1,0 +1,1740 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+
+
+xmlns:o="urn:schemas-microsoft-com:office:office"
+
+
+xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+
+
+xmlns="http://www.w3.org/TR/REC-html40">
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Types of Unix Shells">
+
+
+<link rel=Stylesheet href="master03_stylesheet.css">
+
+
+<![if !ppt]>
+
+
+<style media=print>
+
+
+<!--.sld
+
+
+	{left:0px !important;
+
+
+	width:6.0in !important;
+
+
+	height:4.5in !important;
+
+
+	font-size:107% !important;}
+
+
+-->
+
+
+</style>
+
+
+<script src=script.js></script><script><!--
+
+
+gId="slide0003.htm"
+
+
+if( !IsNts() ) Redirect( "PPTSld", gId );
+
+
+//-->
+
+
+</script><!--[if vml]><script>g_vml = 1;
+
+
+</script><![endif]--><script for=window event=onload><!--
+
+
+if( !IsSldOrNts() ) return;
+
+
+if( MakeNotesVis() ) return;
+
+
+LoadSld( gId );
+
+
+MakeSldVis(0);
+
+
+//-->
+
+
+</script><![endif]><o:shapelayout v:ext="edit">
+
+
+ <o:idmap v:ext="edit" data="24,42"/>
+
+
+</o:shapelayout>
+
+
+</head>
+
+
+
+
+
+<body lang=EN-US style='margin:0px;background-color:black'
+
+
+onclick="DocumentOnClick()" onresize="_RSW()" onkeypress="_KPH()">
+
+
+
+
+
+<div id=SlideObj class=sld style='position:absolute;top:0px;left:0px;
+
+
+width:534px;height:400px;font-size:16px;background-color:#000066;clip:rect(0%, 101%, 101%, 0%);
+
+
+visibility:hidden'><p:slide coordsize="720,540"
+
+
+ colors="#000066,#FFFFFF,#000044,#FFCC00,#9CE157,#2663A0,#F98D43,#CC3300"
+
+
+ masterhref="master03.xml">
+
+
+ <p:shaperange href="master03.xml#_x0000_s1025"/><![if !ppt]><p:shaperange
+
+
+  href="master03.xml#_x0000_s1073"/><![if !vml]><img border=0
+
+
+ v:shapes="_x0000_s1073,_x0000_s1032,_x0000_s1033,_x0000_s1034,_x0000_s1035,_x0000_s1041,_x0000_s1042,_x0000_s1043,_x0000_s1044,_x0000_s1045,_x0000_s1046,_x0000_s1047,_x0000_s1049,_x0000_s1051,_x0000_s1052,_x0000_s1053,_x0000_s1054,_x0000_s1058,_x0000_s1059,_x0000_s1060,_x0000_s1061,_x0000_s1062,_x0000_s1063,_x0000_s1064,_x0000_s1065,_x0000_s1066,_x0000_s1067,_x0000_s1068"
+
+
+ src="master03_image007.gif" style='position:absolute;top:0%;left:0%;
+
+
+ width:100.37%;height:101.25%'><![endif]><p:shaperange
+
+
+  href="master03.xml#_x0000_s1028"/><p:shaperange
+
+
+  href="master03.xml#_x0000_s1029"/><![endif]><p:shaperange
+
+
+  href="master03.xml#_x0000_m1026"/><v:shape id="_x0000_s43010" type="#_x0000_m1026"
+
+
+  style='position:absolute;left:54pt;top:24pt;width:612pt;height:60pt'
+
+
+  o:userdrawn="f">
+
+
+  <v:fill o:detectmouseclick="f"/>
+
+
+  <v:stroke o:forcedash="f"/>
+
+
+  <o:lock v:ext="edit" text="f"/>
+
+
+  <p:placeholder type="title"/></v:shape><v:group id="_x0000_s43132" style='position:absolute;
+
+
+  left:24pt;top:181.375pt;width:654pt;height:321pt' coordorigin="192,1451"
+
+
+  coordsize="5232,2568" o:tableproperties="3" o:tablelimits="40.625pt 54pt 52.875pt 54pt 54pt 42pt">
+
+
+  <v:rect id="_x0000_s43041" style='position:absolute;left:4992;top:3578;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43040" style='position:absolute;left:4560;top:3578;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43039" style='position:absolute;left:4224;top:3578;
+
+
+   width:336;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43038" style='position:absolute;left:1200;top:3578;
+
+
+   width:3024;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43037" style='position:absolute;left:192;top:3578;
+
+
+   width:1008;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43036" style='position:absolute;left:4992;top:3137;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43035" style='position:absolute;left:4560;top:3137;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43034" style='position:absolute;left:4224;top:3137;
+
+
+   width:336;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43033" style='position:absolute;left:1200;top:3137;
+
+
+   width:3024;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43032" style='position:absolute;left:192;top:3137;
+
+
+   width:1008;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43031" style='position:absolute;left:4992;top:2696;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43030" style='position:absolute;left:4560;top:2696;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43029" style='position:absolute;left:4224;top:2696;
+
+
+   width:336;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43028" style='position:absolute;left:1200;top:2696;
+
+
+   width:3024;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43027" style='position:absolute;left:192;top:2696;
+
+
+   width:1008;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43026" style='position:absolute;left:4992;top:2217;
+
+
+   width:432;height:479' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43025" style='position:absolute;left:4560;top:2217;
+
+
+   width:432;height:479' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43024" style='position:absolute;left:4224;top:2217;
+
+
+   width:336;height:479' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43023" style='position:absolute;left:1200;top:2217;
+
+
+   width:3024;height:479' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43022" style='position:absolute;left:192;top:2217;
+
+
+   width:1008;height:479' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43021" style='position:absolute;left:4992;top:1776;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43020" style='position:absolute;left:4560;top:1776;
+
+
+   width:432;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43019" style='position:absolute;left:4224;top:1776;
+
+
+   width:336;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43018" style='position:absolute;left:1200;top:1776;
+
+
+   width:3024;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43017" style='position:absolute;left:192;top:1776;
+
+
+   width:1008;height:441' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43016" style='position:absolute;left:4992;top:1451;
+
+
+   width:432;height:325' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43015" style='position:absolute;left:4560;top:1451;
+
+
+   width:432;height:325' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43014" style='position:absolute;left:4224;top:1451;
+
+
+   width:336;height:325' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43013" style='position:absolute;left:1200;top:1451;
+
+
+   width:3024;height:325' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:rect id="_x0000_s43012" style='position:absolute;left:192;top:1451;
+
+
+   width:1008;height:325' filled="f" fillcolor="#9ce157 [4]" stroked="f"
+
+
+   strokecolor="white [1]">
+
+
+   <v:fill color2="#006 [0]" alignshape="f" o:detectmouseclick="t"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:rect><v:line id="_x0000_s43042" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,1451" to="5424,1451" strokecolor="white [1]"
+
+
+   strokeweight="2.25pt">
+
+
+   <v:stroke endcap="square" imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43043" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,1776" to="5424,1776" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43044" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,2217" to="5424,2217" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43045" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,2696" to="5424,2696" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43046" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,3137" to="5424,3137" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43047" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,3578" to="5424,3578" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43048" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,4019" to="5424,4019" strokecolor="white [1]"
+
+
+   strokeweight="2.25pt">
+
+
+   <v:stroke endcap="square" imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43049" style='position:absolute;
+
+
+   mso-wrap-style:none' from="192,1451" to="192,4019" strokecolor="white [1]"
+
+
+   strokeweight="2.25pt">
+
+
+   <v:stroke endcap="square" imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43050" style='position:absolute;
+
+
+   mso-wrap-style:none' from="1200,1451" to="1200,4019" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43051" style='position:absolute;
+
+
+   mso-wrap-style:none' from="4224,1451" to="4224,4019" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43052" style='position:absolute;
+
+
+   mso-wrap-style:none' from="4560,1451" to="4560,4019" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43053" style='position:absolute;
+
+
+   mso-wrap-style:none' from="4992,1451" to="4992,4019" strokecolor="white [1]"
+
+
+   strokeweight="1pt">
+
+
+   <v:stroke imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><v:line id="_x0000_s43054" style='position:absolute;
+
+
+   mso-wrap-style:none' from="5424,1451" to="5424,4019" strokecolor="white [1]"
+
+
+   strokeweight="2.25pt">
+
+
+   <v:stroke endcap="square" imagealignshape="f"/>
+
+
+   <v:shadow color="#004 [2]"/>
+
+
+  </v:line><p:placeholder type="table" position="1"/></v:group><v:shapetype
+
+
+  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m0,0l0,21600,21600,21600,21600,0xe">
+
+
+  <v:stroke joinstyle="miter"/>
+
+
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+
+
+ </v:shapetype><v:shape id="_x0000_s43103" type="#_x0000_t202" style='position:absolute;
+
+
+  left:30pt;top:96pt;width:9in;height:64.75pt' filled="f" fillcolor="#9ce157 [4]"
+
+
+  stroked="f" strokecolor="white [1]">
+
+
+  <v:fill color2="#006 [0]"/>
+
+
+  <v:shadow color="#004 [2]"/>
+
+
+  <v:textbox style='mso-fit-shape-to-text:t'/>
+
+
+ </v:shape><![if !vml]><img border=0
+
+
+ v:shapes="_x0000_s43132,_x0000_s43041,_x0000_s43040,_x0000_s43039,_x0000_s43038,_x0000_s43037,_x0000_s43036,_x0000_s43035,_x0000_s43034,_x0000_s43033,_x0000_s43032,_x0000_s43031,_x0000_s43030,_x0000_s43029,_x0000_s43028,_x0000_s43027,_x0000_s43026,_x0000_s43025,_x0000_s43024,_x0000_s43023,_x0000_s43022,_x0000_s43021,_x0000_s43020,_x0000_s43019,_x0000_s43018,_x0000_s43017,_x0000_s43016,_x0000_s43015,_x0000_s43014,_x0000_s43013,_x0000_s43012,_x0000_s43042,_x0000_s43043,_x0000_s43044,_x0000_s43045,_x0000_s43046,_x0000_s43047,_x0000_s43048,_x0000_s43049,_x0000_s43050,_x0000_s43051,_x0000_s43052,_x0000_s43053,_x0000_s43054"
+
+
+ src="slide0003_image013.gif" style='position:absolute;top:33.25%;left:3.18%;
+
+
+ width:91.57%;height:60.5%'><![endif]>
+
+
+ <div v:shape="_x0000_s43010" class=T style='position:absolute;top:3.75%;
+
+
+ left:8.42%;width:83.14%;height:11.75%'>Types of Unix Shells</div>
+
+
+ <div v:shape="_x0000_s43041">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:83.75%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43040">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:83.75%;
+
+
+ left:80.14%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43039">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:83.75%;
+
+
+ left:74.34%;width:4.49%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43038">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:83.75%;
+
+
+ left:21.91%;width:55.99%;height:4.5%'><span style='font-size:71%'>Allows the
+
+
+ user to rename commands</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43037">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:83.75%;left:4.3%;width:15.73%'><span style='font-size:71%'>Command </span></span><span
+
+
+ style='position:absolute;top:88.25%;left:4.3%;width:15.73%'><span
+
+
+ style='font-size:71%'>aliasing</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43036">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:73.5%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43035">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:73.5%;
+
+
+ left:80.14%;width:5.61%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43034">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:73.5%;
+
+
+ left:74.34%;width:4.49%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43033">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:73.5%;left:21.91%;width:59.17%'><span style='font-size:71%'>Allows the use
+
+
+ of an editor to modify the<br>
+
+
+ </span></span><span style='position:absolute;
+
+
+ top:78.0%;left:21.91%;width:50.74%'><span style='font-size:71%'>command line
+
+
+ text</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43032">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:73.5%;left:4.3%;width:15.73%'><span style='font-size:71%'>Command </span></span><span
+
+
+ style='position:absolute;top:78.0%;left:4.3%;width:16.1%'><span
+
+
+ style='font-size:71%'>line editing</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43031">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:63.25%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43030">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:63.25%;
+
+
+ left:80.14%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43029">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:63.25%;
+
+
+ left:74.34%;width:4.49%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43028">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:63.25%;left:21.91%;width:58.42%'><span style='font-size:71%'>Allows
+
+
+ automatic completion of partially<br>
+
+
+ </span></span><span style='position:
+
+
+ absolute;top:67.75%;left:21.91%;width:50.74%'><span style='font-size:71%'>typed
+
+
+ file name</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43027">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:63.25%;left:4.3%;width:15.73%'><span style='font-size:71%'>File name </span></span><span
+
+
+ style='position:absolute;top:67.75%;left:4.3%;width:16.29%'><span
+
+
+ style='font-size:71%'>completion</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43026">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:52.25%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43025">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:52.25%;
+
+
+ left:80.14%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43024">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:52.25%;
+
+
+ left:74.34%;width:4.49%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43023">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:52.25%;
+
+
+ left:21.91%;width:59.55%;height:4.5%'><span style='font-size:71%'>Allows
+
+
+ previous commands to be saved,&#13;</span></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:57.5%;
+
+
+ left:21.91%;width:50.74%;height:4.5%'><span style='font-size:71%'>edited, and
+
+
+ reused</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43022">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:52.25%;left:4.3%;width:15.73%'><span style='font-size:71%'>History </span></span><span
+
+
+ style='position:absolute;top:56.75%;left:4.3%;width:17.04%'><span
+
+
+ style='font-size:71%'>substitution</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43021">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:42.0%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43020">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:42.0%;
+
+
+ left:80.14%;width:5.99%;height:4.5%'><span style='font-size:71%'>Yes</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43019">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:42.0%;
+
+
+ left:74.34%;width:4.49%;height:4.5%'><span style='font-size:71%'>No</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43018">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0'><span style='position:absolute;
+
+
+ top:42.0%;left:21.91%;width:50.74%'><span style='font-size:71%'>Allows
+
+
+ processes to be run in the <br>
+
+
+ </span></span><span style='position:absolute;
+
+
+ top:46.5%;left:21.91%;width:50.74%'><span style='font-size:71%'>background</span></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43017">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:42.0%;
+
+
+ left:4.3%;width:16.47%;height:4.5%'><span style='font-size:71%'>Job control</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43016">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:34.5%;
+
+
+ left:87.64%;width:5.99%;height:4.5%'><span style='font-size:71%'><b>csh</b></span><span
+
+
+ style='font-size:71%;mso-special-format:lastCR;display:none'>&#13;</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43015">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:34.5%;
+
+
+ left:80.14%;width:5.99%;height:4.5%'><span style='font-size:71%'><b>ksh</b></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43014">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:34.5%;
+
+
+ left:74.34%;width:4.11%;height:4.5%'><span style='font-size:71%'><b>sh</b></span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43013">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:34.5%;
+
+
+ left:21.91%;width:50.74%;height:4.5%'><span style='font-size:71%'><b>Function</b></span><span
+
+
+ style='font-size:71%;mso-special-format:lastCR;display:none'>&#13;</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43012">
+
+
+ <div class=Tbl1 style='mso-margin-left-alt:288'></div>
+
+
+ <div class=Tbl2 style='mso-margin-left-alt:576'></div>
+
+
+ <div class=Tbl3 style='mso-margin-left-alt:864'></div>
+
+
+ <div class=Tbl4 style='mso-margin-left-alt:1152'></div>
+
+
+ <div class=Tbl style='mso-margin-left-alt:0;position:absolute;top:34.5%;
+
+
+ left:4.3%;width:15.73%;height:4.5%'><span style='font-size:71%'><b>Feature</b></span><span
+
+
+ style='font-size:71%;mso-special-format:lastCR;display:none'>&#13;</span></div>
+
+
+ </div>
+
+
+ <div v:shape="_x0000_s43103" class=O><span style='position:absolute;
+
+
+ top:18.75%;left:5.24%;width:99.43%'><span style='font-family:"Times New Roman"'>The
+
+
+ 3 most common types of Unix Shells are the Bourne (sh), </span></span><span
+
+
+ style='position:absolute;top:24.0%;left:5.24%;width:88.2%'><span
+
+
+ style='font-family:"Times New Roman"'>Korn (ksh), and C shells (csh). </span></span></div>
+
+
+</p:slide></div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

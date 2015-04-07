@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+
+
+<html>
+
+<head>
+
+	<title>Untitled</title>
+
+</head>
+
+
+
+<body>
+
+<P>
+
+<CODE>
+
+<pre>
+
+// MyTicker Applet
+
+
+
+import java.awt.*;
+
+import java.applet.Applet;
+
+
+
+public class MyTicker extends Applet {
+
+   String s;
+
+   
+
+   public void init() {
+
+      s = "Hello UMSL";
+
+   }
+
+   
+
+   public void paint(Graphics g) {
+
+      try {
+
+         while (true) {
+
+            for (int x = 300; (x+s.length())&gt;0;x--) {
+
+               g.drawString(s,x,20);
+
+               Thread.sleep(150);
+
+               g.setColor(Color.white);
+
+               g.drawString(s,x,20);
+
+               g.setColor(Color.black);
+
+            }
+
+         }
+
+      }
+
+      catch(InterruptedException e) {}
+
+   }
+
+}
+
+</pre>
+
+</CODE>
+
+</P>
+
+
+
+
+
+</body>
+
+</html>
+

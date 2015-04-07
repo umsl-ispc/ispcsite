@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+	<title>XSLT</title>
+	<author>Doug Tidwell</author>
+	<isbn>0-596-00053-7</isbn>
+	<subject>XSLT</subject>
+	<publisher>O'Reilly</publisher>
+</book>

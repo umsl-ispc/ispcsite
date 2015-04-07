@@ -1,0 +1,1992 @@
+
+
+
+<html>
+
+
+<head>
+
+
+<title>Untitled Document</title>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<script language="JavaScript">
+
+
+<!--
+
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+
+
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+
+
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+
+
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+
+
+}
+
+
+MM_reloadPage(true);
+
+
+// -->
+
+
+</script>
+
+
+</head>
+
+
+
+
+
+<%
+
+
+
+
+
+Set myDB=Server.CreateObject("ADODB.Connection")
+
+
+myDB.open  "Provider=MSDAORA.1;Password=lambrg;User ID=lambrg;Data Source=konfig;Persist Security Info=True"
+
+
+
+
+
+set UUI = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT MAX(UUI) FROM UUI_OBJ_MAP"
+
+
+
+
+
+UUI.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+NewUUI = Cint(UUI(0))
+
+
+DeviceUUI = NewUUI + 1
+
+
+
+
+
+set ObjectClassName = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT DISTINCT(OBJECT_CLASS.NAME) FROM OBJECT_CLASS, OBJECT_CLASS_MAP, DEVICE_TYPE, OBJECT WHERE OBJECT_CLASS.NAME = OBJECT_CLASS_MAP.OBJECT_CLASS_NAME AND OBJECT_CLASS_MAP.OBJECT_ID = OBJECT.ID AND	OBJECT.ID = DEVICE_TYPE.OBJECT_ID AND OBJECT_CLASS.OBJECT_CATEGORY_NAME='device'"
+
+
+ObjectClassName.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set ObjectClassType = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT OBJECT_CLASS.NAME, OBJECT.NAME, DEVICE_TYPE.DEVICE_TYPE, OBJECT.ID, DEVICE_TYPE.ID,OBJECT.ASSET_FLAG,OBJECT.LOCATION_FLAG FROM OBJECT_CLASS, OBJECT_CLASS_MAP, DEVICE_TYPE, OBJECT WHERE OBJECT_CLASS.NAME = OBJECT_CLASS_MAP.OBJECT_CLASS_NAME AND OBJECT_CLASS_MAP.OBJECT_ID = OBJECT.ID AND	OBJECT.ID = DEVICE_TYPE.OBJECT_ID AND OBJECT_CLASS.OBJECT_CATEGORY_NAME='device'"
+
+
+ObjectClassType.open mySQL, myDB, adOpenStati
+
+
+
+
+
+set List = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT * FROM LIST"
+
+
+List.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set Building = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT * FROM BUILDING"
+
+
+Building.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set kSpace = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT * FROM SPACES"
+
+
+kSpace.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set Networks = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT * FROM NETWORKS"
+
+
+Networks.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set Device_Containment = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT DISTINCT(DEVICE.NAME),DEVICE.UUI,DEVICE.DEVICE_TYPE_ID,DEVICE_TYPE.DEV_CAPACITY,DEVICE_TYPE.DEV_ST_POSN,MEMBERSHIP.NET_UUI FROM DEVICE_TYPE,DEVICE,DEVICE_CONTAINMENT,MEMBERSHIP WHERE DEVICE.UUI = DEVICE_CONTAINMENT.DEV_CNTD_TOP_UUI AND MEMBERSHIP.MEMBER_UUI=DEVICE.UUI AND DEVICE_TYPE.ID=DEVICE.DEVICE_TYPE_ID"
+
+
+Device_Containment.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+set Contained_Devices = CreateObject("ADODB.Recordset")
+
+
+mySQL = "SELECT DEVICE.NAME,DEVICE_CONTAINMENT.DEV_CNTD_TOP_UUI FROM DEVICE,DEVICE_CONTAINMENT WHERE DEVICE.UUI=DEVICE_CONTAINMENT.DEV_CNTD_TOP_UUI"
+
+
+Contained_Devices.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+%>
+
+
+
+
+
+<script language="JavaScript1.2">
+
+
+
+
+
+arObject = new Array()
+
+
+arDeviceCNTD = new Array()
+
+
+
+
+
+<%
+
+
+
+
+
+counter1 = 0
+
+
+
+
+
+While not(ObjectClassType.EOF)
+
+
+
+
+
+%>
+
+
+
+
+
+arObject[<%=counter1%>] = new Array()
+
+
+
+
+
+
+
+
+arObject[<%=counter1%>][0] = "<%=ObjectClassType(0)%>"
+
+
+arObject[<%=counter1%>][1] = "<%=ObjectClassType(1)%>"
+
+
+arObject[<%=counter1%>][2] = "<%=ObjectClassType(2)%>"
+
+
+arObject[<%=counter1%>][3] = "<%=ObjectClassType(3)%>"
+
+
+arObject[<%=counter1%>][4] = "<%=ObjectClassType(4)%>"
+
+
+arObject[<%=counter1%>][5] = "<%=ObjectClassType(5)%>"
+
+
+arObject[<%=counter1%>][6] = "<%=ObjectClassType(6)%>"
+
+
+
+
+
+<%
+
+
+
+
+
+counter1 = counter1 + 1
+
+
+
+
+
+ObjectClassType.MoveNext
+
+
+wend
+
+
+
+
+
+'VB array to JS
+
+
+
+
+
+counter1 = 0
+
+
+
+
+
+While not(Device_Containment.EOF)
+
+
+
+
+
+%>
+
+
+
+
+
+arDeviceCNTD[<%=counter1%>] = new Array()
+
+
+
+
+
+
+
+
+arDeviceCNTD[<%=counter1%>][0] = "<%=Device_Containment(0)%>"
+
+
+arDeviceCNTD[<%=counter1%>][1] = "<%=Device_Containment(1)%>"
+
+
+arDeviceCNTD[<%=counter1%>][2] = "<%=Device_Containment(2)%>"
+
+
+arDeviceCNTD[<%=counter1%>][3] = "<%=Device_Containment(3)%>"
+
+
+arDeviceCNTD[<%=counter1%>][4] = "<%=Device_Containment(4)%>"
+
+
+arDeviceCNTD[<%=counter1%>][5] = "<%=Device_Containment(5)%>"
+
+
+
+
+
+<%
+
+
+
+
+
+counter1 = counter1 + 1
+
+
+
+
+
+Device_Containment.MoveNext
+
+
+wend
+
+
+
+
+
+%>
+
+
+
+
+
+</script>
+
+
+
+
+
+<style type="text/css">
+
+
+
+
+
+INPUT {font: 8pt Arial}
+
+
+
+
+
+</style>
+
+
+
+
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+
+<div id="divInfoWindow" style="background-image: url(/konfig2_0/images/InformationWindow.gif);position:absolute; left:20px; top:181px; width:204px; height:353px; z-index:1;font: 8pt Arial"><div style="overflow:scroll; width:175px; height:300px;top: 35;left:10;position: relative"><div id="divWindowInfo"></div></div></div>
+
+
+<img src=images/Konfig.gif width="200" height="75" style="position:absolute; left: 19px; top: 19px"> 
+
+
+<div style="position:absolute; left: 248px; top: 16px"> 
+
+
+  <table width="656" border=0 align="left" background=file://\\snc231\c$\Inetpub\wwwroot\Konfig2_0\images\DeviceForm.gif rules="none">
+
+
+    <tr> 
+
+
+      <td colspan="4" height="19"> 
+
+
+        <blockquote> 
+
+
+          <p><font face="Arial, Helvetica, sans-serif" size="3"><b>Device - Insert</b></font></p>
+
+
+        </blockquote>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td colspan="2" height="19"> 
+
+
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b>Identification</b></font><font face="Arial, Helvetica, sans-serif"></font></div>
+
+
+      </td>
+
+
+      <td colspan="2" height="19"> 
+
+
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b>Ownership</b></font><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"></font></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"> 
+
+
+          <table id="tblAssetHelp" width="75" border="1" cellspacing="0" style="position:absolute;top:65px;left:176px;background-color:yellow; width: 123px; height: 25px; visibility: hidden">
+
+
+            <tr> 
+
+
+              <td><font face="Arial, Helvetica, sans-serif" size="2" >Same as 
+
+
+                Serial NO:</font></td>
+
+
+            </tr>
+
+
+          </table>
+
+
+          <font face="Arial, Helvetica, sans-serif" size="1">Asset ID:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Asset_ID" style="background-color: yellow" onfocus="tblAssetHelp.style.visibility='visible'" onblur="tblAssetHelp.style.visibility='hidden'">
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Organization</font></div>
+
+
+      </td>
+
+
+      <td><font face="Arial, Helvetica, sans-serif" > 
+
+
+        <select name="Organization_ID" style="font: 8pt Arial;background-color:yellow">
+
+
+        </select>
+
+
+        <img src="images/Form.gif" width="14" height="15"></font><font face="Arial, Helvetica, sans-serif"> 
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Serial 
+
+
+          NO:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Serial_NO" style="background-color: yellow">
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Project:</font></div>
+
+
+      </td>
+
+
+      <td><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="textfield7">
+
+
+        </font><font face="Arial, Helvetica, sans-serif"> </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Parent 
+
+
+          Asset ID:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="textfield3">
+
+
+        </font></td>
+
+
+      <td colspan="2"> 
+
+
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b>Location</b></font><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"></font></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Workflow 
+
+
+          ID:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="textfield4">
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Building 
+
+
+          ID:</font></div>
+
+
+      </td>
+
+
+      <td><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Building_UUI" style="font: 8pt Arial;background-color:yellow">
+
+
+          <%
+
+
+		while not (Building.EOF)
+
+
+      
+
+
+			Response.Write "<OPTION value='" & Building(0) & "'>" & Building(1) & "</OPTION>"
+
+
+      
+
+
+			Building.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        <img src="images/Form.gif" width="14" height="15"></font><font face="Arial, Helvetica, sans-serif"> 
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98" height="31"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1"><i>UUI:</i></font></div>
+
+
+      </td>
+
+
+      <td width="154" height="31"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="UUI" value="<%=DeviceUUI%>" readonly>
+
+
+        </font></td>
+
+
+      <td width="67" height="31"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Level:</font></div>
+
+
+      </td>
+
+
+      <td height="31"><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Floor">
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td colspan="2"> 
+
+
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b>Object 
+
+
+          Selection</b></font><font face="Arial, Helvetica, sans-serif"></font></div>
+
+
+      </td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Room:</font></div>
+
+
+      </td>
+
+
+      <td><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Room">
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Object 
+
+
+          Class:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Object_Class_Name" style="font: 8pt Arial;background-color: yellow" onBlur="funcObject_Type(this.options[selectedIndex].text)">
+
+
+          <%
+
+
+        
+
+
+        while not(ObjectClassName.EOF)
+
+
+        
+
+
+        %>
+
+
+          <option value="<%=ObjectClassName(0)%>"><%=ObjectClassName(0)%></option>
+
+
+          <%
+
+
+		
+
+
+		ObjectClassName.MoveNext	
+
+
+		Wend
+
+
+	
+
+
+        %>
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Space:</font></div>
+
+
+      </td>
+
+
+      <td><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Space_UUI" style="font: 8pt Arial;background-color: yellow">
+
+
+          <%
+
+
+        
+
+
+        while not (kSpace.EOF)
+
+
+        	
+
+
+			Response.Write "<OPTION value='" & kSpace(0) & "'>" & kSpace(2) & "</OPTION>"
+
+
+			kSpace.MoveNext
+
+
+            
+
+
+        wend
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        <img src="images/Form.gif" width="14" height="15"></font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Object 
+
+
+          Type:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Object_ID" style="font: 8pt Arial;background-color: yellow" onBlur="funcDevice_Type_ID(this.options[selectedIndex].text)">
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td colspan="2">&nbsp;</td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Model:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Device_Type_ID" style="font: 8pt Arial;background-color: yellow">
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td colspan="2"> 
+
+
+        <div align="center"><b><font face="Arial, Helvetica, sans-serif" size="2">Membership</font></b></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Name:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Name">
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Network:</font></div>
+
+
+      </td>
+
+
+      <td><font size="1" face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Net_UUI" style="font: 8pt Arial" onBlur="funcDevice_Containment(this.options[selectedIndex].value)">
+
+
+          <%
+
+
+        
+
+
+        while not (Networks.EOF)
+
+
+        	
+
+
+			Response.Write "<OPTION value='" & Networks(0) & "'>" & Networks(2) & "</OPTION>"
+
+
+			Networks.MoveNext
+
+
+            
+
+
+        wend
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        <img src="images/Form.gif" width="14" height="15"></font> </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98">&nbsp;</td>
+
+
+      <td width="154">&nbsp;</td>
+
+
+      <td colspan="2">&nbsp;</td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td colspan="2"> 
+
+
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="2"><b>Status</b></font><font face="Arial, Helvetica, sans-serif"></font></div>
+
+
+      </td>
+
+
+      <td colspan="2"> 
+
+
+        <div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><b>Parent 
+
+
+          Device</b></font></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Overall:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Asset_Stat" style="font: 8pt Arial;background-color:yellow">
+
+
+          <%
+
+
+        
+
+
+        while not (List.EOF)
+
+
+        
+
+
+				if List(1) = "ASSET_STAT" then
+
+
+					
+
+
+				Response.Write "<OPTION>" & List(2) & "</OPTION>"
+
+
+        
+
+
+				end if 
+
+
+		
+
+
+			List.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        List.MoveFirst
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Device 
+
+
+          Name: </font></div>
+
+
+      </td>
+
+
+      <td>
+
+
+        <div align="left"><font size="1" face="Arial, Helvetica, sans-serif"> 
+
+
+          <select name="Device_Containment" style="font: 8pt Arial">
+
+
+          </select>
+
+
+          </font> <img src="images/Traverse.gif" width="45" height="15" style="cursor:hand" onClick="funcTraverseDevice(Device_Containment.options[Device_Containment.selectedIndex].value)"></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Maintenance:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Maintenance_Stat" style="font: 8pt Arial;background-color:yellow">
+
+
+          <%
+
+
+        
+
+
+        while not (List.EOF)
+
+
+        
+
+
+				if List(1) = "MAINTENANCE_STAT" then
+
+
+					
+
+
+				Response.Write "<OPTION>" & List(2) & "</OPTION>"
+
+
+        
+
+
+				end if 
+
+
+		
+
+
+			List.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        List.MoveFirst
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td colspan="2">&nbsp; </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Ownership:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Ownership_Stat" style="font: 8pt Arial;background-color:yellow">
+
+
+          <%
+
+
+        
+
+
+        while not (List.EOF)
+
+
+        
+
+
+				if List(1) = "OWNERSHIP_STAT" then
+
+
+					
+
+
+				Response.Write "<OPTION>" & List(2) & "</OPTION>"
+
+
+        
+
+
+				end if 
+
+
+		
+
+
+			List.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        List.MoveFirst
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        </font></td>
+
+
+      <td width="67"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Notes:</font></div>
+
+
+      </td>
+
+
+      <td rowspan="4"> 
+
+
+        <textarea name="Notes" rows="5" cols="35"></textarea>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Implementation:</font></div>
+
+
+      </td>
+
+
+      <td width="154"> 
+
+
+        <select name="Implementation_Stat" style="font: 8pt Arial">
+
+
+          <%
+
+
+        
+
+
+        while not (List.EOF)
+
+
+        
+
+
+				if List(1) = "IMPLEMENTATION_STAT" then
+
+
+					
+
+
+				Response.Write "<OPTION>" & List(2) & "</OPTION>"
+
+
+        
+
+
+				end if 
+
+
+		
+
+
+			List.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        List.MoveFirst
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+      </td>
+
+
+      <td rowspan="3" width="67">&nbsp;</td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Operational:</font></div>
+
+
+      </td>
+
+
+      <td width="154"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <select name="Operational_Stat" style="font: 8pt Arial">
+
+
+          <%
+
+
+        
+
+
+        while not (List.EOF)
+
+
+        
+
+
+				if List(1) = "OPERATIONAL_STAT" then
+
+
+					
+
+
+				Response.Write "<OPTION>" & List(2) & "</OPTION>"
+
+
+        
+
+
+				end if 
+
+
+		
+
+
+			List.MoveNext
+
+
+        
+
+
+        wend
+
+
+        
+
+
+        List.MoveFirst
+
+
+        
+
+
+        %>
+
+
+        </select>
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td width="98" height="33"> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif" size="1">Install 
+
+
+          Date:</font></div>
+
+
+      </td>
+
+
+      <td width="154" height="33"><font face="Arial, Helvetica, sans-serif"> 
+
+
+        <input type="text" name="Install_Date" style="background-color:yellow">
+
+
+        </font></td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td colspan="4"><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"></font><font face="Arial, Helvetica, sans-serif"></font> 
+
+
+        <div align="right"><font face="Arial, Helvetica, sans-serif"> 
+
+
+          <input type="button" name="Submit" value="Submit">
+
+
+          </font></div>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr> 
+
+
+      <td colspan="4">&nbsp;</td>
+
+
+    </tr>
+
+
+  </table>
+
+
+</div>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+<script>
+
+
+
+
+
+function funcObject_Type(x){
+
+
+
+
+
+	Object_ID.options.length = 0
+
+
+	Device_Type_ID.options.length = 0
+
+
+
+
+
+	for(y=0;y<arObject.length;y++){
+
+
+
+
+
+		if (arObject[y][0] == x){
+
+
+			
+
+
+			var z = new Option(arObject[y][1],arObject[y][3])
+
+
+			Object_ID.options[Object_ID.options.length] = z
+
+
+
+
+
+		}
+
+
+
+
+
+		for (t=0;t<Object_ID.options.length;t++){
+
+
+		
+
+
+			tempOption = Object_ID.options[t].text
+
+
+		
+
+
+			for (s=t + 1;s<Object_ID.options.length;s++){
+
+
+						
+
+
+				if (tempOption == Object_ID.options[s].text){
+
+
+				
+
+
+				Object_ID.options[s] = null
+
+
+				
+
+
+				}		
+
+
+			}		
+
+
+		}
+
+
+	}
+
+
+}
+
+
+
+
+
+function funcDevice_Type_ID(x){
+
+
+
+
+
+	Device_Type_ID.options.length = 0
+
+
+
+
+
+	for(y=0;y<arObject.length;y++){
+
+
+	
+
+
+		if (arObject[y][1] == x){
+
+
+				
+
+
+			var z = new Option(arObject[y][2],arObject[y][4])
+
+
+			Device_Type_ID.options[Device_Type_ID.options.length] = z
+
+
+		
+
+
+			if (arObject[y][5] == "Y"){
+
+
+			
+
+
+				Asset_ID.style.backgroundColor = "YELLOW"
+
+
+				Serial_NO.style.backgroundColor = "YELLOW"
+
+
+				Asset_Stat.style.backgroundColor = "YELLOW"
+
+
+				Maintenance_Stat.style.backgroundColor = "YELLOW"
+
+
+				Ownership_Stat.style.backgroundColor = "YELLOW"
+
+
+				Install_Date.style.backgroundColor = "YELLOW"
+
+
+			
+
+
+			}
+
+
+			else{
+
+
+			
+
+
+				Asset_ID.style.backgroundColor = "WHITE"
+
+
+				Serial_NO.style.backgroundColor = "WHITE"
+
+
+				Asset_Stat.style.backgroundColor = "WHITE"
+
+
+				Maintenance_Stat.style.backgroundColor = "WHITE"
+
+
+				Ownership_Stat.style.backgroundColor = "WHITE"
+
+
+				Install_Date.style.backgroundColor = "WHITE"
+
+
+				
+
+
+			}	
+
+
+			
+
+
+			if (arObject[y][6] == "S"){
+
+
+			
+
+
+				Space_UUI.style.backgroundColor = "YELLOW"
+
+
+				Building_UUI.style.backgroundColor = "WHITE"
+
+
+			
+
+
+			}
+
+
+			else{
+
+
+			
+
+
+				Space_UUI.style.backgroundColor = "WHITE"
+
+
+			
+
+
+			}			
+
+
+			
+
+
+			if (arObject[y][6] == "N"){
+
+
+			
+
+
+				Building_UUI.disabled = true
+
+
+				Building_UUI.style.backgroundColor = "WHITE"
+
+
+				Floor.disabled = true
+
+
+				Room.disabled = true
+
+
+				Space_UUI.disabled = true
+
+
+			
+
+
+			}
+
+
+			else{
+
+
+			
+
+
+				Building_UUI.disabled = false
+
+
+				Building_UUI.style.backgroundColor = "YELLOW"
+
+
+				Floor.disabled = false
+
+
+				Room.disabled = false
+
+
+				Space_UUI.disabled = false
+
+
+			
+
+
+			}
+
+
+			
+
+
+			if (arObject[y][6] == "R"){
+
+
+			
+
+
+				Space_UUI.disabled = true
+
+
+			
+
+
+			}			
+
+
+		}
+
+
+	}
+
+
+}
+
+
+
+
+
+function funcDevice_Containment(x){
+
+
+
+
+
+
+
+
+	Device_Containment.options.length = 0
+
+
+
+
+
+	for(y=0;y<arDeviceCNTD.length;y++){
+
+
+	
+
+
+		if ((arDeviceCNTD[y][5] == x) & (arDeviceCNTD[y][3] != "0")){
+
+
+				
+
+
+			var z = new Option(arDeviceCNTD[y][0],arDeviceCNTD[y][1])
+
+
+			Device_Containment.options[Device_Containment.options.length] = z
+
+
+			
+
+
+		}
+
+
+	}
+
+
+}
+
+
+
+
+
+function funcTraverseDevice(x){
+
+
+
+
+
+alert(x)
+
+
+path="Traverse_Device.asp?UUI=" + x
+
+
+winTransverse = window.open(path,"Traverse","width=100,height=100,top=100,left=100,location=no")
+
+
+
+
+
+}
+
+
+</script>
+
+
+
+
+
+<%
+
+
+
+
+
+UUI.Close
+
+
+ObjectClassType.Close
+
+
+ObjectClassName.Close
+
+
+
+
+
+%>
+
+

@@ -1,0 +1,594 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ASP.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>ASP</title>
+
+
+<meta name=Description content="31-Oct-02: The Basics of Server Side Scripting">
+
+
+<link rel=next href="v3_slide0004.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0003.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_master04_background.jpg" bgcolor=white alink="#00c600"
+
+
+link="#ffcc00" vlink="#6699ff" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=29 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=425 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=12 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=35 colspan=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=29 height=33></td>
+
+
+  <td width=425 height=33>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=425 height=33><font face=Tahoma size=5>The Basics of Server Side
+
+
+    Scripting</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=21 height=33 colspan=2></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=32 colspan=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=29 height=230></td>
+
+
+  <td width=437 height=230 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=17 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=15 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=51 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=91 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=26 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=146 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=13 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=3 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=24 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=8 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+    <td width=25 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=20><font face=Tahoma color="#ffcc00" size=2>•</font></td>
+
+
+    <td width=419 height=20 colspan=17><font face=Tahoma size=2>For a script to
+
+
+    work with a Web Server there needs to be</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=378 height=17 colspan=12><font face=Tahoma size=2>some kind of
+
+
+    intermediate application, or add-in, to</font><br>
+
+
+    </td>
+
+
+    <td width=41 height=17 colspan=5></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=386 height=17 colspan=13><font face=Tahoma size=2>connect the
+
+
+    two. It has to accept a request from the</font><br>
+
+
+    </td>
+
+
+    <td width=33 height=17 colspan=4></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=393 height=17 colspan=15><font face=Tahoma size=2>user, read and
+
+
+    interpret the appropriate server-based</font><br>
+
+
+    </td>
+
+
+    <td width=26 height=17 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=349 height=17 colspan=9><font face=Tahoma size=2>script file, and
+
+
+    then create the output page and</font><br>
+
+
+    </td>
+
+
+    <td width=70 height=17 colspan=8></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=418 height=17 colspan=16><font face=Tahoma size=2>communicate it
+
+
+    to the Web server where it is sent as the</font><br>
+
+
+    </td>
+
+
+    <td width=1 height=17></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=164 height=17 colspan=6><font face=Tahoma size=2>response to the
+
+
+    client.</font><br>
+
+
+    </td>
+
+
+    <td width=255 height=17 colspan=11></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=436 height=1 colspan=18></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=20><font face=Tahoma color="#ffcc00" size=2>•</font></td>
+
+
+    <td width=336 height=20 colspan=8><font face=Tahoma size=2>Typically the
+
+
+    task is divided into two sections.</font><br>
+
+
+    </td>
+
+
+    <td width=83 height=20 colspan=9></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=23 height=17 colspan=3></td>
+
+
+    <td width=15 height=17><font face=Tahoma color=white size=1>–</font></td>
+
+
+    <td width=371 height=17 colspan=11><font face=Tahoma size=1>One application
+
+
+    or add-in handles the communication to and</font><br>
+
+
+    </td>
+
+
+    <td width=27 height=17 colspan=3></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=38 height=15 colspan=4></td>
+
+
+    <td width=169 height=15 colspan=4><font face=Tahoma size=1>from the Web
+
+
+    server. (CGI)</font><br>
+
+
+    </td>
+
+
+    <td width=229 height=15 colspan=10></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=23 height=17 colspan=3></td>
+
+
+    <td width=15 height=17><font face=Tahoma color=white size=1>–</font></td>
+
+
+    <td width=331 height=17 colspan=7><font face=Tahoma size=1>Another handles
+
+
+    interpreting and executing the script.</font><br>
+
+
+    </td>
+
+
+    <td width=67 height=17 colspan=7></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=436 height=1 colspan=18></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=20><font face=Tahoma color="#ffcc00" size=2>•</font></td>
+
+
+    <td width=376 height=20 colspan=11><font face=Tahoma size=2>Perl was the
+
+
+    first such popular server-side scripting</font><br>
+
+
+    </td>
+
+
+    <td width=43 height=20 colspan=6></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=17 height=17></td>
+
+
+    <td width=73 height=17 colspan=5><font face=Tahoma size=2>language.</font><br>
+
+
+    </td>
+
+
+    <td width=346 height=17 colspan=12></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=9 height=230></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=26 colspan=4></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

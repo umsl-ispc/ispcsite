@@ -1,0 +1,5781 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../bobdrurypresentation.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<meta name=Robots content=NoIndex>
+
+
+<script src=script.js></script><script><!--
+
+
+
+
+
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+
+
+{
+
+
+	obj = document.all.item("Main-File")
+
+
+	parent.location.href=obj.href
+
+
+}
+
+
+
+
+
+var gOtlHiliteClr="#FFFFFF",gOtlNormalClr="#000000",gOtlActiveClr="#FFFF00",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+
+
+
+
+
+function Load()
+
+
+{
+
+
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+
+
+	if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+
+
+	if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+
+
+}
+
+
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+
+
+function LoadNav( oId,UpdFunc )
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	document.body.style.margin=2
+
+
+	UpdFunc()
+
+
+	obj=document.all.item(oId)
+
+
+	obj.style.display="block"
+
+
+	obj.style.visibility="visible"
+
+
+	document.bgColor="threedface"
+
+
+}
+
+
+function LoadOtl()
+
+
+{
+
+
+	document.ondragstart=CancelDrag
+
+
+	document.onselectstart=CancelDrag
+
+
+	OtlObj.style.display="block"
+
+
+	OtlObj.style.visibility="visible"
+
+
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+
+
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+
+
+	if( gOtlNormalClr == "" )
+
+
+		gOtlNormalClr=document.bgColor
+
+
+	else
+
+
+		document.bgColor=gOtlNormalClr  
+
+
+
+
+
+	InitArray()
+
+
+
+
+
+	if( ObjExists( parent.gCurSld ) ) {
+
+
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+
+
+		gSelected=parent.gCurSld
+
+
+	}
+
+
+	else gSelected = -1
+
+
+
+
+
+	UpdOtl()
+
+
+}
+
+
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+
+
+function UpdIdx( idx )
+
+
+{
+
+
+	if( gSelected != idx ) {
+
+
+		if( gSelected > 0 )
+
+
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+
+
+
+
+
+		if( ObjExists( idx ) ) {
+
+
+			gSelected = idx
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+		}
+
+
+		else gSelected = -1
+
+
+	}
+
+
+
+
+
+	if( gTxtState != parent.gOtlTxtExp ) {
+
+
+		state = "block"
+
+
+		if( !parent.gOtlTxtExp )
+
+
+			state="none"
+
+
+
+
+
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+
+
+			obj=gChildEntryTable[ii];
+
+
+			if( obj.id == null ) continue;
+
+
+
+
+
+			if( obj.id.indexOf("PPTC") >= 0 )
+
+
+				obj.style.display=state;
+
+
+		} 
+
+
+		gTxtState=parent.gOtlTxtExp
+
+
+		if( ObjExists( gSelected ) )
+
+
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+
+
+	}
+
+
+}
+
+
+function InitArray()
+
+
+{
+
+
+	count=0
+
+
+	for(ii=0; ii<document.all.tags("DIV").length; ii++) {
+
+
+		obj=document.all.tags("DIV").item(ii)
+
+
+		if( obj.id == null ) continue
+
+
+
+
+
+		if( obj.id.indexOf("PPTC") >= 0 ) {   
+
+
+			gChildEntryTable[count++]=obj
+
+
+			obj.children.tags("TABLE").item(0).style.borderColor=gOtlNormalClr
+
+
+		}
+
+
+	}
+
+
+}
+
+
+function ChangeState( idx,fgColor,bgColor )
+
+
+{
+
+
+	obj=document.all.item("PPTL"+idx)
+
+
+	obj.style.color=fgColor
+
+
+
+
+
+	obj=document.all.item("PPTP"+idx)
+
+
+	obj.style.backgroundColor=bgColor
+
+
+
+
+
+	obj=document.all.item("PPTB"+idx)
+
+
+	if( obj )
+
+
+		obj.style.borderLeftColor=obj.style.borderBottomColor=bgColor
+
+
+}
+
+
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+
+
+function Over( obj ){ ChgClr(obj,gOtlActiveClr) }
+
+
+function Out( obj ){ ChgClr(obj,gOtlHiliteClr) }
+
+
+function ObjExists( ii ) { obj=document.all("PPTP"+ii ); return( obj ) }
+
+
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+
+
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+
+
+
+
+
+function UpdNav()
+
+
+{
+
+
+	txt = "<center>";
+
+
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+
+
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+
+
+	else
+
+
+		txt += "Hidden Slide"
+
+
+	txt += "</center>";
+
+
+	nav_text.innerHTML = txt;
+
+
+
+
+
+	if( !parent.HasPrevSld() )
+
+
+		gBtnArr["nb_prev"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_prev"].Enabled(1)
+
+
+
+
+
+	if( !parent.HasNextSld() )
+
+
+		gBtnArr["nb_next"].Enabled(0)
+
+
+	else
+
+
+		gBtnArr["nb_next"].Enabled(1)
+
+
+	gBtnArr["nb_nts"].SetEnabled()
+
+
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+
+
+
+
+
+	gBtnArr["nb_sldshw"].Enabled(1)
+
+
+	gBtnArr["nb_voice"].Enabled(1)
+
+
+}
+
+
+
+
+
+function UpdOtlNav()
+
+
+{
+
+
+	gBtnArr["nb_otl"].SetEnabled();
+
+
+
+
+
+	if( parent.gOtlOpen )
+
+
+		gBtnArr["nb_otlTxt"].Enabled( true );
+
+
+	else
+
+
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//-->
+
+
+</script>
+
+
+<style>
+
+
+<!--.PTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	margin-top:5px;
+
+
+	padding-left:5px;
+
+
+	font-weight:bold;}
+
+
+.CTxt
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	padding-left:10px;}
+
+
+.CBorder
+
+
+	{position:relative;
+
+
+	width:100%;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:black;
+
+
+	padding-bottom:5px;}
+
+
+a
+
+
+	{color:white;
+
+
+	text-decoration:none;}
+
+
+.button
+
+
+	{position:absolute;
+
+
+	width:32px;
+
+
+	height:20px;
+
+
+	border-style:solid;
+
+
+	border-width:1px;
+
+
+	border-color:threedface;}
+
+
+-->
+
+
+</style>
+
+
+</head>
+
+
+
+
+
+<body onload="Load()">
+
+
+
+
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:absolute;width:70px;visibility:hidden' align=left
+
+
+ cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+
+
+ border=0 id="notes_flag" style='display:none'><span style="mso-spacerun:
+
+
+ yes">  </span>Notes</div>
+
+
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+
+
+ left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=right cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div id="nb_sldshwBorder" style='position:absolute;left:-20px;width:20px;
+
+
+ height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_sldshw" title="Full Screen Slide Show"
+
+
+ style='position:relative;left:-254px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+ <td>
+
+
+ <div id="nb_voiceBorder" style='display:none;position:absolute;left:-40px;
+
+
+ width:20px;height:20px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_voice" title="Pause/Play Narration" style='position:
+
+
+ relative;left:-290px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_prev" title="Previous Slide" style='position:relative;
+
+
+ left:0px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+
+
+ Arial;color:buttontext;font-size:9pt'></span>
+
+
+ <div id="nb_nextBorder" class=button>
+
+
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_next" title="Next Slide" style='position:relative;
+
+
+ left:-90px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+
+
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+
+
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+
+
+
+
+<table style='position:relative;width:70px' align=left cellpadding=0
+
+
+ cellspacing=0>
+
+
+ <td nowrap>
+
+
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;
+
+
+ font-family:Arial;color:buttontext;font-size:9pt'>Outline</div>
+
+
+ <div title="Show/Hide Outline" id="nb_otl" style='position:absolute;
+
+
+ top:0%;left:0%;width:100%;height:100%'></div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+
+
+ <td>
+
+
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+
+
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+
+
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+
+
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+
+
+ style='position:relative;left:-157px' width="344" height="18"></div>
+
+
+ </div>
+
+
+ </td>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div id=OtlObj style='display:none;visibility:hidden'>
+
+
+
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP1 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0395.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL1 onmouseout="Out(this)">Bob Drury<br>
+
+
+  Sr. VP Logistics, Manufacturing, &amp; IT<br>
+
+
+  Schnuck Markets</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP2 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0121.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL2 onmouseout="Out(this)">&quot;Regional,&quot;</a></font></div>
+
+
+  <div id=PPTC2 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB2 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Regional, Self-Distributing Supermarket Chain</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Owned &amp; Operated by the Schnuck Family</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>92 Stores in Missouri, Illinois, and Indiana</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP3 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0431.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL3 onmouseout="Out(this)">Data Driven Supply Chains of the New
+
+
+  Millennium</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP4 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0432.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL4 onmouseout="Out(this)">OR,<br>
+
+
+  What Mama Never Told You About Doing Business on the Web</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP5 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0433.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL5 onmouseout="Out(this)">OR,<br>
+
+
+  How to become a Bazillionaire Using Stuff You Just Learned If You Were
+
+
+  Paying Attention</a></font></div>
+
+
+  <div id=PPTC5 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB5 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Bob Drury</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Schnuck Markets Inc.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP6 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0434.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL6 onmouseout="Out(this)">Pop Quiz</a></font></div>
+
+
+  <div id=PPTC6 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB6 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>How Old is eCommerce on the WWW?</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP7 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0435.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL7 onmouseout="Out(this)">How Old is Electronic Commerce on the WWW?</a></font></div>
+
+
+  <div id=PPTC7 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB7 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>1971</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>1976</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>1980</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>1991</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>1993</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP8 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0436.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL8 onmouseout="Out(this)">1969</a></font></div>
+
+
+  <div id=PPTC8 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB8 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Department of Defense Contracts with a Team of
+
+
+    Business, Academic, and Government Researchers to Build ARPANET</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Four Sites Connected - UCLA, SRI, UCSB, and
+
+
+    University of Utah</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Network Working Group formed to develop
+
+
+    Communications Protocols</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Apollo 11 Mission Lands on the Moon</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP9 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0467.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL9 onmouseout="Out(this)">Bell 103 Modem</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP10 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0437.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL10 onmouseout="Out(this)">1971</a></font></div>
+
+
+  <div id=PPTC10 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB10 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>ARPANET (Advanced Research Project Agency
+
+
+    Network) Grows to 15 Sites and 23 Hosts</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>FTP and TELNET Protocols Defined by Network
+
+
+    Working Group</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Ray Tomlinson of BBN invents email program to
+
+
+    send messages across a distributed network.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP11 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0439.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL11 onmouseout="Out(this)">How Al Gore <br>
+
+
+  Became the<br>
+
+
+  Father of the Internet</a></font></div>
+
+
+  <div id=PPTC11 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB11 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Tipper Gore:<span style="mso-spacerun:
+
+
+    yes">       </span>&quot;When my husband Vice President Gore served in the
+
+
+    House of Representatives, he coined the phrase &quot;information
+
+
+    superhighway&quot; to describe how this exciting new medium would one day transport
+
+
+    us all.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Al Gore represented Tennessee for eight years in
+
+
+    the U.S. House of Representatives (1977-1985)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP12 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0438.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL12 onmouseout="Out(this)">1976</a></font></div>
+
+
+  <div id=PPTC12 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB12 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Elizabeth II, Queen of the United Kingdom, is
+
+
+    first politician to send out an Internet e-mail</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP13 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0440.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL13 onmouseout="Out(this)">1980</a></font></div>
+
+
+  <div id=PPTC13 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB13 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Tim Berners-Lee Writes Program
+
+
+    “Enquire-Within-Upon-Everything”, which allows bi-directional links between
+
+
+    arbitrary nodes.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP14 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0441.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL14 onmouseout="Out(this)">1983</a></font></div>
+
+
+  <div id=PPTC14 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB14 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Domain Name System server developed at U of
+
+
+    Wisconsin, no longer requiring users to know the exact path to other
+
+
+    systems.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>TCP/IP becomes Internet Standard</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Berkeley UNIX is developed for small computers</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP15 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0468.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL15 onmouseout="Out(this)">Bell 212A Modem</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP16 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0442.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL16 onmouseout="Out(this)">1989</a></font></div>
+
+
+  <div id=PPTC16 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB16 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Tim Berners-Lee Proposes Global Hypertext
+
+
+    Document Sharing Project</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Project is named World Wide Web over Information
+
+
+    Mesh, Information Mine, &amp; Mine of Information.</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP17 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0443.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL17 onmouseout="Out(this)">1991</a></font></div>
+
+
+  <div id=PPTC17 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB17 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>CERN Releases WWW Hypertext Technology and Line
+
+
+    Mode Browser on Internet</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Commercial Use of Internet Approved by National
+
+
+    Science Foundation</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP18 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0469.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL18 onmouseout="Out(this)">V.32bis Modem</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP19 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0444.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL19 onmouseout="Out(this)">1993</a></font></div>
+
+
+  <div id=PPTC19 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB19 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2><span style="mso-spacerun: yes"> </span>InterNIC
+
+
+    created by National Science Foundation to provide: directory and database
+
+
+    services registration services</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>US White House comes on-line as
+
+
+    WWW.WHITEHOUSE.GOV</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP20 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0445.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL20 onmouseout="Out(this)">1993</a></font></div>
+
+
+  <div id=PPTC20 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB20 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Mosaic Browser released by National Center for
+
+
+    SuperComputer Applications at University of Illinois</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>First Browser to offer Color Image Support</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP21 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0446.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL21 onmouseout="Out(this)">1994</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP22 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0470.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL22 onmouseout="Out(this)">V.34 Modem</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP23 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0447.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL23 onmouseout="Out(this)">Number of Commercial WEB Servers</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP24 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0451.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL24 onmouseout="Out(this)">Slide 24</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP25 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0448.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL25 onmouseout="Out(this)">Slide 25</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP26 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0449.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL26 onmouseout="Out(this)">Slide 26</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP27 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0450.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL27 onmouseout="Out(this)">You Know Your Web Site is in Trouble If:</a></font></div>
+
+
+  <div id=PPTC27 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB27 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Marketing Got it for Free</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>The CEO’s Greeting Doesn’t Work</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>The Host Computer Will Fit in Your Briefcase</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>A Security Key is Something That Starts Your Car</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Your Internet Provider Goes Bankrupt</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP28 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0452.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL28 onmouseout="Out(this)">5 Reasons To Build a Commercial Web Site</a></font></div>
+
+
+  <div id=PPTC28 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB28 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Fastest Growing Consumer Media in Human History</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>If We Don’t the Other Guy Will</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Remodeling Is Easy in a Virtual Store</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP29 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0453.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL29 onmouseout="Out(this)">Slide 29</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP30 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0454.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL30 onmouseout="Out(this)">Slide 30</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP31 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0455.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL31 onmouseout="Out(this)">Slide 31</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP32 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0456.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL32 onmouseout="Out(this)">Slide 32</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP33 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0460.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL33 onmouseout="Out(this)">Volume Drivers of the Internet Grocery
+
+
+  Shopping Industry</a></font></div>
+
+
+  <div id=PPTC33 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB33 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Convenience</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Response Time</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Simplicity</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Solutions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Personalization</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Information Content</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Value</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP34 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0462.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL34 onmouseout="Out(this)">Pop Quiz</a></font></div>
+
+
+  <div id=PPTC34 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB34 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>What 17<sup>th</sup> Century Scientist
+
+
+    Discovered the Reasons for the Failure of eCommerce in 2001?</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP35 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0463.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL35 onmouseout="Out(this)">Sir Isaac Newton<br>
+
+
+  (1642-1727)</a></font></div>
+
+
+  <div id=PPTC35 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB35 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>formulated laws of universal gravitation and
+
+
+    motion—laws that explain how objects move on Earth as well as through the
+
+
+    heavens</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>established the modern study of optics<span
+
+
+    style="mso-spacerun: yes">       </span>&#9;<span style="mso-spacerun:
+
+
+    yes">  </span>or the behavior of light—and built the first reflecting telescope</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>His mathematical insights led him to invent the
+
+
+    area of mathematics called calculus</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP36 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0396.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL36 onmouseout="Out(this)">Moving Products<br>
+
+
+  is Expensive</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP37 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0457.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL37 onmouseout="Out(this)">Slide 37</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP38 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0458.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL38 onmouseout="Out(this)">Slide 38</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP39 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0477.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL39 onmouseout="Out(this)">Volume Drivers of the Internet Grocery
+
+
+  Shopping Industry</a></font></div>
+
+
+  <div id=PPTC39 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB39 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Convenience</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Response Time</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Simplicity</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Solutions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Personalization</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Information Content</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Value</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>NO</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>NO</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>NO</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>NO</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Yes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Yes</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>NO</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP40 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0461.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL40 onmouseout="Out(this)">Traditional Volume Drivers of the Retail
+
+
+  Grocery Industry</a></font></div>
+
+
+  <div id=PPTC40 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB40 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Location, Location, Location</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Price</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Assortment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Newspaper Ad</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Coupons</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP41 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0471.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL41 onmouseout="Out(this)">The Winners Must Do Both</a></font></div>
+
+
+  <div id=PPTC41 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB41 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Convenience</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Response Time</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Simplicity</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Solutions</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Personalization</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Information Content</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Value</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Location, &#9;&#9;&#9;Location,
+
+
+    &#9;&#9;&#9;&#9;Location</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Price</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Assortment</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Newspaper Ad</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Coupons</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP42 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0472.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL42 onmouseout="Out(this)">Slide 42</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP43 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0465.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL43 onmouseout="Out(this)">Slide 43</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP44 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0464.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL44 onmouseout="Out(this)">Bar Code Technology<br>
+
+
+  (circa 1973)</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP45 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0479.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL45 onmouseout="Out(this)">Slide 45</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP46 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0480.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL46 onmouseout="Out(this)">Slide 46</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP47 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0487.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL47 onmouseout="Out(this)">Slide 47</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP48 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0483.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL48 onmouseout="Out(this)">Slide 48</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP49 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0475.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL49 onmouseout="Out(this)">ePC &amp; Smart Objects</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP50 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0486.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL50 onmouseout="Out(this)">Slide 50</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP51 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0485.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL51 onmouseout="Out(this)">Slide 51</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP52 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0466.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL52 onmouseout="Out(this)">Inlay 2D, Square</a></font></div>
+
+
+  <div id=PPTC52 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB52 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Dimensions<span style="mso-spacerun: yes"> 
+
+
+    </span>4 x 4 inches x 12 mils thick</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Frequency<span style="mso-spacerun: yes"> 
+
+
+    </span>UHF band, 902-928 MHz</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Power Source<span style="mso-spacerun: yes"> 
+
+
+    </span>Tag powered from the reader signal &#9;(battery free)</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Read Distance<span style="mso-spacerun: yes"> 
+
+
+    </span>Up to 20 feet with General Purpose Antenna</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Memory<span style="mso-spacerun: yes"> 
+
+
+    </span>80 bits that provide a unique factory programmed ID, plus CRC check.</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Simultaneous ID<span style="mso-spacerun: yes"> 
+
+
+    </span>Up to 200 tags/second</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP53 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0481.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL53 onmouseout="Out(this)">Slide 53</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP54 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0484.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL54 onmouseout="Out(this)">Slide 54</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP55 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0482.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL55 onmouseout="Out(this)">Slide 55</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP56 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0478.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL56 onmouseout="Out(this)">Slide 56</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP57 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0474.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL57 onmouseout="Out(this)"><span style="mso-spacerun: yes"> </span>Next
+
+
+  Generation of <br>
+
+
+  Self Checkout</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP58 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0415.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL58 onmouseout="Out(this)">Retailer Strategic Tradeoff’s</a></font></div>
+
+
+  <div id=PPTC58 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB58 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Space Allocation&#9;&#9;&#9;Variety</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Price&#9;&#9;&#9;&#9;&#9;Gross Profit</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Labor&#9;&#9;&#9;&#9;&#9;Service</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Inventory Investment&#9;&#9;Out of Stocks</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP59 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0334.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL59 onmouseout="Out(this)">Out of Stocks</a></font></div>
+
+
+  <div id=PPTC59 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB59 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Industry Averages:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>8% of Gross Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>3% Actual Lost Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP60 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0335.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL60 onmouseout="Out(this)">Out of Stocks</a></font></div>
+
+
+  <div id=PPTC60 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB60 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Industry Averages:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>8% of Gross Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>3% Actual Lost Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Why?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>DSD Receiving Windows</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP61 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0388.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL61 onmouseout="Out(this)">Out of Stocks</a></font></div>
+
+
+  <div id=PPTC61 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB61 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Industry Averages:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>8% of Gross Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>3% Actual Lost Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Why?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>DSD Receiving Windows</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Inventory Investment Constraints</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP62 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0336.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL62 onmouseout="Out(this)">Out of Stocks</a></font></div>
+
+
+  <div id=PPTC62 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB62 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Industry Averages:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>8% of Gross Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>3% Actual Lost Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>Why?</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>DSD Receiving Windows</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Inventory Investment Constraints</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Forecasted Replenishment Based on Shelf
+
+
+    Conditions instead of Consumer Sales</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP63 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0393.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL63 onmouseout="Out(this)">Out of Stocks</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP64 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0339.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL64 onmouseout="Out(this)">Professor Don Bowersox<br>
+
+
+  Law of Sales Forecasting</a></font></div>
+
+
+  <div id=PPTC64 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB64 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width=20 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2><font size=2>There are Two Types of Organizations that Do
+
+
+    Sales Forecasts:</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Those Who Don’t Know What Sales Will Be</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=2></td>
+
+
+    <td colspan=1><font size=2>Those Who Know They Don’t Know What Sales Will
+
+
+    Be</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=2></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP65 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0404.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL65 onmouseout="Out(this)"><span style="mso-spacerun:
+
+
+  yes"> </span>Demand Forecast</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP66 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0414.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL66 onmouseout="Out(this)">Forecast Variables</a></font></div>
+
+
+  <div id=PPTC66 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB66 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Price Point</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Merchandising</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP67 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0405.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL67 onmouseout="Out(this)">Promotion Forecast</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP68 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0338.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL68 onmouseout="Out(this)">Forecast Variables</a></font></div>
+
+
+  <div id=PPTC68 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB68 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Price Point</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Merchandising</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Demographics</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP69 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0407.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL69 onmouseout="Out(this)">Store Promotion Forecasts</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP70 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0429.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL70 onmouseout="Out(this)">Forecast Variables</a></font></div>
+
+
+  <div id=PPTC70 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB70 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Price Point</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Merchandising</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Demographics</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Week of the Month</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Day of the Week</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Weather</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Competitive Response</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP71 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0389.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL71 onmouseout="Out(this)">Bob Drury<br>
+
+
+  Laws of Sales Forecasting</a></font></div>
+
+
+  <div id=PPTC71 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB71 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>The Only Thing Less Reliable than a Monthly
+
+
+    Sales Forecast is a Weekly Sales Forecast</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Only the Consumer Knows What They Want and When
+
+
+    They Want It</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>They Won’t Tell Us</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP72 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0413.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL72 onmouseout="Out(this)">Consumer Demand</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP73 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0340.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL73 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP74 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0341.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL74 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC74 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB74 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“I think there is a world market for about five
+
+
+    computers.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP75 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0342.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL75 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC75 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB75 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“I think there is a world market for about five
+
+
+    computers.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Thomas Watson, Chairman of IBM, 1943</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP76 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0343.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL76 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC76 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB76 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“There is no reason for any individual to have a
+
+
+    computer in their home.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP77 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0344.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL77 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC77 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB77 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“There is no reason for any individual to have a
+
+
+    computer in their home.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Ken Olson, CEO of Digital Equipment, 1977</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP78 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0345.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL78 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC78 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB78 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“640K of memory ought to be enough for anybody.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP79 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0346.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL79 onmouseout="Out(this)">Worst Sales Forecasts of All Time</a></font></div>
+
+
+  <div id=PPTC79 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB79 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>“640K of memory ought to be enough for anybody.”</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Bill Gates, CEO of Microsoft, 1981</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP80 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0337.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL80 onmouseout="Out(this)">How?</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP81 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0391.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL81 onmouseout="Out(this)">Knowledge Is Power</a></font></div>
+
+
+  <div id=PPTC81 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB81 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Machiavelli, Niccolò</font></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>(1469-1527)</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP82 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0390.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL82 onmouseout="Out(this)">Be Prepared</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP83 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0392.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL83 onmouseout="Out(this)">Respond Quickly</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP84 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0347.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL84 onmouseout="Out(this)">Point of Sale <br>
+
+
+  Consumption
+
+
+  Replenishment Model</a></font></div>
+
+
+  <div id=PPTC84 class=CTxt style='display:none'>
+
+
+  <table style='color:white' id=PPTB84 class=CBorder>
+
+
+   <tr>
+
+
+    <td width=5 nowrap></td>
+
+
+    <td width="100%"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td colspan=1></td>
+
+
+    <td colspan=1><font size=2>Continuous Flow of Product</font></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </div>
+
+
+  </td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td>
+
+
+  <div id=PPTP85 class=PTxt><font size=2><a
+
+
+  href="javascript:GoToSld('slide0473.htm');" onmouseover="Over(this)"
+
+
+  id=PPTL85 onmouseout="Out(this)">Thank You for Your Time<br>
+
+
+  Bob Drury</a></font></div>
+
+
+  </td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

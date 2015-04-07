@@ -1,0 +1,210 @@
+<!--#INCLUDE FILE="..\adovbs.inc"-->
+
+
+
+
+
+<%
+
+
+Dim myDB
+
+
+Dim myPath
+
+
+Dim myRS
+
+
+Dim mySQL
+
+
+Dim mCounter
+
+
+Dim mSISName()
+
+
+Dim mSISExt()
+
+
+Dim mNetName()
+
+
+Dim mNetExt()
+
+
+myPath =Server.MapPath("..\Databases\CMSUsers2K.mdb")
+
+
+
+
+
+Set myDB=Server.CreateObject("ADODB.Connection")
+
+
+myDB.open "PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=" & myPath
+
+
+
+
+
+set myRS = CreateObject("ADODB.Recordset")
+
+
+
+
+
+mySQL = "SELECT * FROM SISTech"
+
+
+myRS.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+mCounter = 0
+
+
+
+
+
+myRS.movelast
+
+
+record_count = myRS.Recordcount
+
+
+myRS.movefirst
+
+
+
+
+
+redim preserve mSISName(record_count,1)
+
+
+
+
+
+While NOT myRS.EOF
+
+
+	mSISName(mCounter,0) = myRS(0)
+
+
+	mSISName(mCounter,1) = myRS(1)
+
+
+	myRS.movenext
+
+
+	mCounter = mCounter + 1
+
+
+Wend
+
+
+
+
+
+myRS.close
+
+
+myDB.close
+
+
+
+
+
+myPath =Server.MapPath("..\Databases\CMSUsers2K.mdb")
+
+
+
+
+
+Set myDB=Server.CreateObject("ADODB.Connection")
+
+
+myDB.open "PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=" & myPath
+
+
+
+
+
+set myRS = CreateObject("ADODB.Recordset")
+
+
+
+
+
+mySQL = "SELECT * FROM NetTech"
+
+
+myRS.open mySQL, myDB, adOpenStatic
+
+
+
+
+
+mCounter = 0
+
+
+
+
+
+myRS.movelast
+
+
+record_count = myRS.Recordcount
+
+
+myRS.movefirst
+
+
+
+
+
+redim preserve mNetName(record_count,2)
+
+
+
+
+
+While NOT myRS.EOF
+
+
+	mNetName(mCounter,0) = myRS(0)
+
+
+	mNetName(mCounter,1) = myRS(1)
+
+
+	mNetName(mCounter,2) = myRS(2)
+
+
+	myRS.movenext
+
+
+	mCounter = mCounter + 1
+
+
+Wend
+
+
+
+
+
+myRS.close
+
+
+myDB.close
+
+
+
+
+
+%>
+
+

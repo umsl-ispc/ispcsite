@@ -1,0 +1,1896 @@
+<html>
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Types of Unix Shells">
+
+
+<link rel=next href="v3_slide0004.htm">
+
+
+<![if !ppt]>
+
+
+<script>
+
+
+<!--
+
+
+function Update()
+
+
+{
+
+
+  if( window.name == "PPTSld" )
+
+
+    parent.SlideUpdated('v3_slide0003.htm');   
+
+
+  else
+
+
+    parent.location.href = "v3_document.htm";
+
+
+}
+
+
+
+
+
+function NoHref() {}
+
+
+//-->
+
+
+</script>
+
+
+<![endif]>
+
+
+</head>
+
+
+
+
+
+<body background="v3_slide0003_background.gif" bgcolor="#000066" alink="#2663a0"
+
+
+link="#f98d43" vlink="#cc3300" text=white topmargin=0 leftmargin=0
+
+
+onload="Update()">
+
+
+
+
+
+<table border=0 valign=top width=475 height=356 cellpadding=0 cellspacing=0>
+
+
+ <tr>
+
+
+  <td width=21 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=34 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=13 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=14 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=7 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=59 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=145 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=28 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=11 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=3 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=17 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=2 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=19 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=5 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=4 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=1 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=22 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=3 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=5 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+  <td width=6 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=13 colspan=34></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=59 height=42 colspan=3></td>
+
+
+  <td width=357 height=42 colspan=26>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=357 height=42 align=center><font face="Arial Black"
+
+
+    color="#ffcc00" size=5>Types of Unix Shells</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=59 height=42 colspan=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=12 colspan=34></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=25 height=37 colspan=2></td>
+
+
+  <td width=413 height=37 colspan=28>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=205 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=413 height=18 colspan=2><font face="Times New Roman" size=2>The 3
+
+
+    most common types of Unix Shells are the Bourne (sh),</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=413 height=1 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=205 height=18><font face="Times New Roman" size=2>Korn (ksh), and
+
+
+    C shells (csh).</font><br>
+
+
+    </td>
+
+
+    <td width=208 height=18></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=37 height=37 colspan=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=14 colspan=34></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=446 height=1 colspan=32></td>
+
+
+  <td width=6 height=218 rowspan=21><img src="v3_slide0003_image003.gif"
+
+
+  border=0 width=6 height=218></td>
+
+
+  <td width=23 height=1></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=4 colspan=10></td>
+
+
+  <td width=4 height=216 rowspan=19><img src="v3_slide0003_image004.gif"
+
+
+  border=0 width=4 height=216></td>
+
+
+  <td width=273 height=4 colspan=11></td>
+
+
+  <td width=4 height=216 rowspan=19><img src="v3_slide0003_image005.gif"
+
+
+  border=0 width=4 height=216></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=4 height=216 rowspan=19><img src="v3_slide0003_image006.gif"
+
+
+  border=0 width=4 height=216></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=23 height=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=51 height=16 colspan=3>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=51 height=16><font face=Arial size=1><b>Feature</b></font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=27 height=16 colspan=6></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=59 height=16>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=59 height=16><font face=Arial size=1><b>Function</b></font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=190 height=16 colspan=6></td>
+
+
+  <td width=17 height=16>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=17 height=16><font face=Arial size=1><b>sh</b></font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=6 height=16 colspan=2></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1><b>ksh</b></font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1><b>csh</b></font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=11 colspan=10></td>
+
+
+  <td width=273 height=11 colspan=11></td>
+
+
+  <td width=31 height=11 colspan=4></td>
+
+
+  <td width=31 height=11 colspan=4></td>
+
+
+  <td width=23 height=11></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=69 height=16 colspan=7>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=69 height=16><font face=Arial size=1>Job control</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=9 height=16 colspan=2></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=204 height=31 colspan=2 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=73 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=204 height=16 colspan=2><font face=Arial size=1>Allows processes
+
+
+    to be run in the</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=73 height=15><font face=Arial size=1>background</font><br>
+
+
+    </td>
+
+
+    <td width=131 height=15></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=45 height=16 colspan=5></td>
+
+
+  <td width=19 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=4 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=15 colspan=10></td>
+
+
+  <td width=1 height=15></td>
+
+
+  <td width=68 height=15 colspan=8></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=23 height=15></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=5 colspan=10></td>
+
+
+  <td width=273 height=5 colspan=11></td>
+
+
+  <td width=31 height=5 colspan=4></td>
+
+
+  <td width=31 height=5 colspan=4></td>
+
+
+  <td width=23 height=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=71 height=31 colspan=8 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=44 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=44 height=16><font face=Arial size=1>History</font><br>
+
+
+    </td>
+
+
+    <td width=27 height=16></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=71 height=16 colspan=2><font face=Arial size=1>substitution</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=7 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=248 height=35 colspan=6 rowspan=3>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=116 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=248 height=16 colspan=2><font face=Arial size=1>Allows previous
+
+
+    commands to be saved,</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=248 height=3 colspan=2></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=116 height=16><font face=Arial size=1>edited, and reused</font><br>
+
+
+    </td>
+
+
+    <td width=132 height=16></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=19 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=4 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=15></td>
+
+
+  <td width=7 height=15></td>
+
+
+  <td width=1 height=15></td>
+
+
+  <td width=24 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=23 height=15></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=4 colspan=10></td>
+
+
+  <td width=1 height=4></td>
+
+
+  <td width=24 height=4 colspan=4></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=23 height=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=4 colspan=10></td>
+
+
+  <td width=273 height=4 colspan=11></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=31 height=4 colspan=4></td>
+
+
+  <td width=23 height=4></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=68 height=31 colspan=6 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=62 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=62 height=16><font face=Arial size=1>File name</font><br>
+
+
+    </td>
+
+
+    <td width=6 height=16></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=68 height=16 colspan=2><font face=Arial size=1>completion</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=10 height=16 colspan=3></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=243 height=31 colspan=4 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=95 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=243 height=16 colspan=2><font face=Arial size=1>Allows automatic
+
+
+    completion of partially</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=95 height=16><font face=Arial size=1>typed file name</font><br>
+
+
+    </td>
+
+
+    <td width=148 height=16></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=6 height=16 colspan=3></td>
+
+
+  <td width=19 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=4 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=15></td>
+
+
+  <td width=10 height=15 colspan=3></td>
+
+
+  <td width=1 height=15></td>
+
+
+  <td width=29 height=15 colspan=6></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=23 height=15></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=6 colspan=10></td>
+
+
+  <td width=273 height=6 colspan=11></td>
+
+
+  <td width=31 height=6 colspan=4></td>
+
+
+  <td width=31 height=6 colspan=4></td>
+
+
+  <td width=23 height=6></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=67 height=31 colspan=5 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=65 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=65 height=16><font face=Arial size=1>Command</font><br>
+
+
+    </td>
+
+
+    <td width=2 height=16></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=67 height=16 colspan=2><font face=Arial size=1>line editing</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=11 height=16 colspan=4></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=246 height=31 colspan=5 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=113 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=246 height=16 colspan=2><font face=Arial size=1>Allows the use of
+
+
+    an editor to modify the</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=113 height=16><font face=Arial size=1>command line text</font><br>
+
+
+    </td>
+
+
+    <td width=133 height=16></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=3 height=16 colspan=2></td>
+
+
+  <td width=19 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=4 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=19 height=16>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=11 height=16 colspan=2></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=15></td>
+
+
+  <td width=11 height=15 colspan=4></td>
+
+
+  <td width=1 height=15></td>
+
+
+  <td width=26 height=15 colspan=5></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=23 height=15></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=5 colspan=10></td>
+
+
+  <td width=273 height=5 colspan=11></td>
+
+
+  <td width=31 height=5 colspan=4></td>
+
+
+  <td width=31 height=5 colspan=4></td>
+
+
+  <td width=23 height=5></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=16></td>
+
+
+  <td width=65 height=31 colspan=4 rowspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=48 height=0 nowrap><img src="v3_space.gif" border=0 width="1" height="1"></td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=65 height=16 colspan=2><font face=Arial size=1>Command</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+   <tr>
+
+
+    <td width=48 height=16><font face=Arial size=1>aliasing</font><br>
+
+
+    </td>
+
+
+    <td width=17 height=16></td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=13 height=16 colspan=5></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=232 height=16 colspan=3>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=232 height=16><font face=Arial size=1>Allows the user to rename
+
+
+    commands</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=17 height=16 colspan=4></td>
+
+
+  <td width=19 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=19 height=16><font face=Arial size=1>No</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=4 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=1 height=16></td>
+
+
+  <td width=25 height=16 colspan=2>
+
+
+  <table border=0 valign=top cellpadding=0 cellspacing=0>
+
+
+   <tr>
+
+
+    <td width=25 height=16><font face=Arial size=1>Yes</font><br>
+
+
+    </td>
+
+
+   </tr>
+
+
+  </table>
+
+
+  </td>
+
+
+  <td width=5 height=16></td>
+
+
+  <td width=23 height=16></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=21 height=15></td>
+
+
+  <td width=13 height=15 colspan=5></td>
+
+
+  <td width=273 height=15 colspan=11></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=31 height=15 colspan=4></td>
+
+
+  <td width=23 height=15></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=99 height=6 colspan=10></td>
+
+
+  <td width=273 height=6 colspan=11></td>
+
+
+  <td width=31 height=6 colspan=4></td>
+
+
+  <td width=31 height=6 colspan=4></td>
+
+
+  <td width=23 height=6></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=446 height=1 colspan=32></td>
+
+
+  <td width=23 height=1></td>
+
+
+ </tr>
+
+
+ <tr>
+
+
+  <td width=475 height=20 colspan=34></td>
+
+
+ </tr>
+
+
+</table>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+

@@ -1,0 +1,311 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint">
+ <p:presentation slidesizex="6480" notessizex="4368" savewithfonts="t">
+  <p:master id="3" type="main" href="master03.htm" xmlhref="master03.xml"
+   template="Soaring" layout="title_body"
+   slots="title,body,dateTime,footer,slideNumber">
+   <p:schemes>
+    <p:colorscheme
+     colors="#0000FF,#FFFFFF,#000000,#FFCC66,#00FFFF,#FFFF00,#FF0033,#3366FF"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#CCECFF,#000000,#6699FF,#00CCCC,#CC99FF,#66CCFF"/>
+    <p:colorscheme
+     colors="#FFFFFF,#000000,#FFFFFF,#000000,#CBCBCB,#969696,#5F5F5F,#EAEAEA"/>
+    <p:colorscheme
+     colors="#008080,#FFFFFF,#000000,#FFCC66,#0099CC,#FFFF00,#6600CC,#009999"/>
+    <p:colorscheme
+     colors="#993300,#FFFFFF,#000000,#FFCC66,#FF6633,#FFFF00,#CC0000,#CC6600"/>
+   </p:schemes>
+  </p:master>
+  <p:master id="4" type="title" href="master04.htm" xmlhref="master04.xml"
+   layout="title_subtitle"
+   slots="centerTitle,subTitle,dateTime,footer,slideNumber"/>
+  <p:master id="1" type="notes" href="master01.htm" layout="notes"
+   slots="header,dateTime,slideImage,body,footer,slideNumber">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="0"/>
+  </p:master>
+  <p:master id="2" type="handout" href="master02.htm" layout="handout"
+   slots="header,dateTime,footer,slideNumber">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="1"/>
+  </p:master>
+  <p:slide id="395" href="slide0395.htm" omitmastershapes="t"/>
+  <p:slide id="121" href="slide0121.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="431" href="slide0431.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="2"/>
+  </p:slide>
+  <p:slide id="432" href="slide0432.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="3"/>
+  </p:slide>
+  <p:slide id="433" href="slide0433.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="4"/>
+  </p:slide>
+  <p:slide id="434" href="slide0434.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="5"/>
+  </p:slide>
+  <p:slide id="435" href="slide0435.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="3299" dataoffset="6"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="436" href="slide0436.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="7"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="467" href="slide0467.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="8"/>
+  </p:slide>
+  <p:slide id="437" href="slide0437.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2129" dataoffset="9"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="439" href="slide0439.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="1532" dataoffset="10"/>
+  </p:slide>
+  <p:slide id="438" href="slide0438.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="959" dataoffset="11"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="440" href="slide0440.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="12"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="441" href="slide0441.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2129" dataoffset="13"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="468" href="slide0468.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="14"/>
+  </p:slide>
+  <p:slide id="442" href="slide0442.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="15"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="443" href="slide0443.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="16"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="469" href="slide0469.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="17"/>
+  </p:slide>
+  <p:slide id="444" href="slide0444.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="1544" dataoffset="18"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="445" href="slide0445.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="19"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="446" href="slide0446.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="20"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="470" href="slide0470.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="21"/>
+  </p:slide>
+  <p:slide id="447" href="slide0447.htm" layout="title_body" slots="title,graph">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="22"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="451" href="slide0451.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="23"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="448" href="slide0448.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="24"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="449" href="slide0449.htm">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="25"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="450" href="slide0450.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="3299" dataoffset="26"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="452" href="slide0452.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="27"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="453" href="slide0453.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="28"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="454" href="slide0454.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="29"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="455" href="slide0455.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="30"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="456" href="slide0456.htm">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="31"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="460" href="slide0460.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="3941" dataoffset="32"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="462" href="slide0462.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="33"/>
+  </p:slide>
+  <p:slide id="463" href="slide0463.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2117" dataoffset="34"/>
+  </p:slide>
+  <p:slide id="396" href="slide0396.htm" omitmastershapes="t"/>
+  <p:slide id="457" href="slide0457.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="35"/>
+  </p:slide>
+  <p:slide id="458" href="slide0458.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="36"/>
+  </p:slide>
+  <p:slide id="477" href="slide0477.htm" layout="2_columns"
+   slots="title,body,body">
+   <p:tag name="___PPT10" type="binary" datasize="3941" dataoffset="37"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="461" href="slide0461.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="3299" dataoffset="38"/>
+   <p:headersfooters formatid="13"/>
+  </p:slide>
+  <p:slide id="471" href="slide0471.htm" layout="2_columns"
+   slots="title,body,body">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="39"/>
+  </p:slide>
+  <p:slide id="472" href="slide0472.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="40"/>
+  </p:slide>
+  <p:slide id="465" href="slide0465.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="41"/>
+  </p:slide>
+  <p:slide id="464" href="slide0464.htm" layout="title_only" slots="title">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="42"/>
+  </p:slide>
+  <p:slide id="479" href="slide0479.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="43"/>
+  </p:slide>
+  <p:slide id="480" href="slide0480.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="44"/>
+  </p:slide>
+  <p:slide id="487" href="slide0487.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="45"/>
+  </p:slide>
+  <p:slide id="483" href="slide0483.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="46"/>
+  </p:slide>
+  <p:slide id="475" href="slide0475.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="47"/>
+  </p:slide>
+  <p:slide id="486" href="slide0486.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="48"/>
+  </p:slide>
+  <p:slide id="485" href="slide0485.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="49"/>
+  </p:slide>
+  <p:slide id="466" href="slide0466.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="7158" dataoffset="50"/>
+  </p:slide>
+  <p:slide id="481" href="slide0481.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="51"/>
+  </p:slide>
+  <p:slide id="484" href="slide0484.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="52"/>
+  </p:slide>
+  <p:slide id="482" href="slide0482.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="16" dataoffset="53"/>
+  </p:slide>
+  <p:slide id="478" href="slide0478.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="54"/>
+  </p:slide>
+  <p:slide id="474" href="slide0474.htm" layout="title_body"
+   slots="title,object">
+   <p:tag name="___PPT10" type="binary" datasize="105" dataoffset="55"/>
+  </p:slide>
+  <p:slide id="415" href="slide0415.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2698" dataoffset="56"/>
+  </p:slide>
+  <p:slide id="334" href="slide0334.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="335" href="slide0335.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="388" href="slide0388.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="336" href="slide0336.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="393" href="slide0393.htm" layout="title_only" slots="title"/>
+  <p:slide id="339" href="slide0339.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2113" dataoffset="57"/>
+  </p:slide>
+  <p:slide id="404" href="slide0404.htm" layout="title_body" slots="title,graph"/>
+  <p:slide id="414" href="slide0414.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="405" href="slide0405.htm" layout="title_body" slots="title,graph"/>
+  <p:slide id="338" href="slide0338.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="407" href="slide0407.htm" layout="title_body" slots="title,graph"/>
+  <p:slide id="429" href="slide0429.htm" layout="title_body" slots="title,body"/>
+  <p:slide id="389" href="slide0389.htm" layout="title_body" slots="title,body">
+   <p:tag name="___PPT10" type="binary" datasize="2113" dataoffset="58"/>
+  </p:slide>
+  <p:slide id="413" href="slide0413.htm" layout="title_body" slots="title,graph"/>
+  <p:slide id="340" href="slide0340.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="341" href="slide0341.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="342" href="slide0342.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="343" href="slide0343.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="344" href="slide0344.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="345" href="slide0345.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="346" href="slide0346.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="337" href="slide0337.htm" layout="title_only" slots="title"/>
+  <p:slide id="391" href="slide0391.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="390" href="slide0390.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="392" href="slide0392.htm" masterhref="master04.htm"
+   layout="title_subtitle" slots="centerTitle,subTitle"/>
+  <p:slide id="347" href="slide0347.htm" xmlhref="slide0347.xml"
+   layout="title_body" slots="title,body">
+   <p:headersfooters noheader="t"/>
+  </p:slide>
+  <p:slide id="473" href="slide0473.htm" omitmastershapes="t"/>
+  <p:viewstate type="slideView" scale="77" restoredleft="156" restoredtop="946"
+   manualadjustleft="t" manualadjusttop="t" hideoutlineicons="t"/>
+  <p:slideshowsettings pencolor="schemeText" manualadvance="t"/>
+  <p:tag name="___PPT10" type="binary" datasize="28" dataoffset="59"/>
+  <p:kinsoku language="Japanese" level="levelOne"/>
+  <p:font name="Times New Roman" charset="0" type="4" family="18"/>
+  <p:font name="Arial" charset="0" type="4" family="34"/>
+  <p:font name="Monotype Sorts" charset="2" type="4"/>
+  <p:font name="Lucida Sans Unicode" charset="0" type="4" family="34"/>
+  <p:font name="Brush Script MT" charset="0" type="4" family="66"/>
+  <p:font name="Verdana" charset="0" type="4" family="34"/>
+  <p:font name="News Gothic MT" charset="0" type="4" family="34"/>
+  <p:font name="System"/>
+  <p:headersfooters nofooter="t" noheader="t" nodate="t"/>
+  <p:headersfooters notes="t" slidenumber="t"/>
+  <p:pptdocumentsettings framecolors="WhiteTextOnBlack" hideslideanimation="t"
+   browsersupport="dual"/>
+ </p:presentation>
+ <o:shapedefaults v:ext="edit" spidmax="546818">
+  <v:stroke startarrowwidth="narrow" startarrowlength="short" endarrowwidth="narrow"
+   endarrowlength="short" color2="none [0]" weight="1pt"/>
+  <o:colormru v:ext="edit" colors="#ddd"/>
+ </o:shapedefaults></xml>

@@ -1,0 +1,336 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+
+
+xmlns:o="urn:schemas-microsoft-com:office:office"
+
+
+xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+
+
+xmlns="http://www.w3.org/TR/REC-html40">
+
+
+
+
+
+<head>
+
+
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<meta name=ProgId content=PowerPoint.Slide>
+
+
+<meta name=Generator content="Microsoft PowerPoint 9">
+
+
+<link id=Main-File rel=Main-File href="../ShellScripting.htm">
+
+
+<link rel=Preview href=preview.wmf>
+
+
+<!--[if !mso]>
+
+
+<style>
+
+
+v\:* {behavior:url(#default#VML);}
+
+
+o\:* {behavior:url(#default#VML);}
+
+
+p\:* {behavior:url(#default#VML);}
+
+
+.shape {behavior:url(#default#VML);}
+
+
+v\:textbox {display:none;}
+
+
+</style>
+
+
+<![endif]-->
+
+
+<title>Unix Shell Scripting</title>
+
+
+<meta name=Description content="14-Nov-00: Purpose of this Tutorial">
+
+
+<link rel=Stylesheet href="master03_stylesheet.css">
+
+
+<![if !ppt]>
+
+
+<style media=print>
+
+
+<!--.sld
+
+
+	{left:0px !important;
+
+
+	width:6.0in !important;
+
+
+	height:4.5in !important;
+
+
+	font-size:107% !important;}
+
+
+-->
+
+
+</style>
+
+
+<script src=script.js></script><script><!--
+
+
+gId="slide0002.htm"
+
+
+if( !IsNts() ) Redirect( "PPTSld", gId );
+
+
+//-->
+
+
+</script><!--[if vml]><script>g_vml = 1;
+
+
+</script><![endif]--><script for=window event=onload><!--
+
+
+if( !IsSldOrNts() ) return;
+
+
+if( MakeNotesVis() ) return;
+
+
+LoadSld( gId );
+
+
+MakeSldVis(0);
+
+
+//-->
+
+
+</script><![endif]><o:shapelayout v:ext="edit">
+
+
+ <o:idmap v:ext="edit" data="41"/>
+
+
+</o:shapelayout>
+
+
+</head>
+
+
+
+
+
+<body lang=EN-US style='margin:0px;background-color:black'
+
+
+onclick="DocumentOnClick()" onresize="_RSW()" onkeypress="_KPH()">
+
+
+
+
+
+<div id=SlideObj class=sld style='position:absolute;top:0px;left:0px;
+
+
+width:534px;height:400px;font-size:16px;background-color:#000066;clip:rect(0%, 101%, 101%, 0%);
+
+
+visibility:hidden'><p:slide coordsize="720,540"
+
+
+ colors="#000066,#FFFFFF,#000044,#FFCC00,#9CE157,#2663A0,#F98D43,#CC3300"
+
+
+ masterhref="master03.xml">
+
+
+ <p:shaperange href="master03.xml#_x0000_s1025"/><![if !ppt]><p:shaperange
+
+
+  href="master03.xml#_x0000_s1073"/><![if !vml]><img border=0
+
+
+ v:shapes="_x0000_s1073,_x0000_s1032,_x0000_s1033,_x0000_s1034,_x0000_s1035,_x0000_s1041,_x0000_s1042,_x0000_s1043,_x0000_s1044,_x0000_s1045,_x0000_s1046,_x0000_s1047,_x0000_s1049,_x0000_s1051,_x0000_s1052,_x0000_s1053,_x0000_s1054,_x0000_s1058,_x0000_s1059,_x0000_s1060,_x0000_s1061,_x0000_s1062,_x0000_s1063,_x0000_s1064,_x0000_s1065,_x0000_s1066,_x0000_s1067,_x0000_s1068"
+
+
+ src="master03_image007.gif" style='position:absolute;top:0%;left:0%;
+
+
+ width:100.37%;height:101.25%'><![endif]><p:shaperange
+
+
+  href="master03.xml#_x0000_s1028"/><p:shaperange
+
+
+  href="master03.xml#_x0000_s1029"/><![endif]><p:shaperange
+
+
+  href="master03.xml#_x0000_m1026"/><v:shape id="_x0000_s41986" type="#_x0000_m1026"
+
+
+  style='position:absolute;left:54pt;top:63pt;width:612pt;height:60pt'
+
+
+  o:userdrawn="f">
+
+
+  <v:fill o:detectmouseclick="f"/>
+
+
+  <v:stroke o:forcedash="f"/>
+
+
+  <o:lock v:ext="edit" text="f"/>
+
+
+  <p:placeholder type="title"/></v:shape><p:shaperange
+
+
+  href="master03.xml#_x0000_m1027"/><v:shape id="_x0000_s41987" type="#_x0000_m1027"
+
+
+  style='position:absolute;left:54pt;top:156pt;width:612pt;height:324pt'
+
+
+  o:userdrawn="f">
+
+
+  <v:fill o:detectmouseclick="f"/>
+
+
+  <v:stroke o:forcedash="f"/>
+
+
+  <o:lock v:ext="edit" text="f"/>
+
+
+  <p:placeholder type="body" position="1"/></v:shape>
+
+
+ <div v:shape="_x0000_s41986" class=T style='position:absolute;top:11.0%;
+
+
+ left:2.99%;width:94.19%;height:11.75%'>Purpose of this Tutorial</div>
+
+
+ <div v:shape="_x0000_s41987" class=B><span style='position:absolute;
+
+
+ top:30.0%;left:12.17%;width:87.82%'><span style='font-size:88%'><span
+
+
+ style='mso-special-format:bullet;mso-bullet-image:"image002\.gif";font-size:
+
+
+ 85%'><![if !ppt]><img src=image002.gif style='position:absolute;top:20.83%;
+
+
+ left:-4.26%;width:2.98%;height:58.33%'><![endif]></span></span><span
+
+
+ style='font-size:88%'>Know the basic shells and their similarities </span></span><span
+
+
+ style='position:absolute;top:36.25%;left:12.17%;width:79.4%'><span
+
+
+ style='font-size:88%'>and differences&#13;</span></span><span
+
+
+ style='position:absolute;top:43.5%;left:12.17%;width:87.82%'><span
+
+
+ style='font-size:88%'><span style='mso-special-format:bullet;mso-bullet-image:
+
+
+ "image002\.gif";font-size:85%'><![if !ppt]><img src=image002.gif
+
+
+ style='position:absolute;top:25.0%;left:-4.26%;width:2.98%;height:58.33%'><![endif]></span></span><span
+
+
+ style='font-size:88%'>Understand shell arguments and how they </span></span><span
+
+
+ style='position:absolute;top:49.75%;left:12.17%;width:79.4%'><span
+
+
+ style='font-size:88%'>are processed by the shell &#13;</span></span>
+
+
+ <div style='position:absolute;top:57.25%;left:8.42%;width:92.69%;height:6.0%'><span
+
+
+ style='position:absolute;top:0%;left:4.04%;width:95.95%'><span
+
+
+ style='font-size:88%'><span style='mso-special-format:bullet;mso-bullet-image:
+
+
+ "image002\.gif";font-size:85%'><![if !ppt]><img src=image002.gif
+
+
+ style='position:absolute;top:20.83%;left:-4.21%;width:2.94%;height:58.33%'><![endif]></span></span><span
+
+
+ style='font-size:88%'>Manipulate the shell environment variables &#13;</span></span></div>
+
+
+ <div style='position:absolute;top:64.75%;left:8.42%;width:83.14%;height:6.0%'><span
+
+
+ style='position:absolute;top:0%;left:4.5%;width:95.49%'><span
+
+
+ style='font-size:88%'><span style='mso-special-format:bullet;mso-bullet-image:
+
+
+ "image002\.gif";font-size:85%'><![if !ppt]><img src=image002.gif
+
+
+ style='position:absolute;top:20.83%;left:-4.71%;width:3.3%;height:58.33%'><![endif]></span></span><span
+
+
+ style='font-size:88%'>Write simple shell scripts</span></span></div>
+
+
+ </div>
+
+
+</p:slide></div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+
