@@ -13,7 +13,6 @@ html {
 }
 
 /*Customizations to CSS*/
-
 #pageHeader{
     position:relative;
     backface-visibility:hidden;
@@ -85,7 +84,7 @@ object{
     background-image: linear-gradient(rgba(72,78,85,1.0), rgba(58,63,68,1.0) 60%, rgba(49,53,57,1.0));
     display: inline;
 }
-navitem{
+.navitem{
     color: inherit;
     background-image:inherit;
 

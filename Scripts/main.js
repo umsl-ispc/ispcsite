@@ -6,11 +6,17 @@
         $('#contentBody').load("landing.html");
         animateText("UMSL - Information Systems Programming Club");
     });
-    $('#news').click(function () {
+    $("#news").click(function () {
         //$('#contentBody').html('<object data="news.html">');
         $('#contentBody').load("news.html");
-        animateText("What's been happening");
+        animateText("News");
     });
+    $(".tempLink").click(function () {
+        //$('#contentBody').html('<object data="news.html">');
+        $('#contentBody').load("news.html");
+        animateText("News");
+    });
+
     $('#purpose').click(function () {
         //$('#contentBody').html('<object data="purpose.html">');
         $('#contentBody').load("purpose.html");
