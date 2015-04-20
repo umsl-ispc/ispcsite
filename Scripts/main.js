@@ -98,8 +98,11 @@ $(window).scroll(function () {
     var ratio = position / imageHeight;//making a fraction for the alpha value in rgba below
     var rgbValue = 300 * ratio; //using 300 instead of 255 so text is completely white(255,255,255) at about 85%
     rgbValue = rgbValue.toFixed();//remove decimals
-    document.getElementById("mainNav").style.backgroundImage = "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))";//controls opacity
-    document.getElementById("mainNav").style.color = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//not exact, but gets from black to white
+    /*document.getElementById("mainNav").style.backgroundImage = "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))";//controls opacity
+    document.getElementById("mainNav").style.color = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//not exact, but gets from black to white*/
+    $("#mainNav").css("backgroundImage","linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//controls opacity
+    $("#mainNav").css("color","rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")");//not exact, but gets from black to white
+    $("#navList").css("backgroundImage", "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//same deal but for navlist dropdown
     var iconTextColor = document.getElementsByClassName("icon-bar");
     var i = iconTextColor.length;
     while(i>0)

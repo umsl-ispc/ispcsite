@@ -1,0 +1,82 @@
+/*!
+Customizations to bootstrap CSS
+*/
+
+/*specific elements*/
+#pageHeader{
+    position:relative;
+    backface-visibility:hidden;
+}
+#navList{
+    background-color:transparent;
+}
+
+
+/*html tags*/
+body {
+  margin: 0;
+  height: 100%;
+}
+object{
+    margin: 0;
+    height:100%;
+    width:100%;
+}
+
+/*classes*/
+.navbar-default{
+    background-color:transparent;
+    color:rgb(0,0,0);
+      background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
+  background-repeat: no-repeat;
+  -webkit-filter: none;
+          border: 1px solid rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
+}
+.title{
+    font-weight:bold;
+}
+
+.table-contact{
+    align-items:center;
+    table-layout:auto;
+}
+.img-contact{
+
+    max-height:175px;
+    max-width:175px;
+
+    min-height:56px;
+    min-width:56px;
+
+    border: 0.5px solid #c0c0c0;
+    flex-basis:90px;
+    
+}
+.container-image {
+    align-self:center;
+    position:relative;
+
+
+}
+
+.img-bg{
+    min-height: 10%;
+    min-width: 10%;
+
+    width: 100%;
+    height:auto;
+    display:inline;
+}
+.container-bg-image{
+    position:relative;
+    top:0;
+    left:0;
+}
+
+.navitem{
+    color: inherit !important;
+    background-image:inherit !important;
+    background-color:inherit !important;
+
+}
