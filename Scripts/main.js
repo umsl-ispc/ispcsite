@@ -108,7 +108,7 @@ $(window).scroll(function () {
     while(i>0)
     {
         iconTextColor[i-1].style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//to access array indices 0,1,2
-        i = i-1;
+        i = i-1;//decrement index
     }
     
     //document.getElementById("tester").innerHTML = rgbValue;

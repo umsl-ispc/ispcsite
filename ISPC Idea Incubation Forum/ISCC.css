@@ -1,0 +1,86 @@
+﻿    body{
+    height:100%;
+    width:100%;
+    min-height:700px;
+    overflow:hidden;
+    padding:0px;
+    margin:0px;
+    border:0px;
+        }
+    *{
+        color:white;
+    }
+    span{
+        display:inline;
+    }
+    hr{
+        width:90%;
+
+    }
+
+    h1,h2,h3,h4,h5{
+        text-align:center;
+    }
+    .table{
+        max-width:90%;
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+        -webkit-margin-start: auto;
+        -webkit-margin-end: auto;
+        font-size:1.5em;
+    }
+    .heading{
+        position:static;
+    }
+    .heading .text{
+        left:120px;
+        flex-wrap:wrap;
+        font-size:2.25em;   
+        text-align:justify;   
+    }
+    .screen{
+    height:100%;
+    width:100%;
+    min-height:700px;
+        }
+
+    .left-side{
+        max-width:55%;
+        position:absolute;
+        z-index:10;
+        margin:10px;
+
+    }
+    .left-side .image{
+        position:static;
+        max-height: 24%;
+        max-width:24%;
+        display:inline;
+        vertical-align:middle;
+        
+    }
+    .right-side{
+
+    }
+    .background{
+        position:absolute;
+        left:25%;
+
+        height:100%;
+        z-index:-10;
+    }
+    #overlay{
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:1;
+
+        width:100%;
+        height:100%;
+        
+        background: -moz-linear-gradient(-15deg, rgba(0,0,0,1) 0%, rgba(12,16,20,1) 40%, rgba(15,20,25,0.8) 60%, rgba(111,114,117,0.4) 70%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+        background: -webkit-linear-gradient(-15deg, rgba(0,0,0,1) 0%,rgba(12,16,20,1) 40%,rgba(15,20,25,0.8) 60%,rgba(111,114,117,0.4) 70%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(-15deg, rgba(0,0,0,1) 0%,rgba(12,16,20,1) 40%,rgba(15,20,25,0.8) 60%,rgba(111,114,117,0.4) 70%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(-15deg, rgba(0,0,0,1) 0%,rgba(12,16,20,1) 40%,rgba(15,20,25,0.8) 60%,rgba(111,114,117,0.4) 70%,rgba(255,255,255,0) 100%); /* IE10+ */
+        background: linear-gradient(105deg, rgba(0,0,0,1) 0%,rgba(12,16,20,1) 40%,rgba(15,20,25,0.8) 60%,rgba(111,114,117,0.4) 70%,rgba(255,255,255,0) 100%); /* W3C */
+    }
