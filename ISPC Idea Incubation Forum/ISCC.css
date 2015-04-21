@@ -33,8 +33,16 @@
         height:100%;
         -webkit-margin-before: 0.5em;
         -webkit-margin-after: 0.5em;
-        -webkit-margin-start: auto;
-        -webkit-margin-end: auto;
+		/*-moz-margin-start: 0.5em;
+		-moz-margin-end: 0.5em;*/
+		-moz-margin-start:auto;
+		-moz-margin-end:auto;
+		-o-margin-start: 0.5em;
+		-o-margin-end: 0.5em;
+		-margin-start: 0.5em;
+		-margin-end: 0.5em;
+        /*-webkit-margin-start: auto;
+        -webkit-margin-end: auto;*/
         font-size:1.5em;
     }
     .heading{

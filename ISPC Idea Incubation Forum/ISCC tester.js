@@ -182,17 +182,19 @@ function inProgAnimation(htmlRowRef)
     {
         htmlRowRef.isAnimating = true;
         columnsArray[2].style.color = "white";
-        htmlRowRef.tween = TweenMax.fromTo(htmlRowRef.objRef, 3.0, { backgroundColor: "transparent" }, { backgroundColor: "green", ease: Power1.easeInOut, repeat: -1, yoyo: true });
+        htmlRowRef.tween = TweenMax.fromTo(htmlRowRef.objRef, 3.0, { backgroundColor: "transparent" }, { backgroundColor: "rgba(0, 189, 0, 0.5)", ease: Power1.easeInOut, repeat: -1, yoyo: true });
     }   
 }
 
 function finishedAnimation(htmlRowRef)
 {
-    htmlRowRef.tween.kill();
-    htmlRowRef.objRef.style.backgroundColor = "transparent";
-    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");
-    htmlRowRef.objRef.style.textDecoration = "line-through";
-    columnsArray[2].innerHTML = "Completed";
+
+    htmlRowRef.tween.kill();//stops repeating animation
+    TweenMax.to(htmlRowRef.objRef, 2.0, { backgroundColor: "transparent" });//ensures that bg fades to clear
+    htmlRowRef.objRef.style.textDecoration = "line-through";//strikes out text
+
+    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");//gets references to row objects
+    columnsArray[2].innerHTML = "Completed";//sets status from in prog to done
 }
 
 function backgroundSlideShow()
