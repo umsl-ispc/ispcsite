@@ -1,12 +1,13 @@
 ﻿$(document).ready(function () {
     var thirtyMinutes = 1800000;//in milliseconds
+    var twoMinutes = 120000;//in ms
     var tenMinutes = 600000;//in ms
     var fifteenMinutes = 900000;//in ms
-    var fiveSeconds = 7000;//for testing
+    var testStagger = 7000;//for testing
 
     //vars for time control(well more like time handling not really control)
     var enumTimeSegment = [0,thirtyMinutes, fifteenMinutes, fifteenMinutes, tenMinutes, thirtyMinutes, tenMinutes, thirtyMinutes, tenMinutes];
-    var enumTimeSegment2 = [0,fiveSeconds, fiveSeconds, fiveSeconds, fiveSeconds, fiveSeconds, fiveSeconds, fiveSeconds, fiveSeconds];//testing
+    var enumTimeSegment2 = [0,testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger];//testing
     var enumIndex = 0;
 
     //vars for time checking
@@ -18,7 +19,7 @@
     //An array for holding table row objects
     var rowArray = [];
 
-
+    var foreverTime = setInterval(function () { showTime(); }, 1000);
 
     isccStartTime = new Date();//init
     //isccStartTime.setTime(1429799400000);//time in ms for 4/23/2015 9:30AM CDT
@@ -29,8 +30,16 @@
 
     eventStartTime = new Date();
     eventEndTime = new Date();
-    eventEndTime.setMilliseconds(5000);//this adds 6 seconds
+    eventEndTime.setMilliseconds(10000);//this adds 10 seconds
 
+
+
+    //actual times
+    //eventStartTime.setTime(1429799400000);//time in ms for 4/23/2015 9:30AM CDT
+    //eventEndTime.setTime(1429801200000);//time in ms for 4/23/2015 10:00AM CDT
+    //probably don't need above is more specific eventEndTime.setMilliseconds(thirtyMinutes);//sets actual firstevent endtime
+
+    //fills array with row data and references to html objects
     rowArrayInit();
 
     //var startCheck = setInterval(function () { startChecker(currentTime, isccStartTime); }, 1000);
@@ -41,35 +50,49 @@
     //getCurrentTime(timeCurrent);
     function updateTimes()
     {
+        //$('#tester').html("in update time");
+        //window.alert("in update times");
         enumIndex++;//move index to next position
-        eventStartTime += rowArray[enumIndex].startTime;
-        eventEndTime += rowArray[enumIndex].stopTime;
-        $('#tester').html(eventStartTime);
-        $('#tester2').html(eventEndTime);
+        eventStartTime.setTime(rowArray[enumIndex].startTime);
+        eventEndTime.setTime(rowArray[enumIndex].endTime);
+        //window.alert("Row " + enumIndex + " start " + rowArray[enumIndex].startTime + " end " + rowArray[enumIndex].endTime);
         if(enumIndex < rowArray.length)
         {
-            rowArray[enumIndex - 1].objRef.style.backgroundColor = "red";
+            //they work
+            //rowArray[enumIndex - 1].objRef.style.backgroundColor = "red";
+            var x = rowArray[enumIndex - 1].objRef.getElementsByTagName("td");
             beginCheck();
         }
     }
 
-    function timeCheck(currentTime, eventEndTime, intervalName)
+    //check if the event has started or ended
+    function timeCheck(eventStart, eventEnd, intervalName)
     {
-        $('#tester').html("tester is " + currentTime.getTime() + "but" + eventEndTime.getTime());
-        $('#tester2').html("refreshed");
-        //loop while eventEndTime has yet to occur
-        if (currentTime.getTime() < eventEndTime.getTime())
+        currentTime = getCurrentTime();
+        //$('#tester2').html("start is " + eventStart.getTime() + "but" + eventEnd.getTime() + " current " + currentTime.getTime());
+        //$('#tester').html("in time check");
+        //See if event is in prog
+        if (currentTime.getTime() > eventStart.getTime() && currentTime.getTime() < eventEnd.getTime())
         {
-            //currentTime = getTime();//update current time
-            currentTime = getCurrentTime();
-            if (currentTime.getTime() >= eventEndTime.getTime())
-            {
-                
-                endInterval(intervalName);
-                updateTimes();
-            }
+            $('#tester').html("event in prog");
+            inProgAnimation(rowArray[enumIndex]);
         }
-        //$('#tester').html("loop complete");
+        //it is before end. also current is smaller than eventEnd
+        if (currentTime.getTime() < eventEnd.getTime())
+        {
+            //if ((eventEnd.getTime() - currentTime.getTime()) <= twoMinutes)//in the two minute warning
+            if ((eventEnd.getTime() - currentTime.getTime()) <= 1500)//or the not even two second warning
+            {
+                //window.alert("two mintue warning");
+            }
+            $('#tester2').html("not yet");
+        } else //event is over (current > end)
+        {
+            endInterval(intervalName);
+            rowArray[enumIndex].killTween = true;
+            finishedAnimation(rowArray[enumIndex]);
+            updateTimes();
+        }
     }
     function startChecker(currentTime, eventEndTime)
     {
@@ -84,20 +107,30 @@
                 endInterval(startCheck);
                 $('#tester').html("lets go already");
                 beginCheck();
-
             }
         }
     }
     function beginCheck()
     {
-        
+        //calls function to compare time every second
+        //$('#tester').html("In begincheck");
+        //$('#tester2').html("start is " + eventStartTime.getTime() + "but" + eventEndTime.getTime() + " current " + currentTime.getTime());
         myIntv = setInterval(function () { timeCheck(eventStartTime, eventEndTime, myIntv); }, 1000);
     }
-    function getCurrentTime()
+
+    function showTime()
     {
         var date = new Date();
         date.getTime();
-        $('#tester2').html("New time is" + date);
+        $('#displayTime').html("The current time is: " + date.toLocaleTimeString());//normal
+        //$('#displayTime').html("The current time is: " + date.getTime());//ms output
+    }
+    function getCurrentTime()
+    {
+        //$('#tester').html("In get current time");
+        //$('#tester2').html("start is " + eventStartTime.getTime() + "but" + eventEndTime.getTime() + " current " + currentTime.getTime());
+        var date = new Date();
+        date.getTime();
         return date;
     }
     function endInterval(interval)
@@ -110,46 +143,59 @@
     }
     function rowArrayInit()
     {
-
+        //get HTML object references
         var tempRefArray = document.getElementsByClassName("body-row");
-        //rowArray[tempRefArray.length];
         
+
         var i = 0;
+        var startCounter = eventStartTime.getTime();
+        var endCounter = eventEndTime.getTime();
         for (i = 0; i < tempRefArray.length; i++)
         {
-            //window.alert("value is " + tempRefArray[i].item);
-            $('#tester2').html("temp arr " + i);
+            startCounter += enumTimeSegment2[i];
+            endCounter += enumTimeSegment2[i];
             var text = "rowarray text "+i;
-            var holder = new tableRow((i + 1), text, (eventStartTime.getTime() + enumTimeSegment2[i]), (eventEndTime.getTime() + enumTimeSegment2[i]),tempRefArray[i]);
-            //window.alert("And Back" + i + " is");
-            rowArray[i] = holder;
-
-            //rowArray[i].objRef.style.backgroundColor = "red";
+            rowArray[i] = new tableRow((i + 1), text, startCounter, endCounter, tempRefArray[i]);
+            //window.alert("Row " + i + " start " + rowArray[i].startTime + " end " + rowArray[i].endTime);//can check array values
         }
         //window.alert("Done with row init" );
     }
+
     //tableRow object constructor
-    function tableRow(rowNum, rowText, startTime, stopTime, objRef)
+    function tableRow(rowNum, rowText, startTime, endTime, objRef)
     {
-        //window.alert("in here" + startTime + " and " + stopTime + rowText + rowNum);
-        //$('#tester').html("start is " + objRef.toString);
         this.rowNum = rowNum;
         this.rowText = rowText;
         this.startTime = startTime;
-        this.stopTime = stopTime;
+        this.endTime = endTime;
         this.objRef = objRef;
+        this.tween;
+        this.animating = false;
+        this.killTween = false;
     }
 })//end of on doc ready
 
-function rowAlert()
+function inProgAnimation(htmlRowRef)
 {
-    var rowArray = document.getElementsByClassName("body-row");
-    var i;
-    for(i = 0; i < rowArray.length; i++)
+    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");
+    if (!htmlRowRef.isAnimating)
     {
-        window.alert(rowArray[i].toString);
-        $('#tester2').html(rowArray[i].toString);
-        rowArray[i].style.backgroundColor = "red";
-    }
+        htmlRowRef.isAnimating = true;
+        columnsArray[2].style.color = "white";
+        htmlRowRef.tween = TweenMax.fromTo(htmlRowRef.objRef, 3.0, { backgroundColor: "transparent" }, { backgroundColor: "green", ease: Power1.easeInOut, repeat: -1, yoyo: true });
+    }   
+}
+
+function finishedAnimation(htmlRowRef)
+{
+    htmlRowRef.tween.kill();
+    htmlRowRef.objRef.style.backgroundColor = "transparent";
+    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");
+    htmlRowRef.objRef.style.textDecoration = "line-through";
+    columnsArray[2].innerHTML = "Completed";
+}
+
+function backgroundSlideShow()
+{
 
 }

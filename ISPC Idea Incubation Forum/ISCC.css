@@ -18,11 +18,19 @@
 
     }
 
+
     h1,h2,h3,h4,h5{
         text-align:center;
+    }    
+    .myInv{
+        color:transparent;
+    }
+    .body-row{
+        background-color:transparent;
     }
     .table{
         max-width:90%;
+        height:100%;
         -webkit-margin-before: 0.5em;
         -webkit-margin-after: 0.5em;
         -webkit-margin-start: auto;
