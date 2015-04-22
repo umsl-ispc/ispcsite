@@ -24,15 +24,7 @@ object{
 }
 
 /*classes*/
-.navbar-default{
-    background-color:transparent;
-    color:rgb(0,0,0);
-      background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
-  background-repeat: no-repeat;
-  -webkit-filter: none;
-          border: 1px solid rgba(0, 0, 0, 0.6);
-    background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
-}
+
 .title{
     font-weight:bold;
 }
@@ -73,10 +65,36 @@ object{
     top:0;
     left:0;
 }
-
+/*Navbar rules*/
+.navbar-default{
+    background-color:transparent;
+    color:rgb(0,0,0);
+      background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
+  background-repeat: no-repeat;
+  -webkit-filter: none;
+          border: 1px solid rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
+}
 .navitem{
     color: inherit !important;
     background-image:inherit !important;
     background-color:inherit !important;
 
 }
+.navitem:hover{
+	/*border-style: solid;*/
+	border-color:black;
+	color:white !important;
+	background-color:#2E2E2E !important;
+}
+
+/*Mobile device rules*/
+@media screen and (max-width: 600px){
+	.navbar-default{ 
+	background-color:#2E2E2E;
+	color:white;
+	}
+}
+
+
+
