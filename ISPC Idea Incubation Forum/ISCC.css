@@ -33,16 +33,8 @@
         height:100%;
         -webkit-margin-before: 0.5em;
         -webkit-margin-after: 0.5em;
-		/*-moz-margin-start: 0.5em;
-		-moz-margin-end: 0.5em;*/
-		-moz-margin-start:auto;
-		-moz-margin-end:auto;
-		-o-margin-start: 0.5em;
-		-o-margin-end: 0.5em;
-		-margin-start: 0.5em;
-		-margin-end: 0.5em;
-        /*-webkit-margin-start: auto;
-        -webkit-margin-end: auto;*/
+        -webkit-margin-start: auto;
+        -webkit-margin-end: auto;
         font-size:1.5em;
     }
     .heading{
@@ -78,13 +70,6 @@
     .right-side{
 
     }
-    .headimage {
-        position:absolute;
-        height:70%;
-        width:70%;
-        z-index:10;
-    }
-
     .background{
         position:absolute;
         left:25%;
@@ -92,7 +77,7 @@
         height:100%;
         z-index:-10;
     }
-    .overlay{
+    #overlay{
         position:absolute;
         top:0px;
         left:0px;
