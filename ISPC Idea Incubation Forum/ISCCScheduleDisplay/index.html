@@ -1,48 +1,38 @@
 ﻿<!doctype html>
 <!--TODO: add shiv for compat w/ older IE-->
-
 <html lang ="en-us">
 <head>
-
 <meta charset="utf-8">
 <meta name="keywords" content="ISPC,UMSL,main,Information,Systems,IS,Information Systems" />
 <meta name="author" content="UMSL ISPC" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>ISPC test chamber</title>
-
+<title>ISCC Schedule</title>
     <script src="scripts/jquery-1.11.2.min.js"></script>
     <script src="Regular bootstrap/bootstrap.min.js"></script>
     <script src="scripts/greensock/jquery.gsap.min.js"></script>
     <script src="scripts/greensock/TweenMax.min.js"></script>
     
-
-    <script src="ISCC tester.js"></script>
-
+    <script src="ISCC.js"></script>
     <link rel="stylesheet" href="Regular bootstrap/bootstrap.min.css" />
     <link rel="stylesheet" href="ISCC.css" />
-
-
     <!--
-
-
     -->
 
 <style>
-
 </style> 
 </head>
+
 <body>
-    <div id="overlay"></div>
+    <div class="overlay"></div>
     <div class="screen">
         <div class="left-side">
             <span class="heading">
-                <img class="left-side image" src="idea images/ISCC Logo Design 2.png" />
+                <img class="left-side image" src="idea images/ISCC Logo whitetext.png" />
                 <span class="heading text">Welcome to the IS Career Conference</span>
             </span>
-            <h2 class="time" id="displayTime">The current time is: </h2>
+            <h3 class="time" id="displayTime">The current time is: </h3>
             <hr />
-            <h2>Schedule</h2>
+            <h2 id="thanks">Schedule</h2>
             <section>
                 <table class="table">
                     <thead>
@@ -60,12 +50,12 @@
                         </tr>
                         <tr class="body-row">
                             <td>10:00 am &ndash; 10:15 am</td>
-                            <td>Welcome by Prof. Vicki Sauter (202 JCP)</td>
+                            <td>Welcome by Prof. Vicki Sauter in 202</td>
                             <td class="myInv">In progress</td>
                         </tr>
                         <tr class="body-row">
                             <td>10:15 am &ndash; 10:30 am</td>
-                            <td>Keynote by Prof. Brian Lawton (202 JCP)</td>
+                            <td>Keynote by Prof. Brian Lawton in 202</td>
                             <td class="myInv">In progress</td>
                         </tr>
                         <tr class="body-row">
@@ -75,7 +65,7 @@
                         </tr>
                         <tr class="body-row">
                             <td>10:40 am &ndash; 11:10 am</td>
-                            <td>Cybersecurity in 403 Business Intelligence in 404</td>
+                            <td>Cybersecurity in 403 Business & Intelligence in 404</td>
                             <td class="myInv">In progress</td>
                         </tr>
                         <tr class="body-row">
@@ -85,7 +75,7 @@
                         </tr>
                         <tr class="body-row">
                             <td>11:20 am &ndash; 11:50 am</td>
-                            <td>Mobile Applications in 203 Cloud Computing in 204</td>
+                            <td>Mobile Applications in 203 & Cloud Computing in 204</td>
                             <td class="myInv">In progress</td>
                         </tr>
                         <tr class="body-row">
@@ -101,17 +91,11 @@
                     </tbody>
                 </table>
             </section>
-            <br />
-            <h4 id="tester">More Texts</h4>
-            <h4 id="tester2">More Texts</h4>
-
-
+            <div id="tester"></div>
         </div>
         <div class="right-side">
-            <img class="background" src="idea images/K2,_Mount_Godwin_Austen,_Chogori,_Savage_Mountain.jpg"/>
+            <img class="background" src="idea images/K2.jpg"/>
         </div>
     </div>
-
 </body>
-
 </html>

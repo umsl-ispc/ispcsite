@@ -44,18 +44,23 @@
         $('#contentBody').load("contact.html");
         animateText("Contact us");
     });
-})
+});
 function animateText(y) {
     $('#pageHeader').html(y);
     var text = $('#pageHeader');
     TweenMax.fromTo(text, 1.0, { right: "900px", rotationX:"720deg"},{ right: "0px", rotationX:"0deg", ease:Back.easeOut,delay:0.5});
 
 }
-function onOpen() {
-    //$('#contentBody').load("landing.html");
-
-    //setHeight();//probably can get rid of this since the load/html change
-}
+$(window).load(function(){
+    $('#slider').nivoSlider({
+        effect: 'sliceDown',
+        slices: 15,
+        pauseTime: 3700,
+        animSpeed: 750,
+        pauseOnHover: true,
+        controlNav: true
+    });
+});
 
 function loadNewPage() {
     //TODO: page load animation
@@ -90,27 +95,30 @@ $(window).resize(function()
 
 //making navbar background more opaque as you scroll
 $(window).scroll(function () {
-    var imageHeight = document.getElementById("landImage").offsetHeight;//get image height, used as denominator
-    var position = window.pageYOffset; //how far we are from top of window in px
-    /*opacity is set with a value between 0.0 - 1.0, by using "numOfPixels-from-top/imageHeight" we esentially are getting a percentage
-    of how much of the image we have scrolled past, once we reach the end of the image we are at "pixelsFromTop=imageHeight" or "i.e. 400px/400px=1.0"
-    */
-    var ratio = position / imageHeight;//making a fraction for the alpha value in rgba below
-    var rgbValue = 300 * ratio; //using 300 instead of 255 so text is completely white(255,255,255) at about 85%
-    rgbValue = rgbValue.toFixed();//remove decimals
-    /*document.getElementById("mainNav").style.backgroundImage = "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))";//controls opacity
-    document.getElementById("mainNav").style.color = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//not exact, but gets from black to white*/
-    $("#mainNav").css("backgroundImage","linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//controls opacity
-    $("#mainNav").css("color","rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")");//not exact, but gets from black to white
-    $("#navList").css("backgroundImage", "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//same deal but for navlist dropdown
-    var iconTextColor = document.getElementsByClassName("icon-bar");
-    var i = iconTextColor.length;
-    while(i>0)
+    var viewCheck = $("#burgerButton").css("display");//gets the navbar property of the "burgerbutton" to see if navbar is collapsed
+    if(viewCheck == "none")//if the burgerbutton's display is set to none, then menu is full and we allow script
     {
-        iconTextColor[i-1].style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//to access array indices 0,1,2
-        i = i-1;
+        var imageHeight = document.getElementById("landImage").offsetHeight;//get image height, used as denominator
+        var position = window.pageYOffset; //how far we are from top of window in px
+        /*opacity is set with a value between 0.0 - 1.0, by using "numOfPixels-from-top/imageHeight" we esentially are getting a percentage
+         of how much of the image we have scrolled past, once we reach the end of the image we are at "pixelsFromTop=imageHeight" or "i.e. 400px/400px=1.0"
+         */
+        var ratio = position / imageHeight;//making a fraction for the alpha value in rgba below
+        var rgbValue = 300 * ratio; //using 300 instead of 255 so text is still completely white(255,255,255) at about 85% scroll
+        rgbValue = rgbValue.toFixed();//remove decimals
+        /*document.getElementById("mainNav").style.backgroundImage = "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))";//controls opacity
+         document.getElementById("mainNav").style.color = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//not exact, but gets from black to white*/
+        $("#mainNav").css("backgroundImage","linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))")//controls BG image opacity
+            .css("color","rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")");//not exact, but gets the text color from black to white
+        $("#navList").css("backgroundImage", "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//same deal but for navlist dropdown
+        var iconTextColor = document.getElementsByClassName("icon-bar");
+        var i = iconTextColor.length;
+        while(i>0)
+        {
+            iconTextColor[i-1].style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//to access array indices 0,1,2
+            i = i-1;
+        }
     }
-    
     //document.getElementById("tester").innerHTML = rgbValue;
 });
 

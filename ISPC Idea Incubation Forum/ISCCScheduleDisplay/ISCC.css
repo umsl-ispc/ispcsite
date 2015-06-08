@@ -1,4 +1,11 @@
-﻿    body{
+﻿    #welcomeLabel{
+		color:white;
+		position:absolute;
+		top:70%;
+		z-index:10;
+	}
+	
+	body{
     height:100%;
     width:100%;
     min-height:700px;
@@ -31,11 +38,19 @@
     .table{
         max-width:90%;
         height:100%;
-        -webkit-margin-before: 0.5em;
-        -webkit-margin-after: 0.5em;
+        -webkit-margin-before: 0.25em;
+        -webkit-margin-after: 0.25em;
+		/*-moz-margin-start: 0.5em;
+		-moz-margin-end: 0.5em;*/
+		-moz-margin-start:auto;
+		-moz-margin-end:auto;
+		-o-margin-start: 0.25em;
+		-o-margin-end: 0.25em;
+		-margin-start: 0.25em;
+		-margin-end: 0.25em;
         -webkit-margin-start: auto;
         -webkit-margin-end: auto;
-        font-size:1.5em;
+        font-size:1.15em;
     }
     .heading{
         position:static;
@@ -43,7 +58,7 @@
     .heading .text{
         left:120px;
         flex-wrap:wrap;
-        font-size:2.25em;   
+        font-size:2.0em;   
         text-align:justify;   
     }
     .screen{
@@ -53,16 +68,16 @@
         }
 
     .left-side{
-        max-width:55%;
+        max-width:60%;
         position:absolute;
         z-index:10;
-        margin:10px;
+        margin:5px;
 
     }
     .left-side .image{
         position:static;
-        max-height: 24%;
-        max-width:24%;
+        max-height: 28%;
+        max-width:28%;
         display:inline;
         vertical-align:middle;
         
@@ -70,14 +85,21 @@
     .right-side{
 
     }
+    .headimage {
+        position:absolute;
+        height:66%;
+        width:66%;
+        z-index:10;
+    }
+
     .background{
         position:absolute;
-        left:25%;
+        left:33%;
 
         height:100%;
         z-index:-10;
     }
-    #overlay{
+    .overlay{
         position:absolute;
         top:0px;
         left:0px;

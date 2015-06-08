@@ -1,3 +1,6 @@
 Web.config.xml
 /oldindexes
+.idea/
+*.suo
+*.sln
 *.TMP

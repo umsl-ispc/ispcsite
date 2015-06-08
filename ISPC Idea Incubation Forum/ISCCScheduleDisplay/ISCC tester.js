@@ -3,12 +3,12 @@
     var twoMinutes = 120000;//in ms
     var tenMinutes = 600000;//in ms
     var fifteenMinutes = 900000;//in ms
-    var testStagger = 7000;//for testing
+    var testStagger = 5000;//for testing
 
     //vars for time control(well more like time handling not really control)
-    var enumTimeSegment = [0,thirtyMinutes, fifteenMinutes, fifteenMinutes, tenMinutes, thirtyMinutes, tenMinutes, thirtyMinutes, tenMinutes];
-    var enumTimeSegment2 = [0,testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger];//testing
-    var enumIndex = 0;
+    var enumTimeSegment = [0,thirtyMinutes, fifteenMinutes, fifteenMinutes, tenMinutes, thirtyMinutes, tenMinutes, thirtyMinutes, tenMinutes];//actual
+    var enumTimeSegment2 = [0,testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger, testStagger];//testing
+    var enumIndex = 0;//index for controlling htmltable row position and enumTimeSegment array position
 
     //vars for time checking
     var isccStartTime;
@@ -19,6 +19,7 @@
     //An array for holding table row objects
     var rowArray = [];
 
+	//displays current time on page
     var foreverTime = setInterval(function () { showTime(); }, 1000);
 
     isccStartTime = new Date();//init
@@ -42,26 +43,30 @@
     //fills array with row data and references to html objects
     rowArrayInit();
 
-    //var startCheck = setInterval(function () { startChecker(currentTime, isccStartTime); }, 1000);
+    //var startCheck = setInterval(function () { startChecker(currentTime, isccStartTime); }, 1000);//script entrypoint(ie like "main")
     var myIntv;
+	
+	//testing entry point
     beginCheck();
 
-    //var myIntv = setInterval(function () { timeCheck(currentTime, eventEndTime, myIntv); }, 1000);
-    //getCurrentTime(timeCurrent);
+	//sets up times for next event
     function updateTimes()
     {
-        //$('#tester').html("in update time");
-        //window.alert("in update times");
-        enumIndex++;//move index to next position
-        eventStartTime.setTime(rowArray[enumIndex].startTime);
-        eventEndTime.setTime(rowArray[enumIndex].endTime);
+        
+            enumIndex++;//move index to next position
         //window.alert("Row " + enumIndex + " start " + rowArray[enumIndex].startTime + " end " + rowArray[enumIndex].endTime);
         if(enumIndex < rowArray.length)
         {
-            //they work
+            eventStartTime.setTime(rowArray[enumIndex].startTime);
+            eventEndTime.setTime(rowArray[enumIndex].endTime);
+
+            //testing
             //rowArray[enumIndex - 1].objRef.style.backgroundColor = "red";
             var x = rowArray[enumIndex - 1].objRef.getElementsByTagName("td");
-            beginCheck();
+            beginCheck();//only called if there are potentially things left to animate
+            $("#tester").html("not end");
+        } else {
+            $("#tester").html("THE END");
         }
     }
 
@@ -69,35 +74,31 @@
     function timeCheck(eventStart, eventEnd, intervalName)
     {
         currentTime = getCurrentTime();
-        //$('#tester2').html("start is " + eventStart.getTime() + "but" + eventEnd.getTime() + " current " + currentTime.getTime());
-        //$('#tester').html("in time check");
         //See if event is in prog
         if (currentTime.getTime() > eventStart.getTime() && currentTime.getTime() < eventEnd.getTime())
         {
-            $('#tester').html("event in prog");
-            inProgAnimation(rowArray[enumIndex]);
+            //tester').html("event in prog");
+            inProgAnimation(rowArray[enumIndex]);//if event is inprog animation call
         }
         //it is before end. also current is smaller than eventEnd
         if (currentTime.getTime() < eventEnd.getTime())
         {
             //if ((eventEnd.getTime() - currentTime.getTime()) <= twoMinutes)//in the two minute warning
-            if ((eventEnd.getTime() - currentTime.getTime()) <= 1500)//or the not even two second warning
+            if ((eventEnd.getTime() - currentTime.getTime()) <= 1500)//or the not even two second warning for testing
             {
                 //window.alert("two mintue warning");
             }
-            $('#tester2').html("not yet");
         } else //event is over (current > end)
         {
-            endInterval(intervalName);
-            rowArray[enumIndex].killTween = true;
-            finishedAnimation(rowArray[enumIndex]);
+            endInterval(intervalName);//kills interval's function call
+            finishedAnimation(rowArray[enumIndex]);//
             updateTimes();
         }
     }
     function startChecker(currentTime, eventEndTime)
     {
-        $('#tester').html("tester is " + currentTime.getTime() + "but" + eventEndTime.getTime());
-        $('#tester2').html("refreshed");
+        //$('#tester').html("tester is " + currentTime.getTime() + "but" + eventEndTime.getTime());
+        //$('#tester2').html("refreshed");
         //loop while eventEndTime has yet to occur
         if (currentTime.getTime() < eventEndTime.getTime())
         {
@@ -105,19 +106,18 @@
             if (currentTime.getTime() >= eventEndTime.getTime())
             {
                 endInterval(startCheck);
-                $('#tester').html("lets go already");
-                beginCheck();
+                beginCheck();//event has started, entry point
             }
         }
     }
+	//this function, functions as the script entry point
     function beginCheck()
     {
-        //calls function to compare time every second
-        //$('#tester').html("In begincheck");
-        //$('#tester2').html("start is " + eventStartTime.getTime() + "but" + eventEndTime.getTime() + " current " + currentTime.getTime());
+        //calls function to compare event times every second
         myIntv = setInterval(function () { timeCheck(eventStartTime, eventEndTime, myIntv); }, 1000);
     }
 
+	//Handles the running clock
     function showTime()
     {
         var date = new Date();
@@ -145,20 +145,16 @@
     {
         //get HTML object references
         var tempRefArray = document.getElementsByClassName("body-row");
-        
-
         var i = 0;
         var startCounter = eventStartTime.getTime();
         var endCounter = eventEndTime.getTime();
         for (i = 0; i < tempRefArray.length; i++)
         {
-            startCounter += enumTimeSegment2[i];
+            startCounter = endCounter;
             endCounter += enumTimeSegment2[i];
-            var text = "rowarray text "+i;
+            var text = "rowarray text " + i;
             rowArray[i] = new tableRow((i + 1), text, startCounter, endCounter, tempRefArray[i]);
-            //window.alert("Row " + i + " start " + rowArray[i].startTime + " end " + rowArray[i].endTime);//can check array values
         }
-        //window.alert("Done with row init" );
     }
 
     //tableRow object constructor
@@ -169,19 +165,20 @@
         this.startTime = startTime;
         this.endTime = endTime;
         this.objRef = objRef;
-        this.tween;
+        this.tween; //variable to hold animation sequences so they can be stopped later
         this.animating = false;
-        this.killTween = false;
+
     }
 })//end of on doc ready
 
+//animation while in progress
 function inProgAnimation(htmlRowRef)
 {
-    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");
-    if (!htmlRowRef.isAnimating)
+    var columnsArray = htmlRowRef.objRef.getElementsByTagName("td");//gets reference to row's "td" elements
+    if (!htmlRowRef.isAnimating)//check to see if animation is already going on
     {
-        htmlRowRef.isAnimating = true;
-        columnsArray[2].style.color = "white";
+        htmlRowRef.isAnimating = true;//sets animating
+        columnsArray[2].style.color = "white";//makes "td" elements visible
         htmlRowRef.tween = TweenMax.fromTo(htmlRowRef.objRef, 3.0, { backgroundColor: "transparent" }, { backgroundColor: "rgba(0, 189, 0, 0.5)", ease: Power1.easeInOut, repeat: -1, yoyo: true });
     }   
 }
@@ -190,6 +187,7 @@ function finishedAnimation(htmlRowRef)
 {
 
     htmlRowRef.tween.kill();//stops repeating animation
+	htmlRowRef.isAnimating = false;//incase other animation gets implemented later
     TweenMax.to(htmlRowRef.objRef, 2.0, { backgroundColor: "transparent" });//ensures that bg fades to clear
     htmlRowRef.objRef.style.textDecoration = "line-through";//strikes out text
 

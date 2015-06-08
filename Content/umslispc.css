@@ -12,6 +12,7 @@ Customizations to bootstrap CSS
 }
 
 
+
 /*html tags*/
 body {
   margin: 0;
@@ -24,6 +25,12 @@ object{
 }
 
 /*classes*/
+.slider-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    width: 75%;
+}
 
 .title{
     font-weight:bold;
@@ -94,6 +101,9 @@ object{
 	background-color:#2E2E2E;
 	color:white;
 	}
+    a{
+        color:white;
+    }
 }
 
 
