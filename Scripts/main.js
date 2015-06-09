@@ -1,66 +1,38 @@
 ﻿$(document).ready(function () {
-    $('#contentBody').load("landing.html");
-    animateText();
-    $('#brand').click(function () {
-        //$('#contentBody').html('<object data="landing.html">');
-        $('#contentBody').load("landing.html");
-        animateText("UMSL - Information Systems Programming Club");
-    });
-    $("#news").click(function () {
-        //$('#contentBody').html('<object data="news.html">');
-        $('#contentBody').load("news.html");
-        animateText("News");
-    });
-    $(".tempLink").click(function () {
-        //$('#contentBody').html('<object data="news.html">');
-        $('#contentBody').load("news.html");
-        animateText("News");
+    loadToHash();
+
+    //OOP style click loader
+    $("a[class^='navitem']").click(function(e){//jquery selector for all <a> elements that contain at least the class navitem but possibly others
+        var targetHTML = e.currentTarget.attributes.id.nodeValue;//remember to use the debugger to help yourself
+        $("#contentBody").load(targetHTML + ".html");//append ".html" and load the page
+        animateText(e.currentTarget.attributes.title.nodeValue);//from the event we find what target was clicked on then its attributes.title and it's value
     });
 
-    $('#purpose').click(function () {
-        //$('#contentBody').html('<object data="purpose.html">');
-        $('#contentBody').load("purpose.html");
-        animateText("Why we are here");
-    });
-    $('#join').click(function () {
-        //$('#contentBody').html('<object data="join.html">');
-        $('#contentBody').load("join.html");
-        animateText("Join the ISPC");
-    });
-    $('#meetings').click(function () {
-        //$('#contentBody').html('<object data="meetings.html">');
-        $('#contentBody').load("meetings.html");
-        animateText("Meetings you've missed");
-    });
-    $('#links').click(function () {
-        //$('#contentBody').html('<object data="links.html">');
-        $('#contentBody').load("links.html");
-        animateText("Links");
-    });
     $('#umslHome').click(function () {
         window.location.href = 'http://umsl.edu/';
     });
-    $('#contact').click(function () {
-        $('#contentBody').load("contact.html");
-        animateText("Contact us");
-    });
 });
+
+//listener for hashchange allows back/forward buttons to happen
+window.onhashchange = function (){
+  loadToHash();
+};
+
 function animateText(y) {
     $('#pageHeader').html(y);
     var text = $('#pageHeader');
     TweenMax.fromTo(text, 1.0, { right: "900px", rotationX:"720deg"},{ right: "0px", rotationX:"0deg", ease:Back.easeOut,delay:0.5});
-
 }
-$(window).load(function(){
-    $('#slider').nivoSlider({
-        effect: 'sliceDown',
-        slices: 15,
-        pauseTime: 3700,
-        animSpeed: 750,
-        pauseOnHover: true,
-        controlNav: true
-    });
-});
+function loadToHash(){
+    var page = document.location.hash;//get hash of the url that was entered
+    if (page == "")//if no hash was found
+    {
+        page = "#landing";//instead pretend it was set to landing page
+    }
+    page = page.replace(/^#/, '');//strip the hash replace with nothing
+    $('#contentBody').load(page + ".html");//load to the requested url based on hash received
+}
+
 
 function loadNewPage() {
     //TODO: page load animation

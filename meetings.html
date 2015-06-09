@@ -11,6 +11,13 @@
 
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/umslispc.css" />
+    <script>
+        $("#pastmeetings").click(function(){
+            $('#contentBody').load("historicmeetings.html");
+            animateText("The past");
+            $('html, body').animate({ scrollTop: 0 }, 750);
+        });
+    </script>
 
 
 
@@ -32,6 +39,12 @@
         </div>
     </div><!--end div class="panel panel-default"-->
 </section>
-<!--TODO access to historic meeting list-->
+<section>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <H3>Archive of historic meetings</H3>
+        <p>Curious about what has happened in the past or what type of things to expect at an ISPC meeting?
+            <a id="pastmeetings" href="#historicmeetings">Good news Everyone</a></p>
+    </div>
+</section>
 </body>
 </html>
