@@ -68,10 +68,28 @@ $(window).resize(function()
 //making navbar background more opaque as you scroll
 $(window).scroll(function () {
     var viewCheck = $("#burgerButton").css("display");//gets the navbar property of the "burgerbutton" to see if navbar is collapsed
+    var imageHeight = document.getElementById("landImage").offsetHeight;//get image height, used as denominator + position check
+    var position = window.pageYOffset; //how far we are from top of window in px
+    var fullHeight = $("#mainNav").height() + position;
+
+
+
+
+
+    if (imageHeight < fullHeight)
+    {
+        $("#contentBody").css({"margin-top": ($("#mainNav").height()+$("#pagePanel").height())});
+        console.log("pos is: " + position + ". height is: " + imageHeight);
+        console.log("navheight is: " + $("#mainNav").height());
+        $("#pagePanel").css({"position":"fixed", "top":$("#mainNav").height(), "width":"100%", "border-style": "solid"});//freeze panel
+        $("#mainNav").css({"border-style": "hidden"});
+    }else{
+        $("#contentBody").css({"margin-top": 0});
+        $("#pagePanel").css({"position":"static", "top":0, "border-style": "initial"});
+        $("#mainNav").css({"border-bottom": "1px solid rgba(0, 0, 0, 0.6)"});
+    }
     if(viewCheck == "none")//if the burgerbutton's display is set to none, then menu is full and we allow script
     {
-        var imageHeight = document.getElementById("landImage").offsetHeight;//get image height, used as denominator
-        var position = window.pageYOffset; //how far we are from top of window in px
         /*opacity is set with a value between 0.0 - 1.0, by using "numOfPixels-from-top/imageHeight" we esentially are getting a percentage
          of how much of the image we have scrolled past, once we reach the end of the image we are at "pixelsFromTop=imageHeight" or "i.e. 400px/400px=1.0"
          */
