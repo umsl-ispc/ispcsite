@@ -73,20 +73,20 @@ $(window).scroll(function () {
     var fullHeight = $("#mainNav").height() + position;
 
 
-
+    console.log("pos is: " + position + ". height is: " + fullHeight);
+    console.log("navheight is: " + $("#mainNav").height() + " PagePanel height: " + $("#pagePanel").height());
 
 
     if (imageHeight < fullHeight)
     {
-        $("#contentBody").css({"margin-top": ($("#mainNav").height()+$("#pagePanel").height())});
-        console.log("pos is: " + position + ". height is: " + imageHeight);
-        console.log("navheight is: " + $("#mainNav").height());
-        $("#pagePanel").css({"position":"fixed", "top":$("#mainNav").height(), "width":"100%", "border-style": "solid"});//freeze panel
+        $("#panelContainer").css({"margin-top": ($("#mainNav").height()+$("#pagePanel").height())});
+        $("#pagePanel").css({"position":"fixed", "top":$("#mainNav").height(), "width":"100%"});//freeze panel
         $("#mainNav").css({"border-style": "hidden"});
     }else{
-        $("#contentBody").css({"margin-top": 0});
+        $("#panelContainer").css({"margin-top": 0});
         $("#pagePanel").css({"position":"static", "top":0, "border-style": "initial"});
-        $("#mainNav").css({"border-bottom": "1px solid rgba(0, 0, 0, 0.6)"});
+        $("#mainNav").css({"border-style": "hidden"});
+        //$("#mainNav").css({"border-bottom": "1px solid rgba(0, 0, 0, 0.6)"});
     }
     if(viewCheck == "none")//if the burgerbutton's display is set to none, then menu is full and we allow script
     {

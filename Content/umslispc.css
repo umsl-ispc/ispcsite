@@ -5,8 +5,8 @@ Customizations to bootstrap CSS
 /*specific elements*/
 #pagePanel{
     z-index: 10;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
-    border-style: hidden;
+    /*border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    border-style: hidden;*/
 
 }
 #pageHeader{
