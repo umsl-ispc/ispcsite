@@ -5,13 +5,16 @@ Customizations to bootstrap CSS
 /*specific elements*/
 #pagePanel{
     z-index: 10;
-    /*border-bottom: 1px solid rgba(0, 0, 0, 0.6);
-    border-style: hidden;*/
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    border-bottom-color: transparent;
+    /*color initially set to transparent cause we only show bottom border if pagePanel is fixed top*/
 
 }
 #pageHeader{
+    margin-top: 0;
     position:relative;
     backface-visibility:hidden;
+
 }
 #navList{
     background-color:transparent;
@@ -82,11 +85,13 @@ object{
     left:0;
 }
 /*Navbar rules*/
+.nav-fluid{
+    padding-left: 0;
+}
 .navbar-default{
     background-color:transparent;
+    background-image: inherit;
     color:rgb(0,0,0);
-    background-image: linear-gradient(rgba(72,78,85,0.01), rgba(58,63,68,0.01) 60%, rgba(49,53,57,0.01));
-    background-repeat: no-repeat;
     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 .navitem{
@@ -95,8 +100,6 @@ object{
     background-color:inherit !important;
     border-right: 0 !important;
     border-left: 0 !important;
-
-
 }
 .navitem:hover{
 	/*border-style: solid;*/
@@ -105,17 +108,28 @@ object{
 	background-color:#2E2E2E !important;
 }
 .navitem:target{
-    /*border: 2px solid blue;*/
-    outline: rgba(0, 26, 207, 0.3) solid 1px;
-    -webkit-animation: pulse 6s infinite;
-    animation: pulse 6s infinite;
+    outline: rgba(20, 69, 255, 0.3) solid 0;
+    -webkit-animation: pulse 3s infinite;
+    -webkit-animation-direction: alternate;
+    animation: pulse 3s infinite;
+    animation-direction: alternate;
 
 }
 @keyframes pulse{
-    100%{outline: rgba(0, 26, 207, 0.5) solid 1px;}
+    from{
+        outline: rgba(20, 69, 255, 0.5) solid 1px;
+    }
+    to{
+        outline: rgba(20, 69, 255, 0.1) solid 2px;
+    }
 }
 @-webkit-keyframes pulse{
-    100%{outline: rgba(0, 26, 207, 0.5) solid 1px;}
+    from{
+        outline: rgba(20, 69, 255, 0.5) solid 1px;
+    }
+    to{
+        outline: rgba(20, 69, 255, 0.1) solid 2px;
+    }
 }
 
 /*Mobile device rules*/

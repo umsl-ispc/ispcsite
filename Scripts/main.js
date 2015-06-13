@@ -1,11 +1,14 @@
 ﻿$(document).ready(function () {
-    loadToHash();
+    loadToHash();//gives us a page to initially load
 
     //OOP style click loader
-    $("a[class^='navitem']").click(function(e){//jquery selector for all <a> elements that contain at least the class navitem but possibly others
+    $("a[class~='navitem']").click(function(e){//jquery selector for all <a> elements that contain at least the class navitem but possibly others
         var targetHTML = e.currentTarget.attributes.id.nodeValue;//remember to use the debugger to help yourself
-        $("#contentBody").load(targetHTML + ".html");//append ".html" and load the page
-        animateText(e.currentTarget.attributes.title.nodeValue);//from the event we find what target was clicked on then its attributes.title and it's value
+        $("#contentBody").load(targetHTML + ".html",function(responseText){//append ".html" and load the page, success callback function
+            /*if page is loaded get page title and animate it*/
+            var title = responseText.match(/<title>([^<]*)/)[1];
+            animateText(title);
+        });
     });
 
     $('#umslHome').click(function () {
@@ -23,14 +26,19 @@ function animateText(y) {
     var text = $('#pageHeader');
     TweenMax.fromTo(text, 1.0, { right: "900px", rotationX:"720deg"},{ right: "0px", rotationX:"0deg", ease:Back.easeOut,delay:0.5});
 }
+
+/*loads the page indicated by url's hash or to landing page if none*/
 function loadToHash(){
     var page = document.location.hash;//get hash of the url that was entered
     if (page == "")//if no hash was found
     {
         page = "#landing";//instead pretend it was set to landing page
     }
-    page = page.replace(/^#/, '');//strip the hash replace with nothing
-    $('#contentBody').load(page + ".html");//load to the requested url based on hash received
+    page = page.replace(/^#/, '');//strip the actual hash, replace it with nothing
+    $('#contentBody').load(page + ".html",function(responseText){
+        var title = responseText.match(/<title>([^<]*)/)[1];
+        animateText(title);
+    });//load to the requested url based on hash received
 }
 
 
@@ -65,29 +73,50 @@ $(window).resize(function()
     //setHeight();
 });
 
-//making navbar background more opaque as you scroll
+/*
+* Handles changes that occur on page scroll
+* */
 $(window).scroll(function () {
     var viewCheck = $("#burgerButton").css("display");//gets the navbar property of the "burgerbutton" to see if navbar is collapsed
     var imageHeight = document.getElementById("landImage").offsetHeight;//get image height, used as denominator + position check
     var position = window.pageYOffset; //how far we are from top of window in px
-    var fullHeight = $("#mainNav").height() + position;
+    var navHeight = $("#mainNav").outerHeight(true); //calculated height of the nav element including margins
+    var panelHeight = $("#pagePanel").outerHeight(true); //calculated height of the page "descriptor"
+    var checkHeight = navHeight + position; //height value to test against for attaching
 
-
-    console.log("pos is: " + position + ". height is: " + fullHeight);
-    console.log("navheight is: " + $("#mainNav").height() + " PagePanel height: " + $("#pagePanel").height());
-
-
-    if (imageHeight < fullHeight)
+    /*
+    * This handles "attaching" the page panel to the nav area
+    * */
+    if (imageHeight < checkHeight)//if we have scrolled past the picture
     {
-        $("#panelContainer").css({"margin-top": ($("#mainNav").height()+$("#pagePanel").height())});
-        $("#pagePanel").css({"position":"fixed", "top":$("#mainNav").height(), "width":"100%"});//freeze panel
-        $("#mainNav").css({"border-style": "hidden"});
-    }else{
-        $("#panelContainer").css({"margin-top": 0});
-        $("#pagePanel").css({"position":"static", "top":0, "border-style": "initial"});
-        $("#mainNav").css({"border-style": "hidden"});
-        //$("#mainNav").css({"border-bottom": "1px solid rgba(0, 0, 0, 0.6)"});
+        /*
+        * Change position to fixed, set it's distance from the top directly under navbar,
+        * set text to white and add bottom border
+        * */
+        $("#pagePanel").css({"position":"fixed", "top": navHeight, "width":"100%","color":"white","border-bottom-color":"black"});
+        /*
+        * So page doesn't "jump" from no longer having pagePanel's height value in layout
+        * add margin of the to top equal to panelHeight
+        * */
+        $("#panelContainer").css({"margin-top": panelHeight});
+        /*set black bottom border to invisible so that navbar looks like a single item*/
+        $("#mainNav").css({"border-bottom-color": "transparent"});
     }
+    //before we have scrolled past the picture
+    else{
+        /*resets panel into DOM structure and resets values*/
+        $("#pagePanel").css({"position":"static", "top":0,"color":"inherit", "border-bottom-color":"transparent"});
+        /*removes top margin since panel is back*/
+        $("#panelContainer").css({"margin-top": 0});
+        /*shows bottom border on nav element again*/
+        $("#mainNav").css({"border-bottom": "1px solid rgba(0, 0, 0, 0.6)"});
+    }
+
+    /*
+    * this handles making the navbar background more opaque as you scroll not on small screens though
+    * if the burgerbutton's display is set to none, then menu is full and we allow script
+    * otherwise burgerbutton is visible so we are on a mobile and skip script
+    * */
     if(viewCheck == "none")//if the burgerbutton's display is set to none, then menu is full and we allow script
     {
         /*opacity is set with a value between 0.0 - 1.0, by using "numOfPixels-from-top/imageHeight" we esentially are getting a percentage
@@ -96,21 +125,28 @@ $(window).scroll(function () {
         var ratio = position / imageHeight;//making a fraction for the alpha value in rgba below
         var rgbValue = 300 * ratio; //using 300 instead of 255 so text is still completely white(255,255,255) at about 85% scroll
         rgbValue = rgbValue.toFixed();//remove decimals
-        /*document.getElementById("mainNav").style.backgroundImage = "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))";//controls opacity
-         document.getElementById("mainNav").style.color = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//not exact, but gets from black to white*/
-        $("#mainNav").css("backgroundImage","linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))")//controls BG image opacity
+
+        //new testing
+        $("#mainNav").css({"background-color":"rgba(46,51,56," + ratio + ")"})//controls BG image opacity
+            .css("color","rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")");//not exact, but gets the text color from black to white
+        $("#navList").css({"background-color":"rgba(46,51,56," + ratio + ")"});
+
+        //old linear grad
+        /*$("#mainNav").css("backgroundImage","linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))")//controls BG image opacity
             .css("color","rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")");//not exact, but gets the text color from black to white
         $("#navList").css("backgroundImage", "linear-gradient(rgba(72,78,85," + ratio + "), rgba(58,63,68," + ratio + ") 60%, rgba(49,53,57," + ratio + "))");//same deal but for navlist dropdown
-        var iconTextColor = document.getElementsByClassName("icon-bar");
-        var i = iconTextColor.length;
+        */
+
+        /*sets background color for drop-down list items*/
+        var iconTextColor = document.getElementsByClassName("icon-bar");//array of all the items
+        var i = iconTextColor.length; //number of items
         while(i>0)
         {
             iconTextColor[i-1].style.backgroundColor = "rgb(" + rgbValue + "," + rgbValue + "," + rgbValue + ")";//to access array indices 0,1,2
             i = i-1;
         }
-    }
-    //document.getElementById("tester").innerHTML = rgbValue;
-});
+    }//end of if
+});//end of scroll function
 
 
     

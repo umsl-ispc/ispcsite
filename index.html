@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="Content/umslispc.css" />
 
 
-    
     <script src="Scripts/jquery-1.11.2.min.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/jquery.nivo.slider.pack.js"></script>
@@ -33,25 +32,16 @@
     <script src="Scripts/greensock/jquery.gsap.min.js"></script>
     <script src="Scripts/main.js"></script>
 
-    <!--
-
-
-    -->
-
-<!--<style>
-    .panel-body {
-    padding: 0px;
-    border: 0px;
-        }
-</style> -->
-   
 </head>
 
 
 <body>
     <div id="wrapper">
+        <div id="landImage" class="container-bg-image">
+            <img src="images/msc-ponds.jpg" class="img-bg" />
+        </div>
         <nav id="mainNav" class="navbar-fixed-top navbar-default">
-            <div class="container-fluid">
+            <div class="container-fluid nav-fluid">
                 <div class="navbar-header">
                     <button id="burgerButton" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_main_collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -59,7 +49,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a id="landing" class="navitem navbar-brand" href="#landing" title="UMSL - Information Systems Programming Club">ISPC</a>
+                    <a id="landing" class="navitem navbar-brand" href="#landing">ISPC</a>
                     <a class="navbar-brand navitem" href="https://github.com/umsl-ispc"><i class="fa fa-github"></i></a>
                 </div>
 
@@ -67,65 +57,52 @@
                 <div class="navbar-collapse collapse" id="navbar_main_collapse">
                     <ul class="nav navbar-nav">
                         <li class="divider"></li>
-                        <li><a class="navitem" id="news" href="#news" title="News">News</a></li>
-                        <li><a class="navitem" id="join" href="#join" title="Join the ISPC">Join</a></li>
+                        <li><a class="navitem" id="news" href="#news">News</a></li>
+                        <li><a class="navitem" id="join" href="#join">Join</a></li>
                         <li class="dropdown navitem">
                             <a class="dropdown-toggle navitem" data-toggle="dropdown" role="button" aria-expanded="false">About<span class="caret"></span></a>
                             <ul id="navList" class="dropdown-menu" role="menu">
                                 <li class="divider"></li>
-                                <li><a class="navitem" id="links" href="#links" title="Links">Links</a></li>
+                                <li><a class="navitem" id="links" href="#links">Links</a></li>
                                 <li class="divider"></li>
-                                <li><a class="navitem" id="purpose" href="#purpose" title="Why we are here">Purpose</a></li>
+                                <li><a class="navitem" id="purpose" href="#purpose">Purpose</a></li>
                                 <li class="divider"></li>
                                 <li><a class="navitem" id="meetings" href="#meetings" title="Meetings you've missed">Meetings</a></li>
                                 <li class="divider"></li>
 
                             </ul>
                         </li>
-                        </ul>
+                        <!--not ready yet-->
+                        <!--<li><a class="navitem" id="peek" href="#peek">Peek</a></li>-->
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
                         <li><a class="navitem" id="umslHome">UMSL Home</a></li>
                         <li class="divider"></li>
-                        <li><a class="navitem" id="contact" href="#contact" title="Contact us">Contact</a></li>
+                        <li><a class="navitem" id="contact" href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
-        </nav>
-
-        <div id="landImage" class="container-bg-image">
-            <img src="images/msc-ponds.jpg" class="img-bg" />
-        </div>
+        </nav><!--end navbar-->
         <div id="pagePanel" class="panel panel-heading">
-            <h2 id="pageHeader">UMSL - Information Systems Programming Club</h2>
+            <h3 id="pageHeader">UMSL - Information Systems Programming Club</h3>
         </div><!--end panel-heading-->
+    </div><!--end nav and BG image section-->
 
-        <!--end navbar-->
-        <!--main content-->
-
-        <div id="panelContainer" class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-
-                    <div id="contentBody">
-                        <object id="content">Place Holder: If you see this try updating to the newest versions of: Firefox, Chrome, or Safari</object>
-                    </div><!--end panel-body-->
-                </div><!--end div col-xs-12-->
-            </div><!--end div row-->
-        </div><!--end div container-->
-
-
-        <!--
-        <script src="Scripts/jquery-1.11.2.min.js"></script>
-        <script src="Scripts/bootstrap.js"></script>
-        <script src="Scripts/main.js"></script>
-        <script src="Scripts/greensock/TweenMax.min.js"></script>
-        <script src="Scripts/greensock/jquery.gsap.min.js"></script>
-
-        -->
-
-    </div>
-    
+    <!--main content-->
+    <div id="panelContainer" class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="contentBody">
+                    <object id="content">Place Holder: If you see this try updating to the newest versions of: Firefox, Chrome, or Safari</object>
+                </div><!--end panel-body-->
+            </div><!--end div col-xs-12-->
+        </div><!--end div row-->
+    </div><!--end div container-->
 </body>
+<footer>
+
+
+</footer>
 
 </html>
