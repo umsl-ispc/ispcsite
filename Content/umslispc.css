@@ -115,6 +115,20 @@ object{
     animation-direction: alternate;
 
 }
+.gridContainer{
+    //position: relative;
+}
+.myGrid{
+    color: black;
+    word-wrap: normal;
+    min-height: 400px;
+}
+.myGridRow{
+    height: 50px !important;
+}
+.ui-grid-cell-contents{
+    white-space: normal !important;
+}
 @keyframes pulse{
     from{
         outline: rgba(20, 69, 255, 0.5) solid 1px;
