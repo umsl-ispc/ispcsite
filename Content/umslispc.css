@@ -119,15 +119,26 @@ object{
     //position: relative;
 }
 .myGrid{
-    color: black;
     word-wrap: normal;
     min-height: 400px;
 }
 .myGridRow{
     height: 50px !important;
 }
+.ui-grid-header-cell{
+    /*background-color: #272b30;*/
+    color: black;
+}
 .ui-grid-cell-contents{
     white-space: normal !important;
+}
+.ui-grid-row:nth-child(odd) .ui-grid-cell{
+    background-color: #3e444c !important;
+    /*color: #F3F3F3;*/
+}
+.ui-grid-row:nth-child(even) .ui-grid-cell{
+    background-color: #F3F3F3 !important;
+    color: black !important;
 }
 @keyframes pulse{
     from{

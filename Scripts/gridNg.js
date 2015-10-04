@@ -34,7 +34,7 @@ angular.module('gridApp', [
                     },{
                         displayName: 'Location',
                         field: 'location',
-                        width: 100
+                        width: 115
                     },{
                         displayName: 'Event',
                         field: 'description',
@@ -42,7 +42,7 @@ angular.module('gridApp', [
                     },{
                         displayName: 'Sponsored by',
                         field: 'sponsor',
-                        width: 150
+                        //width: 150
                     }
                 ]
             };
