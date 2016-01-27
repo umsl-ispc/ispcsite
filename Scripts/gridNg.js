@@ -38,7 +38,7 @@ angular.module('gridApp', [
                     },{
                         displayName: 'Event',
                         field: 'description',
-                        width: 850
+                        width: 600
                     },{
                         displayName: 'Sponsored by',
                         field: 'sponsor',
