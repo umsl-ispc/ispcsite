@@ -1,7 +1,7 @@
 ﻿<!doctype html>
 <!--TODO: add shiv for compat w/ older IE-->
 
-<html lang ="en-us" >
+<html lang ="en-us">
 <head>
 
 <meta charset="utf-8">
@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="Content/umslispc.css" />
     <link rel="stylesheet" href="Scripts/uiGrid/ui-grid.min.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-touch.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-touch.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
     <!--<script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>-->
 
 
@@ -40,14 +40,15 @@
     <script src="Scripts/gridNg.js"></script>
     <script src="Scripts/uiGrid/ui-grid.min.js"></script>
     <script src="Scripts/uiBootstrap/ui-bootstrap.min.js"></script>
-    <script src="Scripts/uiBootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!--<script src="Scripts/uiBootstrap/ui-bootstrap-tpls.min.js"></script>-->
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
     <script src="Scripts/moment/moment.min.js"></script>
     <script src="Scripts/moment/angular-moment.min.js"></script>
 
 </head>
 
 
-<body>
+<body ng-app="ispcApp">
     <div id="wrapper">
         <div id="landImage" class="container-bg-image">
             <img src="images/msc-ponds.jpg" class="img-bg" />
@@ -102,32 +103,187 @@
     <div id="panelContainer" class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-defaul">
-                    <div class="panel-heading">
-                        <h2>UMSL Information Systems Career Conference 2016</h2>
+                <div>
+                    <div ng-controller="CollapseCtrl">
+                        <button type="button" class="btn btn-default btn-block"
+                                ng-click="isCollapsed = !isCollapsed">ISCC Registration
+                            Form
+                        </button>
+                        <hr>
+                        <div uib-collapse="isCollapsed">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2>UMSL Information Systems Career Conference
+                                        2016</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <iframe src="https://docs.google.com/forms/d/1RNy42FZ8Wm4jRIRvpTaLHbX2HaOuiY_mhVIeaDNV1mc/viewform"
+                                            width="1024"
+                                            height="1100"
+                                            frameborder="0"
+                                            marginheight="0"
+                                            marginwidth="0">
+                                        Loading...
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="">
-                            <iframe src="https://docs.google.com/forms/d/1RNy42FZ8Wm4jRIRvpTaLHbX2HaOuiY_mhVIeaDNV1mc/viewform"
-                                    width="1024" height="600" frameborder="0" marginheight="0" marginwidth="0">
-                                Loading...
-                            </iframe>
+
+                    <!--<div ng-controller="CollapseCtrl">-->
+                        <!--<button type="button" class="btn btn-default btn-block"-->
+                                <!--ng-click="isCollapsed = !isCollapsed">DreamSpark Handout-->
+                            <!--Form-->
+                        <!--</button>-->
+                        <!--<hr>-->
+                        <!--<div uib-collapse="isCollapsed">-->
+                            <!--<div class="panel panel-default">-->
+                                <!--<div class="panel-heading">-->
+                                    <!--<h2>UMSL Information Systems DreamSpark Handout</h2>-->
+                                <!--</div>-->
+                                <!--<div class="panel-body">-->
+                                    <!--&lt;!&ndash;<iframe&ndash;&gt;-->
+                                    <!--&lt;!&ndash;src="https://drive.google.com/file/d/0BwsjQvtpCkNwSXdDMkg0cnNXdVU/view?usp=sharing"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;frameborder="0"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;marginheight="0"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;marginwidth="0"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;width="1024"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;height="1000">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;Loading...&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</iframe>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<object datasrc="/Content/PDFs/DreamSpark_Handout.pdf"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;width="1024"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;height="1000">&ndash;&gt;-->
+
+                                    <!--&lt;!&ndash;</object>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<embed type="application/pdf"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;height="600"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;width="100%"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;src="/Content/PDFs/DreamSpark_Handout.pdf"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;internalinstanceid="3">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a&ndash;&gt;-->
+                                    <!--&lt;!&ndash;href="/Content/PDFs/DreamSpark_Handout.pdf">Download&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div ng-controller="CollapseCtrl">
+                        <button type="button" class="btn btn-default btn-block"
+                                ng-click="isCollapsed = !isCollapsed">Helpful
+                            Resources
+                        </button>
+                        <hr>
+                        <div uib-collapse="isCollapsed">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2>Facilities for IS Students</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        <b>The MIS Lab (200 ESH): </b>
+                                        This lab is set up for IS students. You must swipe
+                                        your ID card to gain access. You use your regular
+                                        MyGateway ID and password to gain access to the
+                                        machines. 
+                                        The regular hours for the lab are: M-R: 7:30 am –
+                                        midnight, F: 7:30 am – 11 pm, Sa:  7:30 am – 8 pm,
+                                        and Su: 7:30 am – 10 pm. 
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <b>The Cybersecurity Lab (204 ESH): </b>
+                                        This lab is set up for IS students enrolled in the
+                                        graduate and undergraduate certificates in
+                                        cybersecurity
+                                        and the undergraduate minor in cybersecurity.
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <b>IS Listservs: </b>
+                                        UMIS-L and GMIS-L that provide regular information
+                                        about internships, jobs, IS user groups and
+                                        activities.
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <b>Microsoft Software: </b>
+                                        Free Microsoft software including operating
+                                        systems,
+                                        developer tools, servers, and applications through
+                                        Microsoft’s DreamSpark program.
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <b>Two students clubs: </b>
+                                        The IS Mentoring Club which focuses on developing
+                                        soft skills such as resume writing and
+                                        interviewing
+                                        as well as forming mentor-protégé relationships
+                                        between
+                                        alumni and students.
+                                        <br/>
+                                        The IS Programming Club focuses on developing
+                                        technical
+                                        skills through distinguished speakers, hackathons,
+                                        game jams, competitions, and participation of
+                                        women
+                                        students in the <i>Women’s Hackathon</i> and the
+                                        <i>Grace Hopper
+                                            Conference for Women Technologists.</i>
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        The Information Systems Career Conference: </b>
+                                        An exclusive job fair for IS students.
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <b>UMSL’s Cybersecurity Conference –
+                                            STLCyberCon: </b>
+                                        An opportunity for IS students to learn about the
+                                        latest research on cybersecurity.
+                                    </p>
+                                </div>
+                                <div class="panel-footer">
+                                    <p><b><i>
+                                        For more information, please contact: Dr. Dinesh
+                                        Mirchandani ( <a href="tel:13145167345">314-516-7354</a>;
+                                        <a href="mailto:mirchandanid@umsl.edu">mirchandanid@umsl.edu</a>).
+                                        Please follow the IS department on
+                                        <a href="https://twitter.com/UMSL_IS"
+                                           target="_blank">Twitter
+                                        </a>
+                                        and
+                                        <a href="https://fb.com/UMSLIS" target="_blank">Facebook</a>
+                                    </i></b></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" ng-app="gridApp">
-                    <div class="panel-heading">
-                        <h2>Upcoming IS Events</h2>
-                    </div>
-                    <div class="panel-body" ng-controller="GridCtrl">
-                        <h4>Filterable event list</h4>
-                        <div class="gridContainer">
-                            <div ui-grid-auto-resize ui-grid="gridOpts" class="myGrid"></div>
+                <div ng-controller="CollapseCtrl">
+                    <button type="button" class="btn btn-default btn-block"
+                            ng-click="isCollapsed = !isCollapsed">Schedule
+                    </button>
+                    <div class="panel panel-default" uib-collapse="isCollapsed">
+                        <div class="panel-heading">
+                            <h2>Upcoming IS Events</h2>
+                        </div>
+                        <div class="panel-body" ng-controller="GridCtrl">
+                            <h4>Filterable event list</h4>
+                            <div class="gridContainer">
+                                <div ui-grid-auto-resize ui-grid="gridOpts" class="myGrid"></div>
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
+                <hr />
+
                 <div id="contentBody">
                     <object id="content">Place Holder: If you see this try updating to the newest versions of: Firefox, Chrome, or Safari</object>
                 </div><!--end panel-body-->
